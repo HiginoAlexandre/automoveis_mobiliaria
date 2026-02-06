@@ -1,0 +1,9 @@
+.hero-content {
+        max-width: 650px;
+        padding: 50px;
+        margin:auto;
+    }
+
+
+
+    
