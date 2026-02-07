@@ -72,6 +72,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Adiciona a classe 'selected' ao botão clicado
             btn.classList.add("selected");
+            if (btn.id === "automoveis-btn") {
+                mostrarTudo("automoveis");
+                ocultarTudo("imoveis");
+            } else if (btn.id === "imoveis-btn") {
+                mostrarTudo("imoveis");
+                ocultarTudo("automoveis");
+            }
         });
     });
+    
 });
+
+function ocultarTudo(classe = "imoveis") {
+    const imoveisElements = document.querySelectorAll(`.${classe}`);
+    imoveisElements.forEach(el => el.classList.add('none'));
+}
+
+function mostrarTudo(classe = "imoveis") {
+    const imoveisElements = document.querySelectorAll(`.${classe}`);
+    imoveisElements.forEach(el => el.classList.remove('none'));
+}
