@@ -236,14 +236,9 @@
     }
 
     .map-overlay {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        background: #FFFFFF;
-        padding: 20px;
-        border-radius: 12px;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        max-width: 250px;
+        position: relative; /* Changed from absolute to relative */
+        margin-top: 20px; /* Added margin to avoid overlapping */
+        margin-left: 20px; /* Added margin to avoid overlapping */
     }
 
     .map-overlay h4 {
