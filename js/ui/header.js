@@ -63,6 +63,20 @@ window.addEventListener('resize', () => {
 document.addEventListener("DOMContentLoaded", () => {
     const trocaServicoBtns = document.querySelectorAll("#troca-servico-btn a");
 
+    // Verifica o estado salvo no localStorage e ajusta a exibição
+    const estadoSalvo = localStorage.getItem("servicoSelecionado");
+    if (estadoSalvo) {
+        mostrarTudo(estadoSalvo);
+        ocultarTudo(estadoSalvo === "automoveis" ? "imoveis" : "automoveis");
+        trocaServicoBtns.forEach((btn) => {
+            if (btn.id === `${estadoSalvo}-btn`) {
+                btn.classList.add("selected");
+            } else {
+                btn.classList.remove("selected");
+            }
+        });
+    }
+
     trocaServicoBtns.forEach((btn) => {
         btn.addEventListener("click", (event) => {
             event.preventDefault(); // Previne o comportamento padrão do link
@@ -72,6 +86,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Adiciona a classe 'selected' ao botão clicado
             btn.classList.add("selected");
+
+            // Salva o estado no localStorage
+            const servico = btn.id === "automoveis-btn" ? "automoveis" : "imoveis";
+            localStorage.setItem("servicoSelecionado", servico);
+
             if (btn.id === "automoveis-btn") {
                 mostrarTudo("automoveis");
                 ocultarTudo("imoveis");
@@ -81,7 +100,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
-    
 });
 
 function ocultarTudo(classe = "imoveis") {
@@ -91,5 +109,13 @@ function ocultarTudo(classe = "imoveis") {
 
 function mostrarTudo(classe = "imoveis") {
     const imoveisElements = document.querySelectorAll(`.${classe}`);
-    imoveisElements.forEach(el => el.classList.remove('none'));
+    imoveisElements.forEach(el => {
+        el.classList.remove('none');
+        el.classList.add('fade-in'); // Adiciona a classe de animação
+
+        // Remove a classe de animação após a conclusão para reutilização
+        el.addEventListener('animationend', () => {
+            el.classList.remove('fade-in');
+        }, { once: true });
+    });
 }
