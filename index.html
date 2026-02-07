@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eduardo Automóveis/ | Beduardo Investimento</title>
+    <title>Eduardo Automóveis/ | B.Eduardo Investimento</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
@@ -28,7 +28,7 @@
                 <div class="logo-icon">EA</div>
                 <div class="logo-text">
                     <span class="logo-main">Eduardo <span class="automoveis">Automóveis</span><span class="imoveis none">Imóveis</span></span>
-                    <span class="logo-sub">Beduardo Investimento</span>
+                    <span class="logo-sub"><span class="hightlight">B</span>.Eduardo Investimento</span>
                 </div>
             </a>
 
@@ -114,7 +114,7 @@
 
                 <!-- Services Grid -->
                 <div class="services-grid">
-                    <div class="service-card">
+                    <div class="service-card automoveis">
                         <div class="service-icon">
                             <i class="fas fa-car"></i>
                         </div>
@@ -125,7 +125,7 @@
                         </div>
                     </div>
 
-                    <div class="service-card">
+                    <div class="service-card imoveis none">
                         <div class="service-icon">
                             <i class="fas fa-home"></i>
                         </div>
@@ -161,17 +161,24 @@
         <!-- Hero Section with Background Image -->
         <section class="featured-cars" id="viaturas">
             <div class="section-header">
-                <div class="section-tag">CONCESSIONÁRIA PREMIUM</div>
-                <h2 class="section-title">Viaturas em <span class="highlight">Destaque</span> </h2>
-                <p class="section-subtitle">
+                <div class="section-tag"><span class="automoveis">CONCESSIONÁRIA</span><span class="imoveis none">IMOBILIÁRIA</span> PREMIUM</div>
+                <h2 class="section-title"><span class="automoveis">Viaturas</span><span class="imoveis none">Casas</span> em <span class="highlight">Destaque</span> </h2>
+                <p class="section-subtitle automoveis">
                     Qualidade garantida, transparência total e preço negociável.
                     Cada viatura passa por rigorosa inspeção antes da venda.
                 </p>
+                    <p class="section-subtitle imoveis none">
+                        Propriedades de alto padrão, localizações privilegiadas e oportunidades de investimento
+                        exclusivas. Transparência e confiança em cada transação.
+                    </p>
             </div>
 
             <!-- Cars Grid (Dynamically Generated) -->
-            <div class="cars-grid" id="carsGrid">
+            <div class="cars-grid automoveis" id="carsGrid">
                 <!-- Cars will be loaded here via JavaScript -->
+            </div>
+            <div class="houses-grid imoveis none" id="houseGrid">
+                <!-- Houses will be loaded here via JavaScript -->
             </div>
             <div class="ver-mais"><a href="" class="cta-primary">Ver mais:</a></div>
 

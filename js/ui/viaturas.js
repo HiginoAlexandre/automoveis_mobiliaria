@@ -359,8 +359,222 @@ function closeCarModal() {
     }, 300);
 }
 
-// Initialize the page
-document.addEventListener('DOMContentLoaded', function () {
+// Função para carregar imóveis dinamicamente
+function carregarImoveis() {
+    const houseGrid = document.getElementById("houseGrid");
+
+    // Dados de exemplo para os imóveis
+    const housesData = [
+        {
+            id: 1,
+            titulo: "Casa de Luxo em Luanda",
+            descricao: "Uma casa moderna com 4 quartos, piscina e vista para o mar.",
+            preco: "120.000.000 KZ",
+            localizacao: "Luanda, Angola",
+            area: "500 m²",
+            quartos: 4,
+            banheiros: 3,
+            imagens: [
+                "img/houses/img/houses/615150671_122227750976259706_2472472810222283122_n.jpg",
+                "img/houses/img/houses/615879813_122228324672259706_1479905453447045592_n.jpg",
+                "img/houses/img/houses/617508182_122228963852259706_7909278374236105720_n.jpg"
+            ]
+        },
+        {
+            id: 2,
+            titulo: "Apartamento no Centro",
+            descricao: "Apartamento de 3 quartos no coração da cidade.",
+            preco: "80.000.000 KZ",
+            localizacao: "Centro de Luanda, Angola",
+            area: "200 m²",
+            quartos: 3,
+            banheiros: 2,
+            imagens: [
+                "img/houses/img/houses/618571510_122228963726259706_5499402890383851726_n.jpg",
+                "img/houses/img/houses/622608514_122229734720259706_8814141224521486847_n.jpg",
+                "img/houses/img/houses/623393980_122229734678259706_960837375581979357_n.jpg"
+            ]
+        },
+        {
+            id: 3,
+            titulo: "Mansão Exclusiva",
+            descricao: "Mansão de alto padrão com 6 quartos e amplo jardim.",
+            preco: "250.000.000 KZ",
+            localizacao: "Talatona, Luanda, Angola",
+            area: "1000 m²",
+            quartos: 6,
+            banheiros: 5,
+            imagens: [
+                "img/houses/img/houses/623393980_122229734678259706_960837375581979357_n.jpg",
+                "img/houses/img/houses/623401920_122229734978259706_3009749345656901162_n.jpg",
+                "img/houses/img/houses/623423574_122229734786259706_6431203620781581006_n.jpg"
+            ]
+        }
+    ];
+
+    // Limpa a grid antes de adicionar novos elementos
+    houseGrid.innerHTML = "";
+
+    // Adiciona os imóveis na grid
+    housesData.forEach((house) => {
+        const houseCard = document.createElement("div");
+        houseCard.classList.add("car-card", "imoveis");
+        houseCard.setAttribute("data-house-id", house.id);
+
+        houseCard.innerHTML = `
+            <div class="car-image-container">
+                <img src="${house.imagens[0]}" alt="${house.titulo}" class="car-image" loading="lazy">
+            </div>
+            <div class="car-content">
+                <div class="car-make-model">
+                    <span>${house.titulo}</span>
+                </div>
+                <div class="car-price">
+                    <span class="price-currency">KZ</span>
+                    ${house.preco}
+                </div>
+                <div class="car-details-list">
+                    <div class="car-detail">
+                        <div class="detail-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="detail-value">${house.localizacao}</div>
+                        <div class="detail-label">Localização</div>
+                    </div>
+                    <div class="car-detail">
+                        <div class="detail-icon">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                        <div class="detail-value">${house.area}</div>
+                        <div class="detail-label">Área</div>
+                    </div>
+                    <div class="car-detail">
+                        <div class="detail-icon">
+                            <i class="fas fa-bed"></i>
+                        </div>
+                        <div class="detail-value">${house.quartos}</div>
+                        <div class="detail-label">Quartos</div>
+                    </div>
+                    <div class="car-detail">
+                        <div class="detail-icon">
+                            <i class="fas fa-bath"></i>
+                        </div>
+                        <div class="detail-value">${house.banheiros}</div>
+                        <div class="detail-label">Banheiros</div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        houseGrid.appendChild(houseCard);
+    });
+
+    // Adiciona evento para abrir o modal com detalhes completos
+    const houseCards = document.querySelectorAll(".car-card.imoveis");
+    houseCards.forEach((card) => {
+        card.addEventListener("click", function () {
+            const houseId = parseInt(this.getAttribute("data-house-id"));
+            abrirModalCasa(houseId);
+        });
+    });
+}
+
+// Função para abrir o modal com detalhes completos da casa
+function abrirModalCasa(houseId) {
+    const house = housesData.find(h => h.id === houseId);
+    if (!house) return;
+
+    const modalContent = document.getElementById("modalContent");
+    const carModalOverlay = document.getElementById("carModalOverlay");
+    const carModal = document.getElementById("carModal");
+
+    modalContent.innerHTML = `
+        <div class="modal-gallery">
+            <div class="main-image-container">
+                <img src="${house.imagens[0]}" alt="${house.titulo}" class="main-car-image" id="mainCarImage">
+            </div>
+            <div class="thumbnails-container" id="thumbnailsContainer">
+                ${house.imagens.map((img, index) => `
+                    <img src="${img}" 
+                         alt="${house.titulo} - Foto ${index + 1}" 
+                         class="thumbnail ${index === 0 ? 'active' : ''}"
+                         data-index="${index}">
+                `).join('')}
+            </div>
+        </div>
+        <div class="modal-details">
+            <div class="modal-header">
+                <h2 class="modal-title">${house.titulo}</h2>
+                <div class="modal-subtitle">
+                    <span>${house.localizacao}</span>
+                </div>
+                <div class="modal-price">
+                    <span class="modal-price-currency">KZ</span>
+                    ${house.preco}
+                </div>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-item">
+                    <div class="spec-icon">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                    <div class="spec-content">
+                        <h4>Área</h4>
+                        <p>${house.area}</p>
+                    </div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-icon">
+                        <i class="fas fa-bed"></i>
+                    </div>
+                    <div class="spec-content">
+                        <h4>Quartos</h4>
+                        <p>${house.quartos}</p>
+                    </div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-icon">
+                        <i class="fas fa-bath"></i>
+                    </div>
+                    <div class="spec-content">
+                        <h4>Banheiros</h4>
+                        <p>${house.banheiros}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="car-description">
+                <h3 class="description-title">Descrição do Imóvel</h3>
+                <p class="description-text">${house.descricao}</p>
+            </div>
+        </div>
+    `;
+
+    carModalOverlay.classList.add('active');
+    setTimeout(() => carModal.classList.add('active'), 10);
+
+    // Prevent body scroll
+    document.body.style.overflow = 'hidden';
+
+    // Setup thumbnail click events
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    const mainImage = document.getElementById('mainCarImage');
+
+    thumbnails.forEach(thumb => {
+        thumb.addEventListener('click', function () {
+            const imgIndex = this.getAttribute('data-index');
+            mainImage.src = house.imagens[imgIndex];
+
+            // Update active thumbnail
+            thumbnails.forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+}
+
+// Chama a função ao carregar a página
+document.addEventListener("DOMContentLoaded", () => {
+    carregarImoveis();
+
     // Render all car cards
     carsGrid.innerHTML = carsData.map(car => createCarCard(car)).join('');
 
