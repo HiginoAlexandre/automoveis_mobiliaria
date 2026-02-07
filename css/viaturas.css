@@ -14,8 +14,6 @@
         padding: var(--section-padding);
         background-color: var(--featured-bg);
         position: relative;
-        border: 1px solid rgba(43, 236, 130, 0.529);
-        border-radius: 12px;
     }
 
     .section-header {
