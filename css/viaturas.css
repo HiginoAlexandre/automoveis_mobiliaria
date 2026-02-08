@@ -727,7 +727,9 @@
         
         .car-modal {
             max-height: 95vh;
-            overflow: hidden;
+            overflow: visible;
+            display: flex;
+            flex-direction: column;
         }
         
         /* Layout em coluna única - tudo rola junto */
@@ -735,8 +737,9 @@
             grid-template-columns: 1fr;
             display: block;
             overflow-y: auto;
-            max-height: 95vh;
+            max-height: calc(95vh - 40px);
             -webkit-overflow-scrolling: touch;
+            padding-bottom: 40px;
         }
         
         /* Gallery não fixa - rola junto com o resto */
@@ -749,6 +752,7 @@
         /* Details não tem scroll separado - rola junto */
         .modal-details {
             padding: 30px;
+            padding-bottom: 40px;
             overflow: visible;
             max-height: none;
         }
@@ -761,16 +765,25 @@
         .main-media {
             max-height: 500px;
         }
+        
+        /* Garantir que os botões CTA sejam visíveis */
+        .modal-cta {
+            margin-bottom: 20px;
+        }
     }
     
     @media (min-width: 769px) and (max-width: 1199px) {
         .car-modal {
             max-width: 90%;
             max-height: 90vh;
+            overflow: visible;
+            display: flex;
+            flex-direction: column;
         }
         
         .modal-content {
-            max-height: 90vh;
+            max-height: calc(90vh - 40px);
+            padding-bottom: 40px;
         }
         
         .modal-gallery {
@@ -779,6 +792,7 @@
         
         .modal-details {
             padding: 30px;
+            padding-bottom: 40px;
         }
         
         .main-image-container {
@@ -787,6 +801,10 @@
         
         .main-media {
             max-height: 450px;
+        }
+        
+        .modal-cta {
+            margin-bottom: 20px;
         }
     }
 
@@ -814,8 +832,9 @@
         
         .modal-content {
             grid-template-columns: 1fr;
-            max-height: 95vh;
+            max-height: calc(95vh - 40px);
             overflow-y: auto;
+            padding-bottom: 40px;
         }
         
         .car-modal {
@@ -823,6 +842,9 @@
             max-height: 95vh;
             border-radius: 0;
             margin: 0;
+            overflow: visible;
+            display: flex;
+            flex-direction: column;
         }
         
         .modal-gallery {
@@ -832,7 +854,12 @@
         
         .modal-details {
             padding: 20px;
+            padding-bottom: 30px;
             max-height: none;
+        }
+        
+        .modal-cta {
+            margin-bottom: 20px;
         }
         
         .main-image-container {
@@ -967,6 +994,19 @@
         .modal-gallery,
         .modal-details {
             padding: 15px;
+        }
+        
+        .modal-details {
+            padding-bottom: 25px;
+        }
+        
+        .modal-cta {
+            margin-bottom: 15px;
+        }
+        
+        .modal-content {
+            padding-bottom: 30px;
+            max-height: calc(95vh - 30px);
         }
     }
 
