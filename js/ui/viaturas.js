@@ -16,7 +16,8 @@ const carsData = [
         images: [
             "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
             "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1563720223485-8d6d5c5c8c6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            "https://images.unsplash.com/photo-1563720223485-8d6d5c5c8c6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+            "video/video.mp4"
         ],
         description: "Mercedes-Benz Classe C 220d AMG Line, importado da Alemanha em excelente estado. Equipamento completo: bancos em pele, sistema de som Burmester, teto panorâmico, assistentes de condução, faróis full LED. Veículo único no mercado."
     },
@@ -35,7 +36,8 @@ const carsData = [
         status: "negotiable",
         images: [
             "https://images.unsplash.com/photo-1555212697-194d092e3b8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+            "video/video.mp4"
         ],
         description: "BMW Série 5 530e M Sport, veículo híbrido plug-in com baixíssimo consumo. Pack M Sport completo, interior em pele Vernasca, heads-up display, park assist, comandos por gestos. Manutenção sempre na marca."
     },
@@ -54,7 +56,8 @@ const carsData = [
         status: "new",
         images: [
             "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+            "video/video.mp4"
         ],
         description: "Audi Q7 50 TDI Quattro, SUV premium de 7 lugares. Pack S line, teto panorâmico, bancos elétricos com memória, sistema de som Bang & Olufsen, air suspension. Veículo familiar espaçoso e luxuoso."
     },
@@ -73,7 +76,8 @@ const carsData = [
         status: "sold",
         images: [
             "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+            "video/video.mp4"
         ],
         description: "Range Rover Evoque R-Dynamic, SUV compacto premium. Pack R-Dynamic, interior em pele Windsor, sistema de infoentretenimento Touch Pro Duo, Meridian Sound System, assistente de estacionamento 360°."
     },
@@ -92,7 +96,8 @@ const carsData = [
         status: "negotiable",
         images: [
             "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+            "video/video.mp4"
         ],
         description: "Porsche Cayenne S, performance SUV com motor V6 biturbo. Pack Sport Chrono, interior em pele full, sunroof panorâmico, Porsche Sport Exhaust, rodas 21\", sistema de som Bose. Veículo esportivo e familiar."
     },
@@ -111,7 +116,8 @@ const carsData = [
         status: "new",
         images: [
             "https://images.unsplash.com/photo-1519241047957-be31d7379a5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+            "video/video.mp4"
         ],
         description: "Toyota Land Cruiser V8, o SUV definitivo para todo o terreno. Motor V8 diesel, tração integral permanente, KDSS, sistema de som JBL, bancos em pele ventilados, 7 lugares. Robustez e conforto premium."
     }
@@ -130,7 +136,8 @@ const housesData = [
         banheiros: 3,
         status: "new",
         imagens: [
-            "img/houses/casa1.jpg"
+            "img/houses/casa1.jpg",
+            "video/video2.mp4"
         ]
     },
     {
@@ -144,7 +151,8 @@ const housesData = [
         banheiros: 2,
         status: "negotiable",
         imagens: [
-            "img/houses/casa2.jpg"
+            "img/houses/casa2.jpg",
+            "video/video2.mp4"
         ]
     },
     {
@@ -160,7 +168,8 @@ const housesData = [
         imagens: [
             "img/houses/casa3-1.jpg",
             "img/houses/casa3-2.jpg",
-            "img/houses/casa3-3.jpg"
+            "img/houses/casa3-3.jpg",
+            "video/video2.mp4"
         ]
     }
 ];
