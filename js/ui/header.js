@@ -44,9 +44,12 @@ mobileLinks.forEach(link => {
 // Ação do botão CTA
 ctaButtons.forEach(button => {
     button.addEventListener('click', () => {
-        // Simulação de ação do WhatsApp
-        alert('Redirecionando para WhatsApp da Eduardo Automóveis...');
-        // Em um cenário real, redirecionaria para: https://wa.me/5511999999999
+        // Mensagem personalizada para WhatsApp
+        const message = encodeURIComponent(
+            'Olá! Gostaria de saber mais sobre os serviços da Eduardo Automóveis / Beduardo Investimento. Podem ajudar-me?'
+        );
+        // Redireciona para WhatsApp com número 937582133 (Angola - código +244)
+        window.open(`https://wa.me/244937582133?text=${message}`, '_blank');
     });
 });
 

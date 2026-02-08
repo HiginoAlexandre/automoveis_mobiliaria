@@ -128,6 +128,7 @@ const housesData = [
         area: "500 m²",
         quartos: 4,
         banheiros: 3,
+        status: "new",
         imagens: [
             "img/houses/casa1.jpg"
         ]
@@ -141,6 +142,7 @@ const housesData = [
         area: "200 m²",
         quartos: 3,
         banheiros: 2,
+        status: "negotiable",
         imagens: [
             "img/houses/casa2.jpg"
         ]
@@ -154,6 +156,7 @@ const housesData = [
         area: "1000 m²",
         quartos: 6,
         banheiros: 5,
+        status: "new",
         imagens: [
             "img/houses/casa3-1.jpg",
             "img/houses/casa3-2.jpg",
@@ -190,7 +193,7 @@ function createCarCard(car) {
 
     return `
             <div class="car-card" data-car-id="${car.id}" style="animation-delay: ${car.id * 0.1}s">
-                ${car.status !== 'sold' ? `<div class="car-badge ${badge.class}">${badge.text}</div>` : ''}
+                <div class="car-badge ${badge.class}">${badge.text}</div>
                 
                 <div class="car-image-container">
                     <img src="${car.images[0]}" alt="${car.make} ${car.model}" class="car-image" loading="lazy">
@@ -517,7 +520,7 @@ function openCarModal(carId) {
             const message = encodeURIComponent(
                 `Olá! Estou interessado no ${car.make} ${car.model} ${car.year} que vi no site. Podemos agendar uma visita?`
             );
-            window.open(`https://wa.me/244?text=${message}`, '_blank');
+            window.open(`https://wa.me/244937582133?text=${message}`, '_blank');
         });
     }
 
@@ -557,8 +560,9 @@ function carregarImoveis() {
         const houseCard = document.createElement("div");
         houseCard.classList.add("car-card", "imoveis");
         houseCard.setAttribute("data-house-id", house.id);
-
+        const badge = getStatusBadge(house.status || 'negotiable');
         houseCard.innerHTML = `
+            <div class="car-badge ${badge.class}">${badge.text}</div>
             <div class="car-image-container">
                 <img src="${house.imagens[0]}" alt="${house.titulo}" class="car-image" loading="lazy">
             </div>
@@ -628,7 +632,7 @@ function abrirModalCasa(houseId) {
     // Get media array (support both imagens and media fields)
     const mediaArray = getMediaArray(house);
     const hasMultipleMedia = mediaArray.length > 1;
-
+    const badge = getStatusBadge(house.status || 'negotiable');
     modalContent.innerHTML = `
         <div class="modal-gallery">
             <div class="main-image-container" id="mainMediaContainer">
@@ -679,6 +683,7 @@ function abrirModalCasa(houseId) {
                 <h2 class="modal-title">${house.titulo}</h2>
                 <div class="modal-subtitle">
                     <span>${house.localizacao}</span>
+                    <span class="modal-status ${badge.class}">${badge.text}</span>
                 </div>
                 <div class="modal-price">
                     <span class="modal-price-currency">KZ</span>
@@ -788,7 +793,7 @@ function abrirModalCasa(houseId) {
             const message = encodeURIComponent(
                 `Olá! Estou interessado no imóvel "${house.titulo}" que vi no site. Podemos agendar uma visita?`
             );
-            window.open(`https://wa.me/244?text=${message}`, '_blank');
+            window.open(`https://wa.me/244937582133?text=${message}`, '_blank');
         });
     }
 

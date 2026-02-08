@@ -16,7 +16,7 @@
                 const message = encodeURIComponent(
                     'Olá! Gostaria de agendar uma visita à Eduardo Automóveis para conhecer o showroom e as viaturas disponíveis.'
                 );
-                window.open(`https://wa.me/244?text=${message}`, '_blank');
+                window.open(`https://wa.me/244937582133?text=${message}`, '_blank');
             }, 300);
         });
         
@@ -29,13 +29,14 @@
             }, 300);
             
             // Show contact options
-            setTimeout(() => {
-                alert("📞 Contacte a Nossa Equipa:\n\n" +
-                      "• WhatsApp: +244 123 456 789\n" +
-                      "• Telefone: +244 222 333 444\n" +
-                      "• Email: info@eduardoautomoveis.com\n\n" +
-                      "Estamos disponíveis para esclarecer todas as suas dúvidas!");
-            }, 300);
+            // setTimeout(() => {
+                // alert("📞 Contacte a Nossa Equipa:\n\n" +
+                //       "• WhatsApp: +244 123 456 789\n" +
+                //       "• Telefone: +244 222 333 444\n" +
+                //       "• Email: info@eduardoautomoveis.com\n\n" +
+                //       "Estamos disponíveis para esclarecer todas as suas dúvidas!");
+            // }, 300);
+            window.location.href = 'tel:+244937582133';
         });
         
         // Animated Counter
