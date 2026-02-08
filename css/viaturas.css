@@ -574,6 +574,30 @@
         margin-top: 30px;
         flex-wrap: wrap;
     }
+    
+    /* Botões fixos no fundo para dispositivos menores que 1200px */
+    @media (max-width: 1199px) {
+        .modal-details {
+            position: relative;
+            padding-bottom: 120px; /* Espaço para os botões fixos */
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .modal-cta {
+            position: sticky;
+            bottom: 0;
+            background: #FFFFFF;
+            padding: 20px 30px;
+            margin-top: auto;
+            margin-bottom: 0;
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            border-top: 1px solid #EEE;
+            width: 100%;
+            border-radius: 0 0 20px 20px;
+        }
+    }
 
     .modal-btn-primary {
         flex: 1;
@@ -737,9 +761,9 @@
             grid-template-columns: 1fr;
             display: block;
             overflow-y: auto;
-            max-height: calc(95vh - 40px);
+            max-height: 95vh;
             -webkit-overflow-scrolling: touch;
-            padding-bottom: 40px;
+            padding-bottom: 0;
         }
         
         /* Gallery não fixa - rola junto com o resto */
@@ -752,7 +776,7 @@
         /* Details não tem scroll separado - rola junto */
         .modal-details {
             padding: 30px;
-            padding-bottom: 40px;
+            padding-bottom: 120px; /* Espaço para os botões fixos */
             overflow: visible;
             max-height: none;
         }
@@ -782,8 +806,8 @@
         }
         
         .modal-content {
-            max-height: calc(90vh - 40px);
-            padding-bottom: 40px;
+            max-height: 90vh;
+            padding-bottom: 0;
         }
         
         .modal-gallery {
@@ -792,7 +816,7 @@
         
         .modal-details {
             padding: 30px;
-            padding-bottom: 40px;
+            padding-bottom: 120px; /* Espaço para os botões fixos */
         }
         
         .main-image-container {
@@ -801,10 +825,6 @@
         
         .main-media {
             max-height: 450px;
-        }
-        
-        .modal-cta {
-            margin-bottom: 20px;
         }
     }
 
@@ -832,9 +852,9 @@
         
         .modal-content {
             grid-template-columns: 1fr;
-            max-height: calc(95vh - 40px);
+            max-height: 95vh;
             overflow-y: auto;
-            padding-bottom: 40px;
+            padding-bottom: 0;
         }
         
         .car-modal {
@@ -854,12 +874,8 @@
         
         .modal-details {
             padding: 20px;
-            padding-bottom: 30px;
+            padding-bottom: 120px; /* Espaço para os botões fixos */
             max-height: none;
-        }
-        
-        .modal-cta {
-            margin-bottom: 20px;
         }
         
         .main-image-container {
@@ -997,15 +1013,11 @@
         }
         
         .modal-details {
-            padding-bottom: 25px;
-        }
-        
-        .modal-cta {
-            margin-bottom: 15px;
+            padding-bottom: 120px; /* Espaço para os botões fixos */
         }
         
         .modal-content {
-            padding-bottom: 30px;
+            padding-bottom: 0;
             max-height: calc(95vh - 30px);
         }
     }
