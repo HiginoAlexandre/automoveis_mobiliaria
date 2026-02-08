@@ -263,6 +263,25 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         min-height: 600px;
+        overflow: hidden;
+    }
+    
+    /* Desktop layout - duas colunas lado a lado (>= 1200px) */
+    @media (min-width: 1200px) {
+        .modal-content {
+            grid-template-columns: 1fr 1fr;
+            overflow: hidden;
+        }
+        
+        .modal-gallery {
+            overflow-y: auto;
+            max-height: 80vh;
+        }
+        
+        .modal-details {
+            overflow-y: auto;
+            max-height: 80vh;
+        }
     }
 
     /* Modal Left Side - Gallery */
@@ -427,8 +446,15 @@
     /* Modal Right Side - Details */
     .modal-details {
         padding: 40px;
-        overflow-y: auto;
-        max-height: 80vh;
+    }
+    
+    /* Desktop: scroll separado para details */
+    @media (min-width: 1200px) {
+        .modal-details {
+            overflow-y: auto;
+            max-height: 80vh;
+            -webkit-overflow-scrolling: touch;
+        }
     }
 
     .modal-header {
@@ -694,18 +720,73 @@
     }
 
     /* Responsive Design */
-    @media (max-width: 1200px) {
+    @media (max-width: 1199px) {
         .cars-grid {
             grid-template-columns: repeat(2, 1fr);
         }
         
+        .car-modal {
+            max-height: 95vh;
+            overflow: hidden;
+        }
+        
+        /* Layout em coluna única - tudo rola junto */
         .modal-content {
             grid-template-columns: 1fr;
-            max-height: 85vh;
+            display: block;
+            overflow-y: auto;
+            max-height: 95vh;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        /* Gallery não fixa - rola junto com o resto */
+        .modal-gallery {
+            padding: 30px;
+            max-height: none;
+            overflow: visible;
+        }
+        
+        /* Details não tem scroll separado - rola junto */
+        .modal-details {
+            padding: 30px;
+            overflow: visible;
+            max-height: none;
+        }
+        
+        .main-image-container {
+            min-height: 300px;
+            max-height: none;
+        }
+        
+        .main-media {
+            max-height: 500px;
+        }
+    }
+    
+    @media (min-width: 769px) and (max-width: 1199px) {
+        .car-modal {
+            max-width: 90%;
+            max-height: 90vh;
+        }
+        
+        .modal-content {
+            max-height: 90vh;
         }
         
         .modal-gallery {
-            max-height: 400px;
+            padding: 25px;
+        }
+        
+        .modal-details {
+            padding: 30px;
+        }
+        
+        .main-image-container {
+            min-height: 250px;
+        }
+        
+        .main-media {
+            max-height: 450px;
         }
     }
 

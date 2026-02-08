@@ -718,6 +718,16 @@ function abrirModalCasa(houseId) {
                 <h3 class="description-title">Descrição do Imóvel</h3>
                 <p class="description-text">${house.descricao}</p>
             </div>
+            <div class="modal-cta">
+                <button class="modal-btn-primary" id="whatsappBtn">
+                    <i class="fab fa-whatsapp"></i>
+                    Solicitar visita via WhatsApp
+                </button>
+                <button class="modal-btn-secondary" id="callBtn">
+                    <i class="fas fa-phone-alt"></i>
+                    Ligar agora
+                </button>
+            </div>
         </div>
     `;
 
@@ -768,6 +778,26 @@ function abrirModalCasa(houseId) {
             updateMainMedia(mediaArray, currentMediaIndex, 'mainMediaContainer');
         });
     });
+
+    // Setup CTA buttons
+    const whatsappBtn = document.getElementById('whatsappBtn');
+    const callBtn = document.getElementById('callBtn');
+
+    if (whatsappBtn) {
+        whatsappBtn.addEventListener('click', function () {
+            const message = encodeURIComponent(
+                `Olá! Estou interessado no imóvel "${house.titulo}" que vi no site. Podemos agendar uma visita?`
+            );
+            window.open(`https://wa.me/244?text=${message}`, '_blank');
+        });
+    }
+
+    if (callBtn) {
+        callBtn.addEventListener('click', function () {
+            // In a real application, this would trigger a phone call
+            alert(`📞 Ligando para Eduardo Automóveis...\n\nPara: ${house.titulo}`);
+        });
+    }
 }
 
 // Chama a função ao carregar a página
