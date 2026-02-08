@@ -117,6 +117,51 @@ const carsData = [
     }
 ];
 
+// Houses Data (Can be loaded from JSON file)
+const housesData = [
+    {
+        id: 1,
+        titulo: "Casa de Luxo em Luanda",
+        descricao: "Uma casa moderna com 4 quartos, piscina e vista para o mar.",
+        preco: "120.000.000 KZ",
+        localizacao: "Luanda, Angola",
+        area: "500 m²",
+        quartos: 4,
+        banheiros: 3,
+        imagens: [
+            "img/houses/casa1.jpg"
+        ]
+    },
+    {
+        id: 2,
+        titulo: "Apartamento no Centro",
+        descricao: "Apartamento de 3 quartos no coração da cidade.",
+        preco: "80.000.000 KZ",
+        localizacao: "Centro de Luanda, Angola",
+        area: "200 m²",
+        quartos: 3,
+        banheiros: 2,
+        imagens: [
+            "img/houses/casa2.jpg"
+        ]
+    },
+    {
+        id: 3,
+        titulo: "Mansão Exclusiva",
+        descricao: "Mansão de alto padrão com 6 quartos e amplo jardim.",
+        preco: "250.000.000 KZ",
+        localizacao: "Talatona, Luanda, Angola",
+        area: "1000 m²",
+        quartos: 6,
+        banheiros: 5,
+        imagens: [
+            "img/houses/casa3-1.jpg",
+            "img/houses/casa3-2.jpg",
+            "img/houses/casa3-3.jpg"
+        ]
+    }
+];
+
 // DOM Elements
 const carsGrid = document.getElementById('carsGrid');
 const carModalOverlay = document.getElementById('carModalOverlay');
@@ -192,22 +237,78 @@ function createCarCard(car) {
         `;
 }
 
+// Helper function to check if URL is a video
+function isVideo(url) {
+    return /\.(mp4|webm|ogg|mov|avi)$/i.test(url) || url.includes('youtube.com') || url.includes('youtu.be') || url.includes('vimeo.com');
+}
+
+// Helper function to get media array (images or media array if exists)
+function getMediaArray(item) {
+    if (item.media && Array.isArray(item.media)) {
+        return item.media.map(media => {
+            if (typeof media === 'string') {
+                return { type: isVideo(media) ? 'video' : 'image', url: media };
+            }
+            return media;
+        });
+    }
+    // Fallback to images array for backward compatibility (supports both 'images' and 'imagens')
+    const imagesArray = item.images || item.imagens || [];
+    return imagesArray.map(img => ({ 
+        type: isVideo(img) ? 'video' : 'image', 
+        url: img 
+    }));
+}
+
 // Create modal HTML
 function createModalContent(car) {
     const badge = getStatusBadge(car.status);
+    const mediaArray = getMediaArray(car);
+    const hasMultipleMedia = mediaArray.length > 1;
 
     return `
             <div class="modal-gallery">
-                <div class="main-image-container">
-                    <img src="${car.images[0]}" alt="${car.make} ${car.model}" class="main-car-image" id="mainCarImage">
+                <div class="main-image-container" id="mainMediaContainer">
+                    ${mediaArray.length > 0 ? (isVideo(mediaArray[0].url || mediaArray[0]) ? `
+                        <video class="main-media" id="mainMedia" controls>
+                            <source src="${mediaArray[0].url || mediaArray[0]}" type="video/mp4">
+                            Seu navegador não suporta vídeos.
+                        </video>
+                    ` : `
+                        <img src="${mediaArray[0].url || mediaArray[0]}" alt="${car.make} ${car.model}" class="main-media" id="mainMedia">
+                    `) : ''}
+                    ${hasMultipleMedia ? `
+                        <button class="gallery-nav-btn gallery-nav-prev" id="galleryPrevBtn" aria-label="Imagem anterior">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="gallery-nav-btn gallery-nav-next" id="galleryNextBtn" aria-label="Próxima imagem">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <div class="gallery-counter" id="galleryCounter">
+                            <span id="currentIndex">1</span> / <span id="totalMedia">${mediaArray.length}</span>
+                        </div>
+                    ` : ''}
                 </div>
                 <div class="thumbnails-container" id="thumbnailsContainer">
-                    ${car.images.map((img, index) => `
-                        <img src="${img}" 
-                             alt="${car.make} ${car.model} - Foto ${index + 1}" 
-                             class="thumbnail ${index === 0 ? 'active' : ''}"
-                             data-index="${index}">
-                    `).join('')}
+                    ${mediaArray.map((media, index) => {
+                        const url = media.url || media;
+                        const isVideoItem = isVideo(url);
+                        return isVideoItem ? `
+                            <div class="thumbnail-wrapper ${index === 0 ? 'active' : ''}" data-index="${index}">
+                                <video class="thumbnail" data-index="${index}" muted>
+                                    <source src="${url}" type="video/mp4">
+                                </video>
+                                <div class="thumbnail-play-icon">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                        ` : `
+                            <img src="${url}" 
+                                 alt="${car.make} ${car.model} - ${index === 0 ? 'Foto' : 'Vídeo'} ${index + 1}" 
+                                 class="thumbnail ${index === 0 ? 'active' : ''}"
+                                 data-index="${index}">
+                        `;
+                    }).join('')}
                 </div>
             </div>
             
@@ -306,10 +407,59 @@ function createModalContent(car) {
         `;
 }
 
+// Function to update main media display
+function updateMainMedia(mediaArray, currentIndex, containerId) {
+    const container = document.getElementById('mainMediaContainer');
+    if (!container) return;
+    
+    const media = mediaArray[currentIndex];
+    const url = media.url || media;
+    const isVideoItem = isVideo(url);
+    
+    // Stop any playing video before switching
+    const existingMedia = document.getElementById('mainMedia');
+    if (existingMedia && existingMedia.tagName === 'VIDEO') {
+        existingMedia.pause();
+        existingMedia.currentTime = 0;
+    }
+    
+    const mainMediaHTML = isVideoItem ? `
+        <video class="main-media" id="mainMedia" controls>
+            <source src="${url}" type="video/mp4">
+            Seu navegador não suporta vídeos.
+        </video>
+    ` : `
+        <img src="${url}" alt="Media ${currentIndex + 1}" class="main-media" id="mainMedia">
+    `;
+    
+    if (existingMedia) {
+        existingMedia.outerHTML = mainMediaHTML;
+    }
+    
+    // Update counter
+    const currentIndexEl = document.getElementById('currentIndex');
+    if (currentIndexEl) {
+        currentIndexEl.textContent = currentIndex + 1;
+    }
+    
+    // Update active thumbnail
+    const thumbnails = document.querySelectorAll('.thumbnail, .thumbnail-wrapper');
+    thumbnails.forEach((thumb, index) => {
+        if (index === currentIndex) {
+            thumb.classList.add('active');
+        } else {
+            thumb.classList.remove('active');
+        }
+    });
+}
+
 // Open modal with car details
 function openCarModal(carId) {
     const car = carsData.find(c => c.id === carId);
     if (!car) return;
+
+    const mediaArray = getMediaArray(car);
+    let currentMediaIndex = 0;
 
     modalContent.innerHTML = createModalContent(car);
     carModalOverlay.classList.add('active');
@@ -318,18 +468,43 @@ function openCarModal(carId) {
     // Prevent body scroll
     document.body.style.overflow = 'hidden';
 
+    // Setup navigation buttons
+    const prevBtn = document.getElementById('galleryPrevBtn');
+    const nextBtn = document.getElementById('galleryNextBtn');
+    
+    if (prevBtn && nextBtn && mediaArray.length > 1) {
+        prevBtn.addEventListener('click', function () {
+            currentMediaIndex = (currentMediaIndex - 1 + mediaArray.length) % mediaArray.length;
+            updateMainMedia(mediaArray, currentMediaIndex, 'mainMediaContainer');
+        });
+
+        nextBtn.addEventListener('click', function () {
+            currentMediaIndex = (currentMediaIndex + 1) % mediaArray.length;
+            updateMainMedia(mediaArray, currentMediaIndex, 'mainMediaContainer');
+        });
+
+        // Keyboard navigation
+        const handleKeyPress = (e) => {
+            if (carModalOverlay.classList.contains('active')) {
+                if (e.key === 'ArrowLeft') {
+                    prevBtn.click();
+                } else if (e.key === 'ArrowRight') {
+                    nextBtn.click();
+                }
+            }
+        };
+        document.addEventListener('keydown', handleKeyPress);
+        
+        // Store handler for cleanup
+        carModal._keyHandler = handleKeyPress;
+    }
+
     // Setup thumbnail click events
-    const thumbnails = document.querySelectorAll('.thumbnail');
-    const mainImage = document.getElementById('mainCarImage');
-
-    thumbnails.forEach(thumb => {
+    const thumbnails = document.querySelectorAll('.thumbnail, .thumbnail-wrapper');
+    thumbnails.forEach((thumb, index) => {
         thumb.addEventListener('click', function () {
-            const imgIndex = this.getAttribute('data-index');
-            mainImage.src = car.images[imgIndex];
-
-            // Update active thumbnail
-            thumbnails.forEach(t => t.classList.remove('active'));
-            this.classList.add('active');
+            currentMediaIndex = index;
+            updateMainMedia(mediaArray, currentMediaIndex, 'mainMediaContainer');
         });
     });
 
@@ -337,22 +512,33 @@ function openCarModal(carId) {
     const whatsappBtn = document.getElementById('whatsappBtn');
     const callBtn = document.getElementById('callBtn');
 
-    whatsappBtn.addEventListener('click', function () {
-        const message = encodeURIComponent(
-            `Olá! Estou interessado no ${car.make} ${car.model} ${car.year} que vi no site. Podemos agendar uma visita?`
-        );
-        window.open(`https://wa.me/244?text=${message}`, '_blank');
-    });
+    if (whatsappBtn) {
+        whatsappBtn.addEventListener('click', function () {
+            const message = encodeURIComponent(
+                `Olá! Estou interessado no ${car.make} ${car.model} ${car.year} que vi no site. Podemos agendar uma visita?`
+            );
+            window.open(`https://wa.me/244?text=${message}`, '_blank');
+        });
+    }
 
-    callBtn.addEventListener('click', function () {
-        // In a real application, this would trigger a phone call
-        alert(`📞 Ligando para Eduardo Automóveis...\n\nPara: ${car.make} ${car.model}`);
-    });
+    if (callBtn) {
+        callBtn.addEventListener('click', function () {
+            // In a real application, this would trigger a phone call
+            alert(`📞 Ligando para Eduardo Automóveis...\n\nPara: ${car.make} ${car.model}`);
+        });
+    }
 }
 
 // Close modal
 function closeCarModal() {
     carModal.classList.remove('active');
+    
+    // Remove keyboard handler if exists
+    if (carModal._keyHandler) {
+        document.removeEventListener('keydown', carModal._keyHandler);
+        delete carModal._keyHandler;
+    }
+    
     setTimeout(() => {
         carModalOverlay.classList.remove('active');
         document.body.style.overflow = '';
@@ -362,51 +548,6 @@ function closeCarModal() {
 // Função para carregar imóveis dinamicamente
 function carregarImoveis() {
     const houseGrid = document.getElementById("houseGrid");
-
-    // Dados de exemplo para os imóveis
-    const housesData = [
-        {
-            id: 1,
-            titulo: "Casa de Luxo em Luanda",
-            descricao: "Uma casa moderna com 4 quartos, piscina e vista para o mar.",
-            preco: "120.000.000 KZ",
-            localizacao: "Luanda, Angola",
-            area: "500 m²",
-            quartos: 4,
-            banheiros: 3,
-            imagens: [
-                "img/houses/casa1.jpg"
-            ]
-        },
-        {
-            id: 2,
-            titulo: "Apartamento no Centro",
-            descricao: "Apartamento de 3 quartos no coração da cidade.",
-            preco: "80.000.000 KZ",
-            localizacao: "Centro de Luanda, Angola",
-            area: "200 m²",
-            quartos: 3,
-            banheiros: 2,
-            imagens: [
-                "img/houses/casa2.jpg"
-            ]
-        },
-        {
-            id: 3,
-            titulo: "Mansão Exclusiva",
-            descricao: "Mansão de alto padrão com 6 quartos e amplo jardim.",
-            preco: "250.000.000 KZ",
-            localizacao: "Talatona, Luanda, Angola",
-            area: "1000 m²",
-            quartos: 6,
-            banheiros: 5,
-            imagens: [
-                "img/houses/casa3-1.jpg",
-                "img/houses/casa3-2.jpg",
-                "img/houses/casa3-3.jpg"
-            ]
-        }
-    ];
 
     // Limpa a grid antes de adicionar novos elementos
     houseGrid.innerHTML = "";
@@ -483,19 +624,54 @@ function abrirModalCasa(houseId) {
     const modalContent = document.getElementById("modalContent");
     const carModalOverlay = document.getElementById("carModalOverlay");
     const carModal = document.getElementById("carModal");
+    
+    // Get media array (support both imagens and media fields)
+    const mediaArray = getMediaArray(house);
+    const hasMultipleMedia = mediaArray.length > 1;
 
     modalContent.innerHTML = `
         <div class="modal-gallery">
-            <div class="main-image-container">
-                <img src="${house.imagens[0]}" alt="${house.titulo}" class="main-car-image" id="mainCarImage">
+            <div class="main-image-container" id="mainMediaContainer">
+                ${mediaArray.length > 0 ? (isVideo(mediaArray[0].url || mediaArray[0]) ? `
+                    <video class="main-media" id="mainMedia" controls>
+                        <source src="${mediaArray[0].url || mediaArray[0]}" type="video/mp4">
+                        Seu navegador não suporta vídeos.
+                    </video>
+                ` : `
+                    <img src="${mediaArray[0].url || mediaArray[0]}" alt="${house.titulo}" class="main-media" id="mainMedia">
+                `) : ''}
+                ${hasMultipleMedia ? `
+                    <button class="gallery-nav-btn gallery-nav-prev" id="galleryPrevBtn" aria-label="Imagem anterior">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="gallery-nav-btn gallery-nav-next" id="galleryNextBtn" aria-label="Próxima imagem">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <div class="gallery-counter" id="galleryCounter">
+                        <span id="currentIndex">1</span> / <span id="totalMedia">${mediaArray.length}</span>
+                    </div>
+                ` : ''}
             </div>
             <div class="thumbnails-container" id="thumbnailsContainer">
-                ${house.imagens.map((img, index) => `
-                    <img src="${img}" 
-                         alt="${house.titulo} - Foto ${index + 1}" 
-                         class="thumbnail ${index === 0 ? 'active' : ''}"
-                         data-index="${index}">
-                `).join('')}
+                ${mediaArray.map((media, index) => {
+                    const url = media.url || media;
+                    const isVideoItem = isVideo(url);
+                    return isVideoItem ? `
+                        <div class="thumbnail-wrapper ${index === 0 ? 'active' : ''}" data-index="${index}">
+                            <video class="thumbnail" data-index="${index}" muted>
+                                <source src="${url}" type="video/mp4">
+                            </video>
+                            <div class="thumbnail-play-icon">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    ` : `
+                        <img src="${url}" 
+                             alt="${house.titulo} - ${index === 0 ? 'Foto' : 'Vídeo'} ${index + 1}" 
+                             class="thumbnail ${index === 0 ? 'active' : ''}"
+                             data-index="${index}">
+                    `;
+                }).join('')}
             </div>
         </div>
         <div class="modal-details">
@@ -545,24 +721,51 @@ function abrirModalCasa(houseId) {
         </div>
     `;
 
+    let currentMediaIndex = 0;
+
     carModalOverlay.classList.add('active');
     setTimeout(() => carModal.classList.add('active'), 10);
 
     // Prevent body scroll
     document.body.style.overflow = 'hidden';
 
+    // Setup navigation buttons
+    const prevBtn = document.getElementById('galleryPrevBtn');
+    const nextBtn = document.getElementById('galleryNextBtn');
+    
+    if (prevBtn && nextBtn && mediaArray.length > 1) {
+        prevBtn.addEventListener('click', function () {
+            currentMediaIndex = (currentMediaIndex - 1 + mediaArray.length) % mediaArray.length;
+            updateMainMedia(mediaArray, currentMediaIndex, 'mainMediaContainer');
+        });
+
+        nextBtn.addEventListener('click', function () {
+            currentMediaIndex = (currentMediaIndex + 1) % mediaArray.length;
+            updateMainMedia(mediaArray, currentMediaIndex, 'mainMediaContainer');
+        });
+
+        // Keyboard navigation
+        const handleKeyPress = (e) => {
+            if (carModalOverlay.classList.contains('active')) {
+                if (e.key === 'ArrowLeft') {
+                    prevBtn.click();
+                } else if (e.key === 'ArrowRight') {
+                    nextBtn.click();
+                }
+            }
+        };
+        document.addEventListener('keydown', handleKeyPress);
+        
+        // Store handler for cleanup
+        carModal._keyHandler = handleKeyPress;
+    }
+
     // Setup thumbnail click events
-    const thumbnails = document.querySelectorAll('.thumbnail');
-    const mainImage = document.getElementById('mainCarImage');
-
-    thumbnails.forEach(thumb => {
+    const thumbnails = document.querySelectorAll('.thumbnail, .thumbnail-wrapper');
+    thumbnails.forEach((thumb, index) => {
         thumb.addEventListener('click', function () {
-            const imgIndex = this.getAttribute('data-index');
-            mainImage.src = house.imagens[imgIndex];
-
-            // Update active thumbnail
-            thumbnails.forEach(t => t.classList.remove('active'));
-            this.classList.add('active');
+            currentMediaIndex = index;
+            updateMainMedia(mediaArray, currentMediaIndex, 'mainMediaContainer');
         });
     });
 }
