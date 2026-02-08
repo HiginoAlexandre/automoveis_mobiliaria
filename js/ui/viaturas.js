@@ -375,9 +375,7 @@ function carregarImoveis() {
             quartos: 4,
             banheiros: 3,
             imagens: [
-                "img/houses/img/houses/615150671_122227750976259706_2472472810222283122_n.jpg",
-                "img/houses/img/houses/615879813_122228324672259706_1479905453447045592_n.jpg",
-                "img/houses/img/houses/617508182_122228963852259706_7909278374236105720_n.jpg"
+                "img/houses/casa1.jpg"
             ]
         },
         {
@@ -390,9 +388,7 @@ function carregarImoveis() {
             quartos: 3,
             banheiros: 2,
             imagens: [
-                "img/houses/img/houses/618571510_122228963726259706_5499402890383851726_n.jpg",
-                "img/houses/img/houses/622608514_122229734720259706_8814141224521486847_n.jpg",
-                "img/houses/img/houses/623393980_122229734678259706_960837375581979357_n.jpg"
+                "img/houses/casa2.jpg"
             ]
         },
         {
@@ -405,9 +401,9 @@ function carregarImoveis() {
             quartos: 6,
             banheiros: 5,
             imagens: [
-                "img/houses/img/houses/623393980_122229734678259706_960837375581979357_n.jpg",
-                "img/houses/img/houses/623401920_122229734978259706_3009749345656901162_n.jpg",
-                "img/houses/img/houses/623423574_122229734786259706_6431203620781581006_n.jpg"
+                "img/houses/casa3-1.jpg",
+                "img/houses/casa3-2.jpg",
+                "img/houses/casa3-3.jpg"
             ]
         }
     ];
