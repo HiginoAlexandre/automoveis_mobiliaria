@@ -20,3 +20,7 @@ main > section {
     color: #0F6B3A;
     position: relative;
 }
+
+.bold{
+    font-weight:bolder;
+}

@@ -1,251 +1,402 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viaturas e Imóveis | Eduardo Automóveis</title>
+    <title>Viaturas | Eduardo Automóveis</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/viaturas.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/utility.css">
     <style>
-        /* Estilos específicos para a página viaturas.html */
+        /* Estilos específicos da página de viaturas */
+        .viaturas-page {
+            padding-top: 30px;
+        }
+
+        /* Barra de filtros */
         .filtros-container {
-            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-            padding: 40px 5%;
-            border-radius: 20px;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+            padding: 30px;
             margin-bottom: 40px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
         }
-        
-        .filtros-grid {
+
+        .filtros-header {
             display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
             flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            margin: 30px 0;
+            gap: 15px;
         }
-        
-        .filtro-btn {
-            padding: 12px 28px;
-            border: 2px solid #e9ecef;
-            background: white;
-            border-radius: 10px;
-            font-weight: 600;
-            color: #444;
-            cursor: pointer;
-            transition: all 0.3s ease;
+
+        .filtros-titulo {
             display: flex;
             align-items: center;
             gap: 10px;
+        }
+
+        .filtros-titulo h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1E1E1E;
+        }
+
+        .filtros-titulo i {
+            color: #0F6B3A;
+            font-size: 1.2rem;
+        }
+
+        .reset-filtros-btn {
+            background: transparent;
+            border: 1px solid #0F6B3A;
+            color: #0F6B3A;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .reset-filtros-btn:hover {
+            background: #0F6B3A;
+            color: #fff;
+        }
+
+        /* Grupos de filtros */
+        .filtros-grupo {
+            margin-bottom: 25px;
+        }
+
+        .filtros-grupo h4 {
             font-size: 1rem;
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
-        
-        .filtro-btn:hover {
-            border-color: #0F6B3A;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(15, 107, 58, 0.15);
-        }
-        
-        .filtro-btn.active {
-            background: linear-gradient(135deg, #0F6B3A, #3FA66A);
-            color: white;
-            border-color: #0F6B3A;
-        }
-        
-        .marcas-grid {
+
+        .filtros-opcoes {
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
-            justify-content: center;
-            margin: 30px 0;
+            gap: 10px;
         }
-        
-        .marca-btn {
-            padding: 10px 24px;
-            border: 2px solid #e9ecef;
-            background: white;
-            border-radius: 8px;
+
+        .filtro-btn {
+            padding: 10px 20px;
+            border: 1px solid #E9ECEF;
+            background: #F8F9FA;
+            border-radius: 30px;
+            font-size: 0.95rem;
             font-weight: 500;
-            color: #666;
+            color: #1E1E1E;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 0.95rem;
         }
-        
-        .marca-btn:hover {
-            border-color: #0F6B3A;
-            color: #0F6B3A;
+
+        .filtro-btn i {
+            font-size: 0.9rem;
+            color: #3FA66A;
+        }
+
+        .filtro-btn:hover {
+            background: #E9ECEF;
             transform: translateY(-2px);
         }
-        
-        .marca-btn.active {
-            background: rgba(15, 107, 58, 0.1);
+
+        .filtro-btn.active {
+            background: #0F6B3A;
+            color: #fff;
             border-color: #0F6B3A;
-            color: #0F6B3A;
-            font-weight: 600;
         }
-        
-        .search-container {
-            position: relative;
-            max-width: 600px;
-            margin: 0 auto 30px;
+
+        .filtro-btn.active i {
+            color: #fff;
         }
-        
-        .search-input {
-            width: 100%;
-            padding: 18px 25px;
-            padding-right: 60px;
-            border: 2px solid #e9ecef;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-family: 'Poppins', sans-serif;
+
+        /* Marcas grid */
+        .marcas-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 5px 0;
+            max-width: 100%;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+
+        .marca-btn {
+            padding: 10px 20px;
+            background: #F8F9FA;
+            border: 1px solid #E9ECEF;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #1E1E1E;
+            cursor: pointer;
             transition: all 0.3s ease;
-            background: white;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
         }
-        
-        .search-input:focus {
+
+        .marca-btn i {
+            color: #3FA66A;
+            font-size: 1rem;
+        }
+
+        .marca-btn:hover {
+            background: #E9ECEF;
+            transform: translateY(-2px);
+        }
+
+        .marca-btn.active {
+            background: #0F6B3A;
+            color: #fff;
+            border-color: #0F6B3A;
+        }
+
+        .marca-btn.active i {
+            color: #fff;
+        }
+
+        /* Barra de pesquisa */
+        .pesquisa-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .pesquisa-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 1px solid #E9ECEF;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .pesquisa-input:focus {
             outline: none;
             border-color: #0F6B3A;
-            box-shadow: 0 8px 25px rgba(15, 107, 58, 0.1);
+            box-shadow: 0 0 0 3px rgba(15, 107, 58, 0.1);
         }
-        
-        .search-icon {
-            position: absolute;
-            right: 25px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #666;
-            font-size: 1.2rem;
+
+        .pesquisa-btn {
+            padding: 15px 30px;
+            background: #0F6B3A;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
         }
-        
+
+        .pesquisa-btn:hover {
+            background: #3FA66A;
+            transform: translateY(-2px);
+        }
+
+        /* Info e paginação */
         .resultados-info {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
-            border-bottom: 1px solid #e9ecef;
-            margin-bottom: 30px;
+            margin: 30px 0 20px;
+            flex-wrap: wrap;
+            gap: 15px;
         }
-        
+
         .contador {
-            font-size: 1.1rem;
-            color: #444;
-            font-weight: 600;
+            font-size: 1rem;
+            color: #666;
         }
-        
-        .contador .numero {
+
+        .contador strong {
             color: #0F6B3A;
-            font-weight: 700;
+            font-size: 1.1rem;
         }
-        
-        .reset-btn {
-            background: none;
-            border: 2px solid #ff6b6b;
-            color: #ff6b6b;
-            padding: 8px 20px;
-            border-radius: 8px;
+
+        .paginacao {
+            display: flex;
+            gap: 10px;
+        }
+
+        .pagina-btn {
+            width: 45px;
+            height: 45px;
+            border: 1px solid #E9ECEF;
+            background: #fff;
+            border-radius: 10px;
+            color: #1E1E1E;
+            font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 8px;
+            justify-content: center;
         }
-        
-        .reset-btn:hover {
-            background: #ff6b6b;
-            color: white;
+
+        .pagina-btn:hover:not(:disabled) {
+            background: #0F6B3A;
+            color: #fff;
+            border-color: #0F6B3A;
         }
-        
+
+        .pagina-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .pagina-info {
+            padding: 0 15px;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            color: #1E1E1E;
+        }
+
+        /* Grid de carros */
+        .cars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        /* Mensagem sem resultados */
         .no-results {
             text-align: center;
             padding: 60px 20px;
-            background: #f8f9fa;
-            border-radius: 15px;
+            background: #F8F9FA;
+            border-radius: 16px;
             margin: 40px 0;
         }
-        
+
         .no-results i {
-            font-size: 3rem;
+            font-size: 4rem;
             color: #ccc;
             margin-bottom: 20px;
         }
-        
+
         .no-results h3 {
-            color: #666;
+            font-size: 1.5rem;
+            color: #1E1E1E;
             margin-bottom: 10px;
         }
-        
+
         .no-results p {
-            color: #888;
+            color: #666;
+            margin-bottom: 20px;
         }
-        
+
+        .no-results button {
+            padding: 12px 30px;
+            background: #0F6B3A;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .no-results button:hover {
+            background: #3FA66A;
+        }
+
+        /* Responsivo */
+        @media (max-width: 1200px) {
+            .cars-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
             .filtros-container {
-                padding: 30px 20px;
+                padding: 20px;
             }
-            
-            .filtro-btn, .marca-btn {
-                padding: 10px 20px;
-                font-size: 0.9rem;
+
+            .cars-grid {
+                grid-template-columns: 1fr;
             }
-            
-            .search-input {
-                padding: 15px 20px;
-                padding-right: 50px;
-                font-size: 1rem;
+
+            .pesquisa-container {
+                flex-direction: column;
+            }
+
+            .resultados-info {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .paginacao {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .filtros-opcoes {
+                flex-direction: column;
+            }
+
+            .filtro-btn {
+                width: 100%;
+                justify-content: center;
             }
         }
     </style>
 </head>
+
 <body>
-    <!-- Header Principal (igual ao index.html) -->
+    <!-- Header -->
     <header class="main-header" id="mainHeader">
         <div class="header-container">
-            <!-- Logo -->
             <a href="index.html" class="logo">
                 <div class="logo-icon">EA</div>
                 <div class="logo-text">
-                    <span class="logo-main">Eduardo <span class="automoveis">Automóveis</span><span class="imoveis none">Imóveis</span></span>
-                    <span class="logo-sub"><span class="hightlight">B</span>.Eduardo Investimento</span>
+                    <span class="logo-main">Eduardo Automóveis</span>
+                    <span class="logo-sub">B.Eduardo Investimento</span>
                 </div>
             </a>
 
-            <div id="troca-servico" class="header-troca-servico">
-                <div id="troca-servico-btn">
-                    <a href="#" class="selected" id="automoveis-btn">
-                        <i class="fas fa-car"></i>
-                        <span class="text">Automóveis</span>
-                    </a>
-                    <a href="imoveis.html" id="imoveis-btn">
-                        <i class="fas fa-home"></i>
-                        <span class="text">Imóveis</span>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Navegação Desktop -->
             <nav class="nav-desktop">
                 <ul class="nav-menu">
                     <li class="nav-item"><a href="index.html" class="nav-link">Início</a></li>
-                    <li class="nav-item"><a href="viaturas.html" class="nav-link active"><span class="automoveis">Viaturas</span><span class="imoveis none">Casas</span></a></li>
+                    <li class="nav-item"><a href="viaturas.html" class="nav-link active">Viaturas</a></li>
                     <li class="nav-item"><a href="sobre.html" class="nav-link">Sobre</a></li>
                     <li class="nav-item"><a href="contacto.html" class="nav-link">Contacto</a></li>
                 </ul>
-                <button class="cta-button">
+                <button class="cta-button" id="headerCta">
                     <i class="fab fa-whatsapp"></i> WhatsApp
                 </button>
             </nav>
 
-            <!-- Botão Menu Mobile -->
             <button class="menu-toggle" id="menuToggle">
                 <span></span>
                 <span></span>
@@ -253,162 +404,112 @@
             </button>
         </div>
 
-        <!-- Navegação Mobile -->
         <nav class="nav-mobile" id="navMobile">
             <ul class="mobile-menu">
                 <li class="mobile-item"><a href="index.html" class="nav-link">Início</a></li>
-                <li class="mobile-item"><a href="viaturas.html" class="nav-link active"><span class="automoveis">Viaturas</span><span class="imoveis none">Casas</span></a></li>
+                <li class="mobile-item"><a href="viaturas.html" class="nav-link active">Viaturas</a></li>
                 <li class="mobile-item"><a href="sobre.html" class="nav-link">Sobre</a></li>
                 <li class="mobile-item"><a href="contacto.html" class="nav-link">Contacto</a></li>
             </ul>
-            <button class="cta-button mobile-cta">
+            <button class="cta-button mobile-cta" id="mobileCta">
                 <i class="fab fa-whatsapp"></i> Solicitar visita
             </button>
         </nav>
-
-        <!-- Overlay para fechar menu -->
         <div class="overlay" id="overlay"></div>
     </header>
 
-    <main class="viaturas-main">
-        <!-- Hero Section da página viaturas -->
-        <section class="featured-cars" id="viaturas">
-            <div class="section-header">
-                <div class="section-tag"><span class="automoveis">CONCESSIONÁRIA</span><span class="imoveis none">IMOBILIÁRIA</span> PREMIUM</div>
-                <h2 class="section-title"><span class="automoveis">Viaturas</span><span class="imoveis none">Casas</span> Disponíveis</h2>
-                <p class="section-subtitle">
-                    <span class="automoveis">Explore nossa seleção premium de viaturas. Qualidade garantida e transparência total.</span>
-                    <span class="imoveis none">Descubra propriedades exclusivas para venda e arrendamento. Oportunidades únicas de investimento.</span>
-                </p>
-            </div>
-
-            <!-- Container de Filtros e Pesquisa -->
+    <main class="viaturas-page">
+        <div class="viaturas-container">
+            <!-- Filtros -->
             <div class="filtros-container">
-                <!-- Barra de Pesquisa -->
-                <div class="search-container">
-                    <input type="text" 
-                           id="searchInput" 
-                           class="search-input" 
-                           placeholder="Pesquisar por modelo, marca, localização...">
-                    <div class="search-icon">
-                        <i class="fas fa-search"></i>
+                <div class="filtros-header">
+                    <div class="filtros-titulo">
+                        <i class="fas fa-sliders-h"></i>
+                        <h3>Filtrar Viaturas</h3>
+                    </div>
+                    <button class="reset-filtros-btn" id="resetFiltrosBtn">
+                        <i class="fas fa-undo-alt"></i> Limpar filtros
+                    </button>
+                </div>
+
+                <!-- Filtro por condição -->
+                <div class="filtros-grupo">
+                    <h4>Condição</h4>
+                    <div class="filtros-opcoes" id="filtroCondicao">
+                        <button class="filtro-btn active" data-filtro="todos">
+                            <i class="fas fa-car"></i> Todos
+                        </button>
+                        <button class="filtro-btn" data-filtro="novo">
+                            <i class="fas fa-star"></i> Novos
+                        </button>
+                        <button class="filtro-btn" data-filtro="usado">
+                            <i class="fas fa-history"></i> Usados
+                        </button>
                     </div>
                 </div>
 
-                <!-- Botões de Filtro Principal (carros/casas) -->
-                <div class="filtros-grid automoveis" id="filtrosPrincipais">
-                    <button class="filtro-btn active" data-filtro="todos">
-                        <i class="fas fa-th-large"></i> Mostrar Todos
-                    </button>
-                    <button class="filtro-btn" data-filtro="novos">
-                        <i class="fas fa-star"></i> Carros Novos
-                    </button>
-                    <button class="filtro-btn" data-filtro="usados">
-                        <i class="fas fa-history"></i> Carros Usados
-                    </button>
-                </div>
-
-                <div class="filtros-grid imoveis none" id="filtrosPrincipaisImoveis">
-                    <button class="filtro-btn active" data-filtro="todos">
-                        <i class="fas fa-th-large"></i> Mostrar Todos
-                    </button>
-                    <button class="filtro-btn" data-filtro="venda">
-                        <i class="fas fa-tag"></i> Imóveis para Venda
-                    </button>
-                    <button class="filtro-btn" data-filtro="arrendamento">
-                        <i class="fas fa-home"></i> Arrendamento
-                    </button>
-                    <button class="filtro-btn" data-filtro="terrenos">
-                        <i class="fas fa-mountain"></i> Terrenos
-                    </button>
-                </div>
-
-                <!-- Filtros por Marcas (apenas para carros) -->
-                <div class="marcas-container automoveis">
-                    <h3 style="text-align: center; margin: 30px 0 20px; color: #444;">Filtrar por Marca</h3>
+                <!-- Filtro por marcas -->
+                <div class="filtros-grupo">
+                    <h4>Marcas</h4>
                     <div class="marcas-grid" id="marcasGrid">
-                        <button class="marca-btn" data-marca="todas">Todas as Marcas</button>
-                        <!-- Marcas serão carregadas via JavaScript -->
+                        <!-- Marcas serão inseridas via JavaScript -->
                     </div>
                 </div>
 
-                <!-- Informação dos resultados -->
-                <div class="resultados-info">
-                    <div class="contador">
-                        Mostrando <span class="numero" id="contadorItens">0</span> de <span class="numero" id="totalItens">0</span> itens
-                    </div>
-                    <button class="reset-btn" id="resetFiltros">
-                        <i class="fas fa-redo"></i> Limpar Filtros
+                <!-- Pesquisa -->
+                <div class="pesquisa-container">
+                    <input type="text" class="pesquisa-input" id="pesquisaInput" 
+                           placeholder="Pesquisar por modelo, ano, cor...">
+                    <button class="pesquisa-btn" id="pesquisaBtn">
+                        <i class="fas fa-search"></i> Pesquisar
                     </button>
                 </div>
             </div>
 
-            <!-- Grid de Viaturas/Casas -->
-            <div class="cars-grid automoveis" id="viaturasGrid">
-                <!-- Carros serão carregados via JavaScript -->
+            <!-- Resultados e Paginação -->
+            <div class="resultados-info">
+                <div class="contador" id="contadorResultados">
+                    Mostrando <strong id="mostrandoInicio">1</strong> - <strong id="mostrandoFim">6</strong> de <strong id="totalResultados">0</strong> carros
+                </div>
+                <div class="paginacao" id="paginacao">
+                    <button class="pagina-btn" id="paginaAnterior" disabled>
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <span class="pagina-info" id="paginaInfo">Página 1</span>
+                    <button class="pagina-btn" id="paginaProxima" disabled>
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
             </div>
 
-            <div class="houses-grid imoveis none" id="imoveisGrid">
-                <!-- Casas serão carregadas via JavaScript -->
+            <!-- Grid de Carros -->
+            <div class="cars-grid" id="carsGrid">
+                <!-- Carros serão inseridos via JavaScript -->
+                <div class="car-card-loading"></div>
+                <div class="car-card-loading"></div>
+                <div class="car-card-loading"></div>
             </div>
 
-            <!-- Mensagem quando não há resultados -->
+            <!-- Mensagem sem resultados -->
             <div class="no-results" id="noResults" style="display: none;">
                 <i class="fas fa-search"></i>
-                <h3>Nenhum resultado encontrado</h3>
-                <p>Tente ajustar os filtros ou usar outros termos de pesquisa</p>
+                <h3>Nenhum carro encontrado</h3>
+                <p>Tente ajustar os filtros ou a pesquisa.</p>
+                <button onclick="window.resetarFiltros()">Ver todos os carros</button>
             </div>
-
-            <!-- Car Details Modal (reutilizado do index.html) -->
-            <div class="car-modal-overlay" id="carModalOverlay">
-                <div class="car-modal" id="carModal">
-                    <button class="modal-close" id="modalClose">&times;</button>
-                    <div class="modal-content" id="modalContent">
-                        <!-- Modal content will be loaded here -->
-                    </div>
-                </div>
-            </div>
-        </section>
+        </div>
     </main>
 
-    <!-- Footer (igual ao index.html) -->
-    <footer class="main-footer" id="contacto">
-        <!-- Inserir aqui o footer do index.html -->
-        <!-- Para manter a resposta concisa, assumo que o footer é igual -->
+    <!-- Footer -->
+    <footer class="main-footer">
+        <!-- ... footer content (igual ao index.html) ... -->
     </footer>
 
     <!-- Scripts -->
-    <script src="js/ui/header.js"></script>
-    <script src="js/ui/viaturas.js"></script>
     <script src="js/data.js"></script>
-    <script src="js/filtros.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/viaturas-page.js"></script>
     <script src="js/footer.js"></script>
-    
-    <script>
-        // Inicialização da página
-        document.addEventListener('DOMContentLoaded', function() {
-            // Configura o comportamento do alternador de serviços
-            const servicoAtual = localStorage.getItem("servicoSelecionado") || "automoveis";
-            
-            if (servicoAtual === "imoveis") {
-                // Atualizar botão de troca de serviço
-                const automoveisBtn = document.getElementById('automoveis-btn');
-                const imoveisBtn = document.getElementById('imoveis-btn');
-                if (automoveisBtn && imoveisBtn) {
-                    automoveisBtn.classList.remove('selected');
-                    imoveisBtn.classList.add('selected');
-                }
-                
-                // Mostrar conteúdo de imóveis
-                document.querySelectorAll('.automoveis').forEach(el => el.classList.add('none'));
-                document.querySelectorAll('.imoveis').forEach(el => el.classList.remove('none'));
-            }
-            
-            // Inicializar sistema de filtros
-            if (typeof inicializarFiltros === 'function') {
-                inicializarFiltros();
-            }
-        });
-    </script>
 </body>
+
 </html>
