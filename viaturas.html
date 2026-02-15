@@ -1239,235 +1239,9 @@
             </div>
         </div>
     </div>
-
+    <script src="js/data.js"></script>
     <script>
         // ===== DADOS =====
-        const carrosData = [
-            {
-                id: 1,
-                make: "Mercedes-Benz",
-                model: "Classe C 220d AMG Line",
-                year: 2023,
-                price: 32500000,
-                mileage: "0 KM",
-                fuel: "Diesel",
-                transmission: "Automático 9G-Tronic",
-                engine: "2.0L 4 cilindros",
-                color: "Cinza Iridium Metallic",
-                condition: "novo",
-                status: "new",
-                images: [
-                    "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                ],
-                description: "Mercedes-Benz Classe C 220d AMG Line, importado da Alemanha. Equipamento completo: bancos em pele, sistema de som Burmester, teto panorâmico, assistentes de condução."
-            },
-            {
-                id: 2,
-                make: "BMW",
-                model: "Série 5 530e M Sport",
-                year: 2022,
-                price: 28500000,
-                mileage: "8.500 KM",
-                fuel: "Híbrido",
-                transmission: "Automático Steptronic",
-                engine: "2.0L Hybrid 292cv",
-                color: "Azul Tanzanite Metallic",
-                condition: "novo",
-                status: "negotiable",
-                images: [
-                    "https://images.unsplash.com/photo-1555212697-194d092e3b8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                ],
-                description: "BMW Série 5 530e M Sport, veículo híbrido plug-in. Pack M Sport completo, interior em pele Vernasca, heads-up display, park assist."
-            },
-            {
-                id: 3,
-                make: "Audi",
-                model: "Q7 50 TDI Quattro",
-                year: 2020,
-                price: 29500000,
-                mileage: "35.000 KM",
-                fuel: "Diesel",
-                transmission: "Automático Tiptronic",
-                engine: "3.0L V6 286cv",
-                color: "Preto Mythos Metallic",
-                condition: "usado",
-                status: "new",
-                images: [
-                    "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                ],
-                description: "Audi Q7 50 TDI Quattro, SUV premium de 7 lugares. Pack S line, teto panorâmico, bancos elétricos, sistema de som Bang & Olufsen."
-            },
-            {
-                id: 4,
-                make: "Toyota",
-                model: "Land Cruiser V8",
-                year: 2023,
-                price: 42500000,
-                mileage: "0 KM",
-                fuel: "Diesel",
-                transmission: "Automático 8 vel.",
-                engine: "4.5L V8 Turbo Diesel",
-                color: "Prata Metallic",
-                condition: "novo",
-                status: "new",
-                images: [
-                    "https://images.unsplash.com/photo-1519241047957-be31d7379a5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                ],
-                description: "Toyota Land Cruiser V8, SUV definitivo para todo o terreno. Motor V8 diesel, tração integral, 7 lugares, sistema de som JBL."
-            },
-            {
-                id: 5,
-                make: "Range Rover",
-                model: "Velar P400",
-                year: 2021,
-                price: 37500000,
-                mileage: "18.000 KM",
-                fuel: "Gasolina",
-                transmission: "Automático 8 vel.",
-                engine: "3.0L V6 400cv",
-                color: "Branco Fuji",
-                condition: "usado",
-                status: "negotiable",
-                images: [
-                    "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                ],
-                description: "Range Rover Velar P400, SUV coupé premium. Interior minimalista com três telas touch, bancos em pele Windsor."
-            },
-            {
-                id: 6,
-                make: "Porsche",
-                model: "Cayenne Coupe",
-                year: 2023,
-                price: 45500000,
-                mileage: "0 KM",
-                fuel: "Gasolina",
-                transmission: "PDK Automático",
-                engine: "3.0L V6 340cv",
-                color: "Preto Jet Metallic",
-                condition: "novo",
-                status: "new",
-                images: [
-                    "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                ],
-                description: "Porsche Cayenne Coupe, combinação perfeita entre desempenho esportivo e conforto SUV. Design coupé, interior em alcântara."
-            },
-            {
-                id: 7,
-                make: "Volvo",
-                model: "XC90 T8",
-                year: 2022,
-                price: 33500000,
-                mileage: "12.000 KM",
-                fuel: "Híbrido",
-                transmission: "Automático",
-                engine: "2.0L Twin Engine 407cv",
-                color: "Azul Onyx",
-                condition: "usado",
-                status: "negotiable",
-                images: [
-                    "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                ],
-                description: "Volvo XC90 T8, SUV familiar híbrido plug-in. Pack Inscription, bancos em pele Nappa, sistema de som Bowers & Wilkins."
-            },
-            {
-                id: 8,
-                make: "Lexus",
-                model: "RX 450h",
-                year: 2023,
-                price: 39500000,
-                mileage: "0 KM",
-                fuel: "Híbrido",
-                transmission: "CVT",
-                engine: "3.5L V6 Hybrid 313cv",
-                color: "Branco Cristal",
-                condition: "novo",
-                status: "new",
-                images: [
-                    "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                ],
-                description: "Lexus RX 450h, SUV premium híbrido. Mark Levinson Premium Sound, heads-up display, sistema de segurança Lexus Safety System+."
-            },
-            {
-                id: 9,
-                make: "Tesla",
-                model: "Model Y",
-                year: 2023,
-                price: 38500000,
-                mileage: "0 KM",
-                fuel: "Elétrico",
-                transmission: "Automático",
-                engine: "Dual Motor AWD",
-                color: "Vermelho",
-                condition: "novo",
-                status: "new",
-                images: [
-                    "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                ],
-                description: "Tesla Model Y, SUV elétrico com autonomia de 533 km. Aceleração 0-100 km/h em 5 segundos, piloto automático completo."
-            },
-            {
-                id: 10,
-                make: "Jeep",
-                model: "Grand Cherokee",
-                year: 2021,
-                price: 31500000,
-                mileage: "28.000 KM",
-                fuel: "Diesel",
-                transmission: "Automático",
-                engine: "3.0L V6 Turbo Diesel",
-                color: "Preto",
-                condition: "usado",
-                status: "negotiable",
-                images: [
-                    "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                ],
-                description: "Jeep Grand Cherokee, SUV premium americano. Quadra-Lift Air Suspension, sistema de som Harman Kardon, bancos em pele."
-            }
-        ];
-
-        // Dados de Imóveis (para quando trocar)
-        const imoveisData = [
-            {
-                id: 101,
-                titulo: "Villa de Luxo em Talatona",
-                descricao: "Villa moderna com 5 quartos, piscina infinita, jardim paisagístico.",
-                preco: "350.000.000 KZ",
-                priceValue: 350000000,
-                localizacao: "Talatona, Luanda",
-                area: "800 m²",
-                quartos: 5,
-                banheiros: 6,
-                tipo: "venda",
-                status: "new",
-                images: ["https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"],
-                description: "Villa de luxo em Talatona com acabamentos de alto padrão."
-            },
-            {
-                id: 102,
-                titulo: "Apartamento Premium",
-                descricao: "Apartamento de 3 quartos no centro, vista para a baía.",
-                preco: "120.000.000 KZ",
-                priceValue: 120000000,
-                localizacao: "Centro de Luanda",
-                area: "220 m²",
-                quartos: 3,
-                banheiros: 3,
-                tipo: "venda",
-                status: "negotiable",
-                images: ["https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"],
-                description: "Apartamento premium no centro de Luanda."
-            }
-        ];
 
         // ===== VARIÁVEIS GLOBAIS =====
         let dadosAtuais = [...carrosData];
@@ -1837,16 +1611,58 @@
                 const container = document.getElementById('mainMediaContainer');
                 if (!container) return;
 
-                container.innerHTML = getMediaHTML(index);
+                const media = mediaArray[index];
+                const isVideo = media.toLowerCase().includes('.mp4') ||
+                    media.toLowerCase().includes('.webm') ||
+                    media.toLowerCase().includes('.ogg');
 
-                // Atualizar contador
-                const counter = document.getElementById('mediaCounter');
-                if (counter) {
-                    counter.textContent = `${index + 1}/${mediaArray.length}`;
+                // Guarda o índice atual
+                currentIndex = index;
+
+                // Cria o HTML do media mantendo os botões
+                let mediaHTML = '';
+                if (isVideo) {
+                    mediaHTML = `
+            <video class="main-media" controls autoplay muted loop>
+                <source src="${media}" type="video/mp4">
+                Seu navegador não suporta vídeos.
+            </video>
+        `;
+                } else {
+                    mediaHTML = `<img src="${media}" alt="Imagem ${index + 1}" class="main-media">`;
+                }
+
+                // Se tiver múltiplas imagens, mantém os botões
+                if (mediaArray.length > 1) {
+                    container.innerHTML = `
+            ${mediaHTML}
+            <button class="gallery-nav-btn gallery-nav-prev" id="galleryPrevBtn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="gallery-nav-btn gallery-nav-next" id="galleryNextBtn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <div class="gallery-counter" id="mediaCounter">${index + 1}/${mediaArray.length}</div>
+        `;
+
+                    // Readiciona os event listeners
+                    document.getElementById('galleryPrevBtn').addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const newIndex = (currentIndex - 1 + mediaArray.length) % mediaArray.length;
+                        updateMedia(newIndex);
+                    });
+
+                    document.getElementById('galleryNextBtn').addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const newIndex = (currentIndex + 1) % mediaArray.length;
+                        updateMedia(newIndex);
+                    });
+                } else {
+                    container.innerHTML = mediaHTML;
                 }
 
                 // Atualizar thumbnails ativas
-                document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
+                document.querySelectorAll('.thumbnail, .thumbnail-wrapper').forEach((thumb, i) => {
                     thumb.classList.toggle('active', i === index);
                 });
             }
