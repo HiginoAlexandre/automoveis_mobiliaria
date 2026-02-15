@@ -10,55 +10,267 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/viaturas.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/utility.css">
     <style>
-        /* Estilos específicos da página de viaturas */
-        .viaturas-page {
-            padding-top: 30px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        /* Barra de filtros */
-        .filtros-container {
-            background: #fff;
+        :root {
+            --primary-green: #0F6B3A;
+            --secondary-green: #3FA66A;
+            --white: #FFFFFF;
+            --text-dark: #1E1E1E;
+            --gray-light: #F8F9FA;
+            --gray-border: #E9ECEF;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--gray-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Header */
+        .page-header {
+            background: var(--white);
+            padding: 20px 30px;
             border-radius: 16px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
-            padding: 30px;
-            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-green);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-main {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-green);
+        }
+
+        .logo-sub {
+            font-size: 0.85rem;
+            color: var(--text-dark);
+        }
+
+        /* Troca Serviço */
+        .servico-toggle {
+            display: flex;
+            background: var(--gray-light);
+            border-radius: 50px;
+            padding: 5px;
+            border: 1px solid var(--gray-border);
+        }
+
+        .servico-btn {
+            padding: 12px 30px;
+            border: none;
+            background: transparent;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .servico-btn i {
+            color: var(--secondary-green);
+        }
+
+        .servico-btn.active {
+            background: var(--primary-green);
+            color: var(--white);
+        }
+
+        .servico-btn.active i {
+            color: var(--white);
+        }
+
+        .header-cta {
+            background: var(--primary-green);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .header-cta:hover {
+            background: var(--secondary-green);
+            transform: translateY(-2px);
+        }
+
+        /* Controles de Navegação */
+        .nav-controls {
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-controls.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .nav-side {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .nav-side.hidden {
+            display: none;
+        }
+
+        .nav-bottom {
+            position: sticky;
+            bottom: 30px;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            padding: 20px;
+            background: var(--white);
+            border-radius: 50px;
+            box-shadow: var(--shadow-hover);
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .nav-btn {
+            width: 50px;
+            height: 50px;
+            border: none;
+            background: var(--primary-green);
+            color: var(--white);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            background: var(--secondary-green);
+            transform: scale(1.1);
+        }
+
+        .nav-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        .nav-btn.prev {
+            margin-right: 10px;
+        }
+
+        .nav-btn.next {
+            margin-left: 10px;
+        }
+
+        .nav-info {
+            padding: 0 20px;
+            font-weight: 600;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+        }
+
+        /* Filtros */
+        .filtros-section {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
         }
 
         .filtros-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             flex-wrap: wrap;
             gap: 15px;
         }
 
-        .filtros-titulo {
+        .filtros-header h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-dark);
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .filtros-titulo h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #1E1E1E;
-        }
-
-        .filtros-titulo i {
-            color: #0F6B3A;
-            font-size: 1.2rem;
-        }
-
-        .reset-filtros-btn {
+        .reset-btn {
             background: transparent;
-            border: 1px solid #0F6B3A;
-            color: #0F6B3A;
+            border: 1px solid var(--primary-green);
+            color: var(--primary-green);
             padding: 8px 20px;
             border-radius: 30px;
             font-size: 0.9rem;
@@ -70,17 +282,22 @@
             transition: all 0.3s ease;
         }
 
-        .reset-filtros-btn:hover {
-            background: #0F6B3A;
-            color: #fff;
+        .reset-btn:hover {
+            background: var(--primary-green);
+            color: var(--white);
         }
 
-        /* Grupos de filtros */
+        .filtros-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
         .filtros-grupo {
-            margin-bottom: 25px;
+            margin-bottom: 15px;
         }
 
-        .filtros-grupo h4 {
+        .filtros-grupo h3 {
             font-size: 1rem;
             font-weight: 600;
             color: #666;
@@ -92,102 +309,129 @@
         .filtros-opcoes {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
         }
 
         .filtro-btn {
-            padding: 10px 20px;
-            border: 1px solid #E9ECEF;
-            background: #F8F9FA;
+            padding: 8px 16px;
+            border: 1px solid var(--gray-border);
+            background: var(--gray-light);
             border-radius: 30px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 500;
-            color: #1E1E1E;
+            color: var(--text-dark);
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .filtro-btn i {
-            font-size: 0.9rem;
-            color: #3FA66A;
+            color: var(--secondary-green);
+            font-size: 0.8rem;
         }
 
         .filtro-btn:hover {
-            background: #E9ECEF;
+            background: #e0e0e0;
             transform: translateY(-2px);
         }
 
         .filtro-btn.active {
-            background: #0F6B3A;
-            color: #fff;
-            border-color: #0F6B3A;
+            background: var(--primary-green);
+            color: var(--white);
+            border-color: var(--primary-green);
         }
 
         .filtro-btn.active i {
-            color: #fff;
+            color: var(--white);
+        }
+
+        /* Checkboxes */
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: var(--primary-green);
         }
 
         /* Marcas grid */
         .marcas-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            padding: 5px 0;
-            max-width: 100%;
-            overflow-x: auto;
-            padding-bottom: 10px;
+            gap: 8px;
+            max-height: 150px;
+            overflow-y: auto;
+            padding: 5px;
         }
 
         .marca-btn {
-            padding: 10px 20px;
-            background: #F8F9FA;
-            border: 1px solid #E9ECEF;
+            padding: 8px 16px;
+            background: var(--gray-light);
+            border: 1px solid var(--gray-border);
             border-radius: 30px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 500;
-            color: #1E1E1E;
+            color: var(--text-dark);
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             white-space: nowrap;
         }
 
         .marca-btn i {
-            color: #3FA66A;
-            font-size: 1rem;
+            color: var(--secondary-green);
         }
 
         .marca-btn:hover {
-            background: #E9ECEF;
+            background: #e0e0e0;
             transform: translateY(-2px);
         }
 
         .marca-btn.active {
-            background: #0F6B3A;
-            color: #fff;
-            border-color: #0F6B3A;
+            background: var(--primary-green);
+            color: var(--white);
+            border-color: var(--primary-green);
         }
 
         .marca-btn.active i {
-            color: #fff;
+            color: var(--white);
         }
 
-        /* Barra de pesquisa */
-        .pesquisa-container {
+        /* Pesquisa avançada */
+        .pesquisa-avancada {
+            margin-top: 20px;
+            padding: 20px;
+            background: var(--gray-light);
+            border-radius: 12px;
+        }
+
+        .pesquisa-wrapper {
             display: flex;
             gap: 10px;
-            margin-bottom: 30px;
+            margin-bottom: 15px;
         }
 
         .pesquisa-input {
             flex: 1;
             padding: 15px 20px;
-            border: 1px solid #E9ECEF;
+            border: 1px solid var(--gray-border);
             border-radius: 10px;
             font-size: 1rem;
             transition: all 0.3s ease;
@@ -195,14 +439,14 @@
 
         .pesquisa-input:focus {
             outline: none;
-            border-color: #0F6B3A;
+            border-color: var(--primary-green);
             box-shadow: 0 0 0 3px rgba(15, 107, 58, 0.1);
         }
 
         .pesquisa-btn {
             padding: 15px 30px;
-            background: #0F6B3A;
-            color: #fff;
+            background: var(--primary-green);
+            color: var(--white);
             border: none;
             border-radius: 10px;
             font-size: 1rem;
@@ -215,18 +459,38 @@
         }
 
         .pesquisa-btn:hover {
-            background: #3FA66A;
+            background: var(--secondary-green);
             transform: translateY(-2px);
         }
 
-        /* Info e paginação */
-        .resultados-info {
+        .pesquisa-dica {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .pesquisa-dica i {
+            color: var(--secondary-green);
+            margin-right: 5px;
+        }
+
+        .pesquisa-dica code {
+            background: #e0e0e0;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        /* Info bar */
+        .info-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin: 30px 0 20px;
-            flex-wrap: wrap;
-            gap: 15px;
+            padding: 15px 20px;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
         }
 
         .contador {
@@ -235,48 +499,8 @@
         }
 
         .contador strong {
-            color: #0F6B3A;
+            color: var(--primary-green);
             font-size: 1.1rem;
-        }
-
-        .paginacao {
-            display: flex;
-            gap: 10px;
-        }
-
-        .pagina-btn {
-            width: 45px;
-            height: 45px;
-            border: 1px solid #E9ECEF;
-            background: #fff;
-            border-radius: 10px;
-            color: #1E1E1E;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .pagina-btn:hover:not(:disabled) {
-            background: #0F6B3A;
-            color: #fff;
-            border-color: #0F6B3A;
-        }
-
-        .pagina-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .pagina-info {
-            padding: 0 15px;
-            display: flex;
-            align-items: center;
-            font-weight: 600;
-            color: #1E1E1E;
         }
 
         /* Grid de carros */
@@ -287,13 +511,412 @@
             margin-bottom: 40px;
         }
 
-        /* Mensagem sem resultados */
+        /* Card de carro */
+        .car-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .car-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .car-image-container {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .car-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .car-card:hover .car-image {
+            transform: scale(1.08);
+        }
+
+        .car-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            z-index: 2;
+        }
+
+        .badge-new {
+            background: var(--primary-green);
+            color: var(--white);
+        }
+
+        .badge-negotiable {
+            background: var(--secondary-green);
+            color: var(--white);
+        }
+
+        .badge-sold {
+            background: #dc3545;
+            color: var(--white);
+        }
+
+        .car-content {
+            padding: 20px;
+        }
+
+        .car-make-model {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .car-year {
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .car-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            margin: 15px 0;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .price-currency {
+            font-size: 1rem;
+            margin-right: 4px;
+            margin-top: 4px;
+        }
+
+        .car-details-list {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--gray-border);
+        }
+
+        .car-detail {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .detail-icon {
+            width: 35px;
+            height: 35px;
+            background: rgba(15, 107, 58, 0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-green);
+        }
+
+        .detail-value {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .detail-label {
+            font-size: 0.75rem;
+            color: #666;
+        }
+
+        .car-tipo-badge {
+            margin-top: 15px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal {
+            background: var(--white);
+            border-radius: 20px;
+            width: 100%;
+            max-width: 1100px;
+            max-height: 90vh;
+            overflow: hidden;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.active {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 50%;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--white);
+            transform: rotate(90deg);
+        }
+
+        .modal-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            max-height: 90vh;
+            overflow: auto;
+        }
+
+        .modal-gallery {
+            background: var(--gray-light);
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        .main-image-container {
+            position: relative;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main-image {
+            max-width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+        }
+
+        .thumbnails {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 10px 0;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .thumbnail:hover,
+        .thumbnail.active {
+            opacity: 1;
+            transform: scale(1.05);
+            border: 2px solid var(--primary-green);
+        }
+
+        .modal-details {
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .modal-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .modal-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            margin: 20px 0;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .modal-price-currency {
+            font-size: 1.5rem;
+            margin-right: 8px;
+            margin-top: 8px;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .spec-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: rgba(15, 107, 58, 0.03);
+            border-radius: 10px;
+        }
+
+        .spec-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .spec-content h4 {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 3px;
+        }
+
+        .spec-content p {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .car-description {
+            margin: 25px 0;
+            padding: 20px;
+            background: rgba(15, 107, 58, 0.02);
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-green);
+        }
+
+        .description-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .description-text {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .modal-cta {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .modal-btn-primary {
+            background: var(--primary-green);
+            color: var(--white);
+        }
+
+        .modal-btn-primary:hover {
+            background: var(--secondary-green);
+            transform: translateY(-3px);
+        }
+
+        .modal-btn-secondary {
+            background: transparent;
+            color: var(--primary-green);
+            border: 2px solid var(--primary-green);
+        }
+
+        .modal-btn-secondary:hover {
+            background: rgba(15, 107, 58, 0.05);
+            transform: translateY(-3px);
+        }
+
+        /* Loading e No Results */
+        .loading,
         .no-results {
             text-align: center;
-            padding: 60px 20px;
-            background: #F8F9FA;
+            padding: 60px;
+            background: var(--white);
             border-radius: 16px;
-            margin: 40px 0;
+            grid-column: 1 / -1;
         }
 
         .no-results i {
@@ -304,7 +927,7 @@
 
         .no-results h3 {
             font-size: 1.5rem;
-            color: #1E1E1E;
+            color: var(--text-dark);
             margin-bottom: 10px;
         }
 
@@ -315,8 +938,8 @@
 
         .no-results button {
             padding: 12px 30px;
-            background: #0F6B3A;
-            color: #fff;
+            background: var(--primary-green);
+            color: var(--white);
             border: none;
             border-radius: 8px;
             font-size: 1rem;
@@ -326,58 +949,145 @@
         }
 
         .no-results button:hover {
-            background: #3FA66A;
+            background: var(--secondary-green);
         }
 
         /* Responsivo */
-        @media (max-width: 1200px) {
+        @media (max-width: 992px) {
             .cars-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .modal-content {
+                grid-template-columns: 1fr;
+                overflow-y: auto;
             }
         }
 
         @media (max-width: 768px) {
-            .filtros-container {
-                padding: 20px;
-            }
-
             .cars-grid {
                 grid-template-columns: 1fr;
             }
 
-            .pesquisa-container {
+            .page-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .info-bar {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .pesquisa-wrapper {
                 flex-direction: column;
             }
 
-            .resultados-info {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .paginacao {
-                width: 100%;
-                justify-content: center;
+            .nav-side {
+                display: none;
             }
         }
 
-        @media (max-width: 480px) {
-            .filtros-opcoes {
-                flex-direction: column;
-            }
+        /* Galeria do Modal */
+        .main-image-container {
+            position: relative;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+        }
 
-            .filtro-btn {
-                width: 100%;
-                justify-content: center;
-            }
+        .main-media {
+            max-width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+        }
+
+        .gallery-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-green);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .gallery-nav-btn:hover {
+            background: var(--white);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .gallery-nav-prev {
+            left: 15px;
+        }
+
+        .gallery-nav-next {
+            right: 15px;
+        }
+
+        .gallery-counter {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            color: var(--white);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            z-index: 10;
+        }
+
+        .thumbnail-wrapper {
+            position: relative;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .thumbnail-wrapper video.thumbnail {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .thumbnail-play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 24px;
+            height: 24px;
+            background: var(--primary-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 0.8rem;
+            pointer-events: none;
         }
     </style>
 </head>
 
 <body>
-    <!-- Header -->
-    <header class="main-header" id="mainHeader">
-        <div class="header-container">
-            <a href="index.html" class="logo">
+    <div class="container">
+        <!-- Header -->
+        <header class="page-header">
+            <a href="#" class="logo">
                 <div class="logo-icon">EA</div>
                 <div class="logo-text">
                     <span class="logo-main">Eduardo Automóveis</span>
@@ -385,56 +1095,41 @@
                 </div>
             </a>
 
-            <nav class="nav-desktop">
-                <ul class="nav-menu">
-                    <li class="nav-item"><a href="index.html" class="nav-link">Início</a></li>
-                    <li class="nav-item"><a href="viaturas.html" class="nav-link active">Viaturas</a></li>
-                    <li class="nav-item"><a href="sobre.html" class="nav-link">Sobre</a></li>
-                    <li class="nav-item"><a href="contacto.html" class="nav-link">Contacto</a></li>
-                </ul>
-                <button class="cta-button" id="headerCta">
-                    <i class="fab fa-whatsapp"></i> WhatsApp
+            <!-- Botões de Troca de Serviço -->
+            <div class="servico-toggle" id="servicoToggle">
+                <button class="servico-btn active" data-servico="automoveis">
+                    <i class="fas fa-car"></i> Automóveis
                 </button>
-            </nav>
+                <button class="servico-btn" data-servico="imoveis">
+                    <i class="fas fa-home"></i> Imóveis
+                </button>
+            </div>
 
-            <button class="menu-toggle" id="menuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
+            <button class="header-cta" id="headerCta">
+                <i class="fab fa-whatsapp"></i> WhatsApp
             </button>
+        </header>
+
+        <!-- Controles de Navegação - Topo -->
+        <div class="nav-controls" id="navTop">
+            <button class="nav-btn prev" id="navTopPrev" disabled><i class="fas fa-chevron-left"></i></button>
+            <div class="nav-info" id="navTopInfo">Página 1</div>
+            <button class="nav-btn next" id="navTopNext" disabled><i class="fas fa-chevron-right"></i></button>
         </div>
 
-        <nav class="nav-mobile" id="navMobile">
-            <ul class="mobile-menu">
-                <li class="mobile-item"><a href="index.html" class="nav-link">Início</a></li>
-                <li class="mobile-item"><a href="viaturas.html" class="nav-link active">Viaturas</a></li>
-                <li class="mobile-item"><a href="sobre.html" class="nav-link">Sobre</a></li>
-                <li class="mobile-item"><a href="contacto.html" class="nav-link">Contacto</a></li>
-            </ul>
-            <button class="cta-button mobile-cta" id="mobileCta">
-                <i class="fab fa-whatsapp"></i> Solicitar visita
-            </button>
-        </nav>
-        <div class="overlay" id="overlay"></div>
-    </header>
+        <!-- Filtros -->
+        <section class="filtros-section" id="filtrosSection">
+            <div class="filtros-header">
+                <h2><i class="fas fa-sliders-h"></i> Filtrar <span id="filtroTitulo">Viaturas</span></h2>
+                <button class="reset-btn" id="resetFiltros">
+                    <i class="fas fa-undo-alt"></i> Limpar filtros
+                </button>
+            </div>
 
-    <main class="viaturas-page">
-        <div class="viaturas-container">
-            <!-- Filtros -->
-            <div class="filtros-container">
-                <div class="filtros-header">
-                    <div class="filtros-titulo">
-                        <i class="fas fa-sliders-h"></i>
-                        <h3>Filtrar Viaturas</h3>
-                    </div>
-                    <button class="reset-filtros-btn" id="resetFiltrosBtn">
-                        <i class="fas fa-undo-alt"></i> Limpar filtros
-                    </button>
-                </div>
-
-                <!-- Filtro por condição -->
+            <div class="filtros-grid">
+                <!-- Condição -->
                 <div class="filtros-grupo">
-                    <h4>Condição</h4>
+                    <h3>Condição</h3>
                     <div class="filtros-opcoes" id="filtroCondicao">
                         <button class="filtro-btn active" data-filtro="todos">
                             <i class="fas fa-car"></i> Todos
@@ -448,68 +1143,1048 @@
                     </div>
                 </div>
 
-                <!-- Filtro por marcas -->
+                <!-- Marcas -->
                 <div class="filtros-grupo">
-                    <h4>Marcas</h4>
-                    <div class="marcas-grid" id="marcasGrid">
-                        <!-- Marcas serão inseridas via JavaScript -->
+                    <h3>Marcas</h3>
+                    <div class="marcas-grid" id="marcasGrid"></div>
+                </div>
+
+                <!-- Faixa de Preço (Checkboxes) -->
+                <div class="filtros-grupo">
+                    <h3>Faixa de Preço</h3>
+                    <div class="checkbox-group" id="precoCheckboxes">
+                        <label class="checkbox-label">
+                            <input type="checkbox" value="ate-20"> Até 20.000.000 KZ
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" value="20-30"> 20M - 30M KZ
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" value="30-40"> 30M - 40M KZ
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" value="acima-40"> Acima de 40.000.000 KZ
+                        </label>
                     </div>
                 </div>
 
-                <!-- Pesquisa -->
-                <div class="pesquisa-container">
-                    <input type="text" class="pesquisa-input" id="pesquisaInput" 
-                           placeholder="Pesquisar por modelo, ano, cor...">
+                <!-- Combustível (Checkboxes) -->
+                <div class="filtros-grupo">
+                    <h3>Combustível</h3>
+                    <div class="checkbox-group" id="combustivelCheckboxes">
+                        <label class="checkbox-label">
+                            <input type="checkbox" value="Diesel"> Diesel
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" value="Gasolina"> Gasolina
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" value="Híbrido"> Híbrido
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" value="Elétrico"> Elétrico
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pesquisa Avançada -->
+            <div class="pesquisa-avancada">
+                <div class="pesquisa-wrapper">
+                    <input type="text" class="pesquisa-input" id="pesquisaInput"
+                        placeholder="Pesquisar... (ex: >30000000, BMW, 2023)">
                     <button class="pesquisa-btn" id="pesquisaBtn">
                         <i class="fas fa-search"></i> Pesquisar
                     </button>
                 </div>
-            </div>
-
-            <!-- Resultados e Paginação -->
-            <div class="resultados-info">
-                <div class="contador" id="contadorResultados">
-                    Mostrando <strong id="mostrandoInicio">1</strong> - <strong id="mostrandoFim">6</strong> de <strong id="totalResultados">0</strong> carros
-                </div>
-                <div class="paginacao" id="paginacao">
-                    <button class="pagina-btn" id="paginaAnterior" disabled>
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <span class="pagina-info" id="paginaInfo">Página 1</span>
-                    <button class="pagina-btn" id="paginaProxima" disabled>
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
+                <div class="pesquisa-dica">
+                    <i class="fas fa-info-circle"></i> Dica: Use <code>>30000000</code> (maior que),
+                    <code><25000000</code> (menor que),
+                    <code>=32500000</code> (igual), ou texto (marca, modelo, ano)
                 </div>
             </div>
+        </section>
 
-            <!-- Grid de Carros -->
-            <div class="cars-grid" id="carsGrid">
-                <!-- Carros serão inseridos via JavaScript -->
-                <div class="car-card-loading"></div>
-                <div class="car-card-loading"></div>
-                <div class="car-card-loading"></div>
-            </div>
-
-            <!-- Mensagem sem resultados -->
-            <div class="no-results" id="noResults" style="display: none;">
-                <i class="fas fa-search"></i>
-                <h3>Nenhum carro encontrado</h3>
-                <p>Tente ajustar os filtros ou a pesquisa.</p>
-                <button onclick="window.resetarFiltros()">Ver todos os carros</button>
+        <!-- Info Bar -->
+        <div class="info-bar">
+            <div class="contador" id="contadorResultados">
+                Mostrando <strong id="mostrandoInicio">0</strong> - <strong id="mostrandoFim">0</strong> de <strong
+                    id="totalResultados">0</strong> <span id="tipoItens">carros</span>
             </div>
         </div>
-    </main>
 
-    <!-- Footer -->
-    <footer class="main-footer">
-        <!-- ... footer content (igual ao index.html) ... -->
-    </footer>
+        <!-- Grid de Itens -->
+        <div class="cars-grid" id="itemsGrid">
+            <div class="loading">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>A carregar...</p>
+            </div>
+        </div>
 
-    <!-- Scripts -->
-    <script src="js/data.js"></script>
-    <script src="js/header.js"></script>
-    <script src="js/viaturas-page.js"></script>
-    <script src="js/footer.js"></script>
+        <!-- Controles de Navegação - Fundo -->
+        <div class="nav-bottom" id="navBottom">
+            <button class="nav-btn prev" id="navBottomPrev" disabled><i class="fas fa-chevron-left"></i></button>
+            <div class="nav-info" id="navBottomInfo">Página 1</div>
+            <button class="nav-btn next" id="navBottomNext" disabled><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" id="modal">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div class="modal-content" id="modalContent">
+                <!-- Conteúdo será inserido via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== DADOS =====
+        const carrosData = [
+            {
+                id: 1,
+                make: "Mercedes-Benz",
+                model: "Classe C 220d AMG Line",
+                year: 2023,
+                price: 32500000,
+                mileage: "0 KM",
+                fuel: "Diesel",
+                transmission: "Automático 9G-Tronic",
+                engine: "2.0L 4 cilindros",
+                color: "Cinza Iridium Metallic",
+                condition: "novo",
+                status: "new",
+                images: [
+                    "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                ],
+                description: "Mercedes-Benz Classe C 220d AMG Line, importado da Alemanha. Equipamento completo: bancos em pele, sistema de som Burmester, teto panorâmico, assistentes de condução."
+            },
+            {
+                id: 2,
+                make: "BMW",
+                model: "Série 5 530e M Sport",
+                year: 2022,
+                price: 28500000,
+                mileage: "8.500 KM",
+                fuel: "Híbrido",
+                transmission: "Automático Steptronic",
+                engine: "2.0L Hybrid 292cv",
+                color: "Azul Tanzanite Metallic",
+                condition: "novo",
+                status: "negotiable",
+                images: [
+                    "https://images.unsplash.com/photo-1555212697-194d092e3b8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                ],
+                description: "BMW Série 5 530e M Sport, veículo híbrido plug-in. Pack M Sport completo, interior em pele Vernasca, heads-up display, park assist."
+            },
+            {
+                id: 3,
+                make: "Audi",
+                model: "Q7 50 TDI Quattro",
+                year: 2020,
+                price: 29500000,
+                mileage: "35.000 KM",
+                fuel: "Diesel",
+                transmission: "Automático Tiptronic",
+                engine: "3.0L V6 286cv",
+                color: "Preto Mythos Metallic",
+                condition: "usado",
+                status: "new",
+                images: [
+                    "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                ],
+                description: "Audi Q7 50 TDI Quattro, SUV premium de 7 lugares. Pack S line, teto panorâmico, bancos elétricos, sistema de som Bang & Olufsen."
+            },
+            {
+                id: 4,
+                make: "Toyota",
+                model: "Land Cruiser V8",
+                year: 2023,
+                price: 42500000,
+                mileage: "0 KM",
+                fuel: "Diesel",
+                transmission: "Automático 8 vel.",
+                engine: "4.5L V8 Turbo Diesel",
+                color: "Prata Metallic",
+                condition: "novo",
+                status: "new",
+                images: [
+                    "https://images.unsplash.com/photo-1519241047957-be31d7379a5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                ],
+                description: "Toyota Land Cruiser V8, SUV definitivo para todo o terreno. Motor V8 diesel, tração integral, 7 lugares, sistema de som JBL."
+            },
+            {
+                id: 5,
+                make: "Range Rover",
+                model: "Velar P400",
+                year: 2021,
+                price: 37500000,
+                mileage: "18.000 KM",
+                fuel: "Gasolina",
+                transmission: "Automático 8 vel.",
+                engine: "3.0L V6 400cv",
+                color: "Branco Fuji",
+                condition: "usado",
+                status: "negotiable",
+                images: [
+                    "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                ],
+                description: "Range Rover Velar P400, SUV coupé premium. Interior minimalista com três telas touch, bancos em pele Windsor."
+            },
+            {
+                id: 6,
+                make: "Porsche",
+                model: "Cayenne Coupe",
+                year: 2023,
+                price: 45500000,
+                mileage: "0 KM",
+                fuel: "Gasolina",
+                transmission: "PDK Automático",
+                engine: "3.0L V6 340cv",
+                color: "Preto Jet Metallic",
+                condition: "novo",
+                status: "new",
+                images: [
+                    "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                ],
+                description: "Porsche Cayenne Coupe, combinação perfeita entre desempenho esportivo e conforto SUV. Design coupé, interior em alcântara."
+            },
+            {
+                id: 7,
+                make: "Volvo",
+                model: "XC90 T8",
+                year: 2022,
+                price: 33500000,
+                mileage: "12.000 KM",
+                fuel: "Híbrido",
+                transmission: "Automático",
+                engine: "2.0L Twin Engine 407cv",
+                color: "Azul Onyx",
+                condition: "usado",
+                status: "negotiable",
+                images: [
+                    "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                ],
+                description: "Volvo XC90 T8, SUV familiar híbrido plug-in. Pack Inscription, bancos em pele Nappa, sistema de som Bowers & Wilkins."
+            },
+            {
+                id: 8,
+                make: "Lexus",
+                model: "RX 450h",
+                year: 2023,
+                price: 39500000,
+                mileage: "0 KM",
+                fuel: "Híbrido",
+                transmission: "CVT",
+                engine: "3.5L V6 Hybrid 313cv",
+                color: "Branco Cristal",
+                condition: "novo",
+                status: "new",
+                images: [
+                    "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                ],
+                description: "Lexus RX 450h, SUV premium híbrido. Mark Levinson Premium Sound, heads-up display, sistema de segurança Lexus Safety System+."
+            },
+            {
+                id: 9,
+                make: "Tesla",
+                model: "Model Y",
+                year: 2023,
+                price: 38500000,
+                mileage: "0 KM",
+                fuel: "Elétrico",
+                transmission: "Automático",
+                engine: "Dual Motor AWD",
+                color: "Vermelho",
+                condition: "novo",
+                status: "new",
+                images: [
+                    "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                ],
+                description: "Tesla Model Y, SUV elétrico com autonomia de 533 km. Aceleração 0-100 km/h em 5 segundos, piloto automático completo."
+            },
+            {
+                id: 10,
+                make: "Jeep",
+                model: "Grand Cherokee",
+                year: 2021,
+                price: 31500000,
+                mileage: "28.000 KM",
+                fuel: "Diesel",
+                transmission: "Automático",
+                engine: "3.0L V6 Turbo Diesel",
+                color: "Preto",
+                condition: "usado",
+                status: "negotiable",
+                images: [
+                    "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                ],
+                description: "Jeep Grand Cherokee, SUV premium americano. Quadra-Lift Air Suspension, sistema de som Harman Kardon, bancos em pele."
+            }
+        ];
+
+        // Dados de Imóveis (para quando trocar)
+        const imoveisData = [
+            {
+                id: 101,
+                titulo: "Villa de Luxo em Talatona",
+                descricao: "Villa moderna com 5 quartos, piscina infinita, jardim paisagístico.",
+                preco: "350.000.000 KZ",
+                priceValue: 350000000,
+                localizacao: "Talatona, Luanda",
+                area: "800 m²",
+                quartos: 5,
+                banheiros: 6,
+                tipo: "venda",
+                status: "new",
+                images: ["https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"],
+                description: "Villa de luxo em Talatona com acabamentos de alto padrão."
+            },
+            {
+                id: 102,
+                titulo: "Apartamento Premium",
+                descricao: "Apartamento de 3 quartos no centro, vista para a baía.",
+                preco: "120.000.000 KZ",
+                priceValue: 120000000,
+                localizacao: "Centro de Luanda",
+                area: "220 m²",
+                quartos: 3,
+                banheiros: 3,
+                tipo: "venda",
+                status: "negotiable",
+                images: ["https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"],
+                description: "Apartamento premium no centro de Luanda."
+            }
+        ];
+
+        // ===== VARIÁVEIS GLOBAIS =====
+        let dadosAtuais = [...carrosData];
+        let itensFiltrados = [...dadosAtuais];
+        let paginaAtual = 1;
+        const itensPorPagina = 6;
+        let servicoAtual = 'automoveis'; // automoveis ou imoveis
+
+        let filtroAtivo = 'todos';
+        let marcaAtiva = 'todas';
+        let termoPesquisa = '';
+        let precoSelecionados = [];
+        let combustivelSelecionados = [];
+
+        // ===== ELEMENTOS DOM =====
+        const itemsGrid = document.getElementById('itemsGrid');
+        const marcasGrid = document.getElementById('marcasGrid');
+        const filtroCondicao = document.getElementById('filtroCondicao');
+        const pesquisaInput = document.getElementById('pesquisaInput');
+        const pesquisaBtn = document.getElementById('pesquisaBtn');
+        const resetBtn = document.getElementById('resetFiltros');
+        const servicoToggle = document.getElementById('servicoToggle');
+        const servicoBtns = document.querySelectorAll('.servico-btn');
+        const filtroTitulo = document.getElementById('filtroTitulo');
+        const tipoItens = document.getElementById('tipoItens');
+
+        const mostrandoInicio = document.getElementById('mostrandoInicio');
+        const mostrandoFim = document.getElementById('mostrandoFim');
+        const totalResultados = document.getElementById('totalResultados');
+
+        // Elementos de navegação
+        const navTop = document.getElementById('navTop');
+        const navBottom = document.getElementById('navBottom');
+        const navTopPrev = document.getElementById('navTopPrev');
+        const navTopNext = document.getElementById('navTopNext');
+        const navBottomPrev = document.getElementById('navBottomPrev');
+        const navBottomNext = document.getElementById('navBottomNext');
+        const navTopInfo = document.getElementById('navTopInfo');
+        const navBottomInfo = document.getElementById('navBottomInfo');
+
+        // Checkboxes
+        const precoCheckboxes = document.querySelectorAll('#precoCheckboxes input[type="checkbox"]');
+        const combustivelCheckboxes = document.querySelectorAll('#combustivelCheckboxes input[type="checkbox"]');
+
+        // Modal
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modal = document.getElementById('modal');
+        const modalClose = document.getElementById('modalClose');
+        const modalContent = document.getElementById('modalContent');
+
+        // ===== ÍCONES DAS MARCAS =====
+        const icons = {
+            'Mercedes-Benz': '<i class="fas fa-star"></i>',
+            'BMW': '<i class="fas fa-cog"></i>',
+            'Audi': '<i class="fas fa-ring"></i>',
+            'Toyota': '<i class="fas fa-leaf"></i>',
+            'Range Rover': '<i class="fas fa-mountain"></i>',
+            'Porsche': '<i class="fas fa-tachometer-alt"></i>',
+            'Volvo': '<i class="fas fa-shield-alt"></i>',
+            'Lexus': '<i class="fas fa-gem"></i>',
+            'Tesla': '<i class="fas fa-bolt"></i>',
+            'Jeep': '<i class="fas fa-car"></i>'
+        };
+
+        // ===== FUNÇÕES AUXILIARES =====
+        function getMarcaIcon(marca) {
+            return icons[marca] || '<i class="fas fa-car"></i>';
+        }
+
+        function formatCurrency(amount) {
+            return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        }
+
+        function getStatusBadge(status) {
+            const badges = {
+                'new': { text: 'NOVO', class: 'badge-new' },
+                'sold': { text: 'VENDIDO', class: 'badge-sold' },
+                'negotiable': { text: 'NEGOCIÁVEL', class: 'badge-negotiable' }
+            };
+            return badges[status] || { text: 'DISPONÍVEL', class: 'badge-negotiable' };
+        }
+
+        // ===== INICIALIZAR MARCAS =====
+        function inicializarMarcas() {
+            const marcas = [...new Set(dadosAtuais.map(item => item.make || item.titulo?.split(' ')[0]))].sort();
+
+            let html = '<button class="marca-btn active" data-marca="todas"><i class="fas fa-th-large"></i> Todas</button>';
+
+            marcas.forEach(marca => {
+                if (marca && marca !== 'todas') {
+                    html += `<button class="marca-btn" data-marca="${marca}">
+                                ${getMarcaIcon(marca)} ${marca}
+                             </button>`;
+                }
+            });
+
+            marcasGrid.innerHTML = html;
+        }
+
+        // ===== FUNÇÃO DE PESQUISA AVANÇADA =====
+        function matchesPesquisa(item, termo) {
+            if (!termo) return true;
+
+            termo = termo.toLowerCase().trim();
+
+            // Verificar se é uma pesquisa de preço com operador
+            const priceMatch = termo.match(/^([<>]=?|=)?(\d+)$/);
+            if (priceMatch) {
+                const operator = priceMatch[1] || '=';
+                const value = parseInt(priceMatch[2]);
+                const itemPrice = item.price || item.priceValue || 0;
+
+                switch (operator) {
+                    case '>': return itemPrice > value;
+                    case '<': return itemPrice < value;
+                    case '>=': return itemPrice >= value;
+                    case '<=': return itemPrice <= value;
+                    case '=': return itemPrice === value;
+                    default: return itemPrice === value;
+                }
+            }
+
+            // Pesquisa textual normal
+            const searchableFields = [
+                item.make,
+                item.model,
+                item.year?.toString(),
+                item.fuel,
+                item.color,
+                item.titulo,
+                item.localizacao
+            ].filter(f => f).map(f => f.toLowerCase());
+
+            return searchableFields.some(field => field.includes(termo));
+        }
+
+        // ===== FILTRAR ITENS =====
+        function filtrarItens() {
+            let resultados = [...dadosAtuais];
+
+            // Filtrar por condição (apenas para carros)
+            if (servicoAtual === 'automoveis' && filtroAtivo !== 'todos') {
+                resultados = resultados.filter(item => item.condition === filtroAtivo);
+            }
+
+            // Filtrar por marca
+            if (marcaAtiva !== 'todas') {
+                resultados = resultados.filter(item =>
+                    (item.make && item.make === marcaAtiva) ||
+                    (item.titulo && item.titulo.includes(marcaAtiva))
+                );
+            }
+
+            // Filtrar por faixa de preço (checkboxes)
+            if (precoSelecionados.length > 0) {
+                resultados = resultados.filter(item => {
+                    const price = item.price || item.priceValue || 0;
+                    return precoSelecionados.some(faixa => {
+                        switch (faixa) {
+                            case 'ate-20': return price <= 20000000;
+                            case '20-30': return price > 20000000 && price <= 30000000;
+                            case '30-40': return price > 30000000 && price <= 40000000;
+                            case 'acima-40': return price > 40000000;
+                            default: return true;
+                        }
+                    });
+                });
+            }
+
+            // Filtrar por combustível (checkboxes)
+            if (combustivelSelecionados.length > 0) {
+                resultados = resultados.filter(item =>
+                    combustivelSelecionados.includes(item.fuel)
+                );
+            }
+
+            // Filtrar por pesquisa
+            if (termoPesquisa) {
+                resultados = resultados.filter(item => matchesPesquisa(item, termoPesquisa));
+            }
+
+            itensFiltrados = resultados;
+            paginaAtual = 1;
+            renderizarItens();
+        }
+
+        // ===== RENDERIZAR ITENS =====
+        function renderizarItens() {
+            const total = itensFiltrados.length;
+            const inicio = (paginaAtual - 1) * itensPorPagina;
+            const fim = Math.min(inicio + itensPorPagina, total);
+            const itensPagina = itensFiltrados.slice(inicio, fim);
+
+            // Atualizar contadores
+            totalResultados.textContent = total;
+            mostrandoInicio.textContent = total > 0 ? inicio + 1 : 0;
+            mostrandoFim.textContent = fim;
+
+            const paginaInfoText = `Página ${paginaAtual} de ${Math.ceil(total / itensPorPagina) || 1}`;
+            navTopInfo.textContent = paginaInfoText;
+            navBottomInfo.textContent = paginaInfoText;
+
+            // Atualizar botões de navegação
+            const isFirstPage = paginaAtual === 1;
+            const isLastPage = fim >= total;
+
+            [navTopPrev, navBottomPrev].forEach(btn => btn.disabled = isFirstPage);
+            [navTopNext, navBottomNext].forEach(btn => btn.disabled = isLastPage);
+
+            // Controlar visibilidade da navegação lateral
+            const filtrosSection = document.getElementById('filtrosSection');
+            const filtrosRect = filtrosSection.getBoundingClientRect();
+            const navTopRect = navTop.getBoundingClientRect();
+
+
+            if (itensPagina.length === 0) {
+                itemsGrid.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-search"></i>
+                        <h3>Nenhum ${servicoAtual === 'automoveis' ? 'carro' : 'imóvel'} encontrado</h3>
+                        <p>Tente ajustar os filtros ou a pesquisa.</p>
+                        <button onclick="window.resetarFiltros()">Ver todos</button>
+                    </div>
+                `;
+                return;
+            }
+
+            const html = itensPagina.map(item => {
+                if (servicoAtual === 'automoveis') {
+                    const badge = getStatusBadge(item.status);
+                    return `
+                        <div class="car-card" data-id="${item.id}" data-tipo="carro">
+                            <div class="car-image-container">
+                                <img src="${item.images[0]}" alt="${item.make} ${item.model}" class="car-image" loading="lazy">
+                                <div class="car-badge ${badge.class}">${badge.text}</div>
+                            </div>
+                            
+                            <div class="car-content">
+                                <div class="car-make-model">
+                                    <span>${item.make} ${item.model}</span>
+                                    <span class="car-year">${item.year}</span>
+                                </div>
+                                
+                                <div class="car-price">
+                                    <span class="price-currency">KZ</span>
+                                    ${formatCurrency(item.price)}
+                                </div>
+                                
+                                <div class="car-details-list">
+                                    <div class="car-detail">
+                                        <div class="detail-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                        <div class="detail-value">${item.mileage}</div>
+                                        <div class="detail-label">KM</div>
+                                    </div>
+                                    
+                                    <div class="car-detail">
+                                        <div class="detail-icon"><i class="fas fa-gas-pump"></i></div>
+                                        <div class="detail-value">${item.fuel}</div>
+                                        <div class="detail-label">Comb.</div>
+                                    </div>
+                                    
+                                    <div class="car-detail">
+                                        <div class="detail-icon"><i class="fas fa-cogs"></i></div>
+                                        <div class="detail-value">${item.transmission.split(' ')[0]}</div>
+                                        <div class="detail-label">Câmbio</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="car-tipo-badge" style="background: ${item.condition === 'novo' ? '#0F6B3A' : '#3FA66A'}; color: white;">
+                                    ${item.condition === 'novo' ? 'CARRO NOVO' : 'CARRO USADO'}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    // Card para imóveis
+                    return `
+                        <div class="car-card" data-id="${item.id}" data-tipo="imovel">
+                            <div class="car-image-container">
+                                <img src="${item.images[0]}" alt="${item.titulo}" class="car-image" loading="lazy">
+                                <div class="car-badge ${item.status === 'new' ? 'badge-new' : 'badge-negotiable'}">
+                                    ${item.status === 'new' ? 'NOVO' : 'NEGOCIÁVEL'}
+                                </div>
+                            </div>
+                            
+                            <div class="car-content">
+                                <div class="car-make-model">
+                                    <span>${item.titulo}</span>
+                                </div>
+                                
+                                <div class="car-price">
+                                    ${item.preco}
+                                </div>
+                                
+                                <div class="car-details-list">
+                                    <div class="car-detail">
+                                        <div class="detail-icon"><i class="fas fa-map-marker-alt"></i></div>
+                                        <div class="detail-value">${item.localizacao.split(',')[0]}</div>
+                                        <div class="detail-label">Local</div>
+                                    </div>
+                                    
+                                    <div class="car-detail">
+                                        <div class="detail-icon"><i class="fas fa-expand"></i></div>
+                                        <div class="detail-value">${item.area}</div>
+                                        <div class="detail-label">Área</div>
+                                    </div>
+                                    
+                                    <div class="car-detail">
+                                        <div class="detail-icon"><i class="fas fa-bed"></i></div>
+                                        <div class="detail-value">${item.quartos}</div>
+                                        <div class="detail-label">Quartos</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="car-tipo-badge" style="background: #0F6B3A; color: white;">
+                                    ${item.tipo === 'venda' ? 'VENDA' : item.tipo === 'arrendamento' ? 'ARRENDAMENTO' : 'TERRENO'}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+            }).join('');
+
+            itemsGrid.innerHTML = html;
+
+            // Adicionar eventos aos cards
+            document.querySelectorAll('.car-card').forEach(card => {
+                card.addEventListener('click', function () {
+                    const id = parseInt(this.getAttribute('data-id'));
+                    const tipo = this.getAttribute('data-tipo');
+                    abrirModal(id, tipo);
+                });
+            });
+        }
+
+        // ===== ABRIR MODAL =====
+        // ===== ABRIR MODAL COM GALERIA =====
+        function abrirModal(id, tipo) {
+            const item = tipo === 'carro'
+                ? carrosData.find(c => c.id === id)
+                : imoveisData.find(i => i.id === id);
+
+            if (!item) return;
+
+            let currentIndex = 0;
+            const mediaArray = item.images || [];
+
+            function getMediaHTML(index) {
+                const media = mediaArray[index];
+                const isVideo = media.toLowerCase().includes('.mp4') ||
+                    media.toLowerCase().includes('.webm') ||
+                    media.toLowerCase().includes('.ogg');
+
+                if (isVideo) {
+                    return `
+                <video class="main-media" controls autoplay muted loop>
+                    <source src="${media}" type="video/mp4">
+                    Seu navegador não suporta vídeos.
+                </video>
+            `;
+                } else {
+                    return `<img src="${media}" alt="Imagem ${index + 1}" class="main-media">`;
+                }
+            }
+
+            function updateMedia(index) {
+                const container = document.getElementById('mainMediaContainer');
+                if (!container) return;
+
+                container.innerHTML = getMediaHTML(index);
+
+                // Atualizar contador
+                const counter = document.getElementById('mediaCounter');
+                if (counter) {
+                    counter.textContent = `${index + 1}/${mediaArray.length}`;
+                }
+
+                // Atualizar thumbnails ativas
+                document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
+                    thumb.classList.toggle('active', i === index);
+                });
+            }
+
+            if (tipo === 'carro') {
+                const badge = getStatusBadge(item.status);
+                modalContent.innerHTML = `
+            <div class="modal-gallery">
+                <div class="main-image-container" id="mainMediaContainer">
+                    ${getMediaHTML(0)}
+                    ${mediaArray.length > 1 ? `
+                        <button class="gallery-nav-btn gallery-nav-prev" id="galleryPrevBtn">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="gallery-nav-btn gallery-nav-next" id="galleryNextBtn">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <div class="gallery-counter" id="mediaCounter">1/${mediaArray.length}</div>
+                    ` : ''}
+                </div>
+                <div class="thumbnails">
+                    ${mediaArray.map((media, index) => {
+                    const isVideo = media.toLowerCase().includes('.mp4');
+                    return isVideo
+                        ? `<div class="thumbnail-wrapper" data-index="${index}">
+                                <video class="thumbnail" muted>
+                                    <source src="${media}" type="video/mp4">
+                                </video>
+                                <div class="thumbnail-play-icon"><i class="fas fa-play"></i></div>
+                               </div>`
+                        : `<img src="${media}" class="thumbnail ${index === 0 ? 'active' : ''}" data-index="${index}">`;
+                }).join('')}
+                </div>
+            </div>
+            <div class="modal-details">
+                <h2 class="modal-title">${item.make} ${item.model}</h2>
+                <div class="modal-subtitle">
+                    <span>${item.year} • ${item.origin || 'Importado'}</span>
+                    <span class="car-badge ${badge.class}" style="position: static;">${badge.text}</span>
+                </div>
+                
+                <div class="modal-price">
+                    <span class="modal-price-currency">KZ</span>
+                    ${formatCurrency(item.price)}
+                </div>
+                
+                <div class="specs-grid">
+                    <div class="spec-item">
+                        <div class="spec-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        <div class="spec-content">
+                            <h4>Quilometragem</h4>
+                            <p>${item.mileage}</p>
+                        </div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-icon"><i class="fas fa-gas-pump"></i></div>
+                        <div class="spec-content">
+                            <h4>Combustível</h4>
+                            <p>${item.fuel}</p>
+                        </div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-icon"><i class="fas fa-cogs"></i></div>
+                        <div class="spec-content">
+                            <h4>Câmbio</h4>
+                            <p>${item.transmission}</p>
+                        </div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-icon"><i class="fas fa-car-battery"></i></div>
+                        <div class="spec-content">
+                            <h4>Motor</h4>
+                            <p>${item.engine}</p>
+                        </div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-icon"><i class="fas fa-palette"></i></div>
+                        <div class="spec-content">
+                            <h4>Cor</h4>
+                            <p>${item.color}</p>
+                        </div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-icon"><i class="fas fa-flag"></i></div>
+                        <div class="spec-content">
+                            <h4>Origem</h4>
+                            <p>${item.origin || 'Importado'}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-description">
+                    <h3 class="description-title">Descrição</h3>
+                    <p class="description-text">${item.description}</p>
+                </div>
+                
+                <div class="modal-cta">
+                    <button class="modal-btn modal-btn-primary" id="modalWhatsappBtn">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </button>
+                    <button class="modal-btn modal-btn-secondary" id="modalCallBtn">
+                        <i class="fas fa-phone-alt"></i> Ligar
+                    </button>
+                </div>
+            </div>
+        `;
+            } else {
+                // Similar para imóveis (adaptar)
+                // ... (manter a estrutura mas com campos de imóveis)
+            }
+
+            modalOverlay.classList.add('active');
+            setTimeout(() => modal.classList.add('active'), 10);
+            document.body.style.overflow = 'hidden';
+
+            // Configurar navegação da galeria
+            if (mediaArray.length > 1) {
+                const prevBtn = document.getElementById('galleryPrevBtn');
+                const nextBtn = document.getElementById('galleryNextBtn');
+
+                prevBtn.addEventListener('click', () => {
+                    currentIndex = (currentIndex - 1 + mediaArray.length) % mediaArray.length;
+                    updateMedia(currentIndex);
+                });
+
+                nextBtn.addEventListener('click', () => {
+                    currentIndex = (currentIndex + 1) % mediaArray.length;
+                    updateMedia(currentIndex);
+                });
+            }
+
+            // Configurar thumbnails
+            document.querySelectorAll('.thumbnail, .thumbnail-wrapper').forEach((thumb, index) => {
+                thumb.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateMedia(currentIndex);
+                });
+            });
+
+            // Configurar botões CTA
+            document.getElementById('modalWhatsappBtn').addEventListener('click', function () {
+                const message = tipo === 'carro'
+                    ? `Olá! Estou interessado no ${item.make} ${item.model} ${item.year} que vi no site.`
+                    : `Olá! Estou interessado no imóvel "${item.titulo}" que vi no site.`;
+                window.open(`https://wa.me/244937582133?text=${encodeURIComponent(message)}`, '_blank');
+            });
+
+            document.getElementById('modalCallBtn').addEventListener('click', function () {
+                window.location.href = 'tel:+244937582133';
+            });
+        }
+        // ===== FECHAR MODAL =====
+        function fecharModal() {
+            modal.classList.remove('active');
+            setTimeout(() => {
+                modalOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }, 300);
+        }
+
+        // ===== TROCAR SERVIÇO =====
+        function trocarServico(servico) {
+            servicoAtual = servico;
+
+            // Atualizar UI
+            servicoBtns.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.servico === servico);
+            });
+
+            filtroTitulo.textContent = servico === 'automoveis' ? 'Viaturas' : 'Imóveis';
+            tipoItens.textContent = servico === 'automoveis' ? 'carros' : 'imóveis';
+
+            // Mostrar/ocultar filtros específicos
+            const filtrosCarro = document.querySelectorAll('.filtro-btn[data-filtro="novo"], .filtro-btn[data-filtro="usado"]');
+            const grupoCombustivel = document.getElementById('combustivelCheckboxes').closest('.filtros-grupo');
+
+            if (servico === 'automoveis') {
+                filtrosCarro.forEach(btn => btn.style.display = 'flex');
+                grupoCombustivel.style.display = 'block';
+                dadosAtuais = [...carrosData];
+            } else {
+                filtrosCarro.forEach(btn => btn.style.display = 'none');
+                grupoCombustivel.style.display = 'none';
+                dadosAtuais = [...imoveisData];
+            }
+
+            // Resetar filtros
+            window.resetarFiltros();
+        }
+
+        // ===== RESETAR FILTROS =====
+        window.resetarFiltros = function () {
+            filtroAtivo = 'todos';
+            marcaAtiva = 'todas';
+            termoPesquisa = '';
+            precoSelecionados = [];
+            combustivelSelecionados = [];
+
+            // Resetar UI
+            document.querySelectorAll('.filtro-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.filtro === 'todos') {
+                    btn.classList.add('active');
+                }
+            });
+
+            document.querySelectorAll('.marca-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.marca === 'todas') {
+                    btn.classList.add('active');
+                }
+            });
+
+            precoCheckboxes.forEach(cb => cb.checked = false);
+            combustivelCheckboxes.forEach(cb => cb.checked = false);
+
+            if (pesquisaInput) {
+                pesquisaInput.value = '';
+            }
+
+            filtrarItens();
+        };
+
+        // ===== EVENT LISTENERS =====
+
+        // Troca de serviço
+        servicoBtns.forEach(btn => {
+            btn.addEventListener('click', () => trocarServico(btn.dataset.servico));
+        });
+
+        // Filtro por condição
+        filtroCondicao.addEventListener('click', function (e) {
+            const btn = e.target.closest('.filtro-btn');
+            if (!btn) return;
+
+            filtroCondicao.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            filtroAtivo = btn.dataset.filtro;
+            filtrarItens();
+        });
+
+        // Filtro por marcas
+        marcasGrid.addEventListener('click', function (e) {
+            const btn = e.target.closest('.marca-btn');
+            if (!btn) return;
+
+            marcasGrid.querySelectorAll('.marca-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            marcaAtiva = btn.dataset.marca;
+            filtrarItens();
+        });
+
+        // Checkboxes de preço
+        precoCheckboxes.forEach(cb => {
+            cb.addEventListener('change', function () {
+                precoSelecionados = Array.from(precoCheckboxes)
+                    .filter(c => c.checked)
+                    .map(c => c.value);
+                filtrarItens();
+            });
+        });
+
+        // Checkboxes de combustível
+        combustivelCheckboxes.forEach(cb => {
+            cb.addEventListener('change', function () {
+                combustivelSelecionados = Array.from(combustivelCheckboxes)
+                    .filter(c => c.checked)
+                    .map(c => c.value);
+                filtrarItens();
+            });
+        });
+
+        // Pesquisa
+        pesquisaInput.addEventListener('input', function (e) {
+            termoPesquisa = e.target.value;
+            filtrarItens();
+        });
+
+        pesquisaBtn.addEventListener('click', function () {
+            termoPesquisa = pesquisaInput.value;
+            filtrarItens();
+        });
+
+        pesquisaInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                termoPesquisa = pesquisaInput.value;
+                filtrarItens();
+            }
+        });
+
+        // Reset filtros
+        resetBtn.addEventListener('click', window.resetarFiltros);
+
+        // Navegação - todos os botões
+        function mudarPagina(direcao) {
+            const totalPaginas = Math.ceil(itensFiltrados.length / itensPorPagina);
+            const novaPagina = paginaAtual + direcao;
+
+            if (novaPagina >= 1 && novaPagina <= totalPaginas) {
+                paginaAtual = novaPagina;
+                renderizarItens();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        [navTopPrev, navBottomPrev].forEach(btn => {
+            btn.addEventListener('click', () => mudarPagina(-1));
+        });
+
+        [navTopNext, navBottomNext].forEach(btn => {
+            btn.addEventListener('click', () => mudarPagina(1));
+        });
+
+        // Header CTA
+        document.getElementById('headerCta').addEventListener('click', function () {
+            window.open('https://wa.me/244937582133?text=Olá! Gostaria de saber mais sobre os carros disponíveis.', '_blank');
+        });
+
+        // Modal
+        modalClose.addEventListener('click', fecharModal);
+        modalOverlay.addEventListener('click', function (e) {
+            if (e.target === modalOverlay) {
+                fecharModal();
+            }
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                fecharModal();
+            }
+        });
+
+        // ===== INICIALIZAR =====
+        inicializarMarcas();
+        filtrarItens();
+    </script>
 </body>
 
 </html>
