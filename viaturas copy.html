@@ -1222,53 +1222,6 @@
             font-weight: 600;
             z-index: 10;
         }
-
-        /* Navegação Desktop */
-.nav-desktop {
-    justify-self: end;
-    display: flex;
-    align-items: center;
-}
-
-.nav-menu {
-    display: flex;
-    list-style: none;
-    margin-right: 30px;
-}
-
-.nav-item {
-    margin: 0 15px;
-    position: relative;
-}
-
-.nav-link {
-    text-decoration: none;
-    color: var(--text-dark);
-    font-weight: 500;
-    font-size: var(--font-size-medium);
-    padding: var(--spacing-small) 0;
-    transition: var(--transition);
-    position: relative;
-}
-
-.nav-link:hover {
-    color: var(--primary-green);
-}
-
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--secondary-green);
-    transition: var(--transition);
-}
-
-.nav-link:hover::after {
-    width: 100%;
-}
     </style>
 </head>
 
@@ -1303,14 +1256,6 @@
             <button class="header-cta" id="headerCta">
                 <i class="fab fa-whatsapp"></i> WhatsApp
             </button>
-            <nav class="nav-desktop">
-                <ul class="nav-menu">
-                    <li class="nav-item"><a href="index.html" class="nav-link">Início</a></li>
-                    <li class="nav-item"><a href="viaturas.html" class="nav-link"><span class="automoveis">Viaturas</span><span class="imoveis none">Casas</span></a></li>
-                    <li class="nav-item"><a href="sobre.html" class="nav-link">Sobre</a></li>
-                    <li class="nav-item"><a href="contacto.html" class="nav-link">Contacto</a></li>
-                </ul>
-            </nav>
         </header>
 
         <!-- Menu Overlay (não intrusivo) -->
