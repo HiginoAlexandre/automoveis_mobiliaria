@@ -1224,51 +1224,51 @@
         }
 
         /* Navegação Desktop */
-.nav-desktop {
-    justify-self: end;
-    display: flex;
-    align-items: center;
-}
+        .nav-desktop {
+            justify-self: end;
+            display: flex;
+            align-items: center;
+        }
 
-.nav-menu {
-    display: flex;
-    list-style: none;
-    margin-right: 30px;
-}
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            margin-right: 30px;
+        }
 
-.nav-item {
-    margin: 0 15px;
-    position: relative;
-}
+        .nav-item {
+            margin: 0 15px;
+            position: relative;
+        }
 
-.nav-link {
-    text-decoration: none;
-    color: var(--text-dark);
-    font-weight: 500;
-    font-size: var(--font-size-medium);
-    padding: var(--spacing-small) 0;
-    transition: var(--transition);
-    position: relative;
-}
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: var(--font-size-medium);
+            padding: var(--spacing-small) 0;
+            transition: var(--transition);
+            position: relative;
+        }
 
-.nav-link:hover {
-    color: var(--primary-green);
-}
+        .nav-link:hover {
+            color: var(--primary-green);
+        }
 
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--secondary-green);
-    transition: var(--transition);
-}
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-green);
+            transition: var(--transition);
+        }
 
-.nav-link:hover::after {
-    width: 100%;
-}
+        .nav-link:hover::after {
+            width: 100%;
+        }
     </style>
 </head>
 
@@ -1284,7 +1284,8 @@
                 <a href="index.html" class="logo">
                     <div class="logo-icon">EA</div>
                     <div class="logo-text">
-                        <span class="logo-main">Eduardo <span class="automoveis">Automóveis</span> <span class="imoveis none">Imóveis</span></span>
+                        <span class="logo-main">Eduardo <span class="automoveis">Automóveis</span> <span
+                                class="imoveis none">Imóveis</span></span>
                         <span class="logo-sub">B.Eduardo Investimento</span>
                     </div>
                 </a>
@@ -1306,7 +1307,8 @@
             <nav class="nav-desktop">
                 <ul class="nav-menu">
                     <li class="nav-item"><a href="index.html" class="nav-link">Início</a></li>
-                    <li class="nav-item"><a href="viaturas.html" class="nav-link"><span class="automoveis">Viaturas</span><span class="imoveis none">Casas</span></a></li>
+                    <li class="nav-item"><a href="viaturas.html" class="nav-link"><span
+                                class="automoveis">Viaturas</span><span class="imoveis none">Casas</span></a></li>
                     <li class="nav-item"><a href="sobre.html" class="nav-link">Sobre</a></li>
                     <li class="nav-item"><a href="contacto.html" class="nav-link">Contacto</a></li>
                 </ul>
@@ -1345,6 +1347,24 @@
             </div>
 
             <div class="filtros-grid">
+                <!-- Tipo de Negócio (apenas imóveis) -->
+                <div class="filtros-grupo imoveis none">
+                    <h3>Tipo de Negócio</h3>
+                    <div class="filtros-opcoes" id="filtroTipoNegocio">
+                        <button class="filtro-btn active" data-tipo-negocio="todos">
+                            <i class="fas fa-home"></i> Todos
+                        </button>
+                        <button class="filtro-btn" data-tipo-negocio="venda">
+                            <i class="fas fa-hand-holding-usd"></i> Venda
+                        </button>
+                        <button class="filtro-btn" data-tipo-negocio="arrendamento">
+                            <i class="fas fa-file-contract"></i> Arrendamento
+                        </button>
+                        <button class="filtro-btn" data-tipo-negocio="terreno">
+                            <i class="fas fa-tree"></i> Terrenos
+                        </button>
+                    </div>
+                </div>
                 <!-- Condição (apenas automóveis) -->
                 <div class="filtros-grupo automoveis">
                     <h3>Condição</h3>
@@ -1475,13 +1495,13 @@
             </div>
         </div>
     </div>
-    
+
     <script>
         // ===== DADOS =====
         const carrosData = [
             {
                 id: 1,
-                make: "Mercedes-Benz",
+                make: "Mercedes",
                 model: "Classe C 220d AMG Line",
                 year: 2023,
                 price: 32500000,
@@ -1493,11 +1513,10 @@
                 condition: "novo",
                 status: "new",
                 images: [
-                    "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    "https://images.unsplash.com/photo-1549399542-7e3f8b79c341",
+                    "https://images.unsplash.com/photo-1553440569-bcc63803a83d"
                 ],
-                description: "Mercedes-Benz Classe C 220d AMG Line, importado da Alemanha. Equipamento completo: bancos em pele, sistema de som Burmester, teto panorâmico, assistentes de condução."
+                description: "Mercedes Classe C 220d AMG Line, importado da Alemanha."
             },
             {
                 id: 2,
@@ -1508,169 +1527,161 @@
                 mileage: "8.500 KM",
                 fuel: "Híbrido",
                 transmission: "Automático Steptronic",
-                engine: "2.0L Hybrid 292cv",
-                color: "Azul Tanzanite Metallic",
+                engine: "2.0L Hybrid",
+                color: "Azul Metallic",
                 condition: "novo",
                 status: "negotiable",
                 images: [
-                    "https://images.unsplash.com/photo-1555212697-194d092e3b8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    "https://images.unsplash.com/photo-1555212697-194d092e3b8f"
                 ],
-                description: "BMW Série 5 530e M Sport, veículo híbrido plug-in. Pack M Sport completo, interior em pele Vernasca, heads-up display, park assist."
+                description: "BMW Série 5 híbrido plug-in."
             },
             {
                 id: 3,
-                make: "Audi",
-                model: "Q7 50 TDI Quattro",
-                year: 2020,
-                price: 29500000,
-                mileage: "35.000 KM",
-                fuel: "Diesel",
-                transmission: "Automático Tiptronic",
-                engine: "3.0L V6 286cv",
-                color: "Preto Mythos Metallic",
-                condition: "usado",
-                status: "new",
-                images: [
-                    "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                ],
-                description: "Audi Q7 50 TDI Quattro, SUV premium de 7 lugares. Pack S line, teto panorâmico, bancos elétricos, sistema de som Bang & Olufsen."
-            },
-            {
-                id: 4,
                 make: "Toyota",
-                model: "Land Cruiser V8",
+                model: "Land Cruiser",
                 year: 2023,
                 price: 42500000,
                 mileage: "0 KM",
                 fuel: "Diesel",
-                transmission: "Automático 8 vel.",
-                engine: "4.5L V8 Turbo Diesel",
-                color: "Prata Metallic",
+                transmission: "Automático",
+                engine: "4.5L V8",
+                color: "Prata",
                 condition: "novo",
                 status: "new",
                 images: [
-                    "https://images.unsplash.com/photo-1519241047957-be31d7379a5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    "https://images.unsplash.com/photo-1519241047957-be31d7379a5d"
                 ],
-                description: "Toyota Land Cruiser V8, SUV definitivo para todo o terreno. Motor V8 diesel, tração integral, 7 lugares, sistema de som JBL."
+                description: "Toyota Land Cruiser, SUV todo-terreno."
             },
             {
-                id: 5,
-                make: "Range Rover",
-                model: "Velar P400",
-                year: 2021,
-                price: 37500000,
-                mileage: "18.000 KM",
-                fuel: "Gasolina",
-                transmission: "Automático 8 vel.",
-                engine: "3.0L V6 400cv",
-                color: "Branco Fuji",
-                condition: "usado",
-                status: "negotiable",
-                images: [
-                    "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                ],
-                description: "Range Rover Velar P400, SUV coupé premium. Interior minimalista com três telas touch, bancos em pele Windsor."
-            },
-            {
-                id: 6,
-                make: "Porsche",
-                model: "Cayenne Coupe",
-                year: 2023,
-                price: 45500000,
-                mileage: "0 KM",
-                fuel: "Gasolina",
-                transmission: "PDK Automático",
-                engine: "3.0L V6 340cv",
-                color: "Preto Jet Metallic",
-                condition: "novo",
-                status: "new",
-                images: [
-                    "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                ],
-                description: "Porsche Cayenne Coupe, combinação perfeita entre desempenho esportivo e conforto SUV. Design coupé, interior em alcântara."
-            },
-            {
-                id: 7,
-                make: "Volvo",
-                model: "XC90 T8",
+                id: 4,
+                make: "Nissan",
+                model: "Patrol Platinum",
                 year: 2022,
-                price: 33500000,
-                mileage: "12.000 KM",
-                fuel: "Híbrido",
+                price: 39800000,
+                mileage: "15.000 KM",
+                fuel: "Gasolina",
                 transmission: "Automático",
-                engine: "2.0L Twin Engine 407cv",
-                color: "Azul Onyx",
-                condition: "usado",
-                status: "negotiable",
-                images: [
-                    "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                ],
-                description: "Volvo XC90 T8, SUV familiar híbrido plug-in. Pack Inscription, bancos em pele Nappa, sistema de som Bowers & Wilkins."
-            },
-            {
-                id: 8,
-                make: "Lexus",
-                model: "RX 450h",
-                year: 2023,
-                price: 39500000,
-                mileage: "0 KM",
-                fuel: "Híbrido",
-                transmission: "CVT",
-                engine: "3.5L V6 Hybrid 313cv",
-                color: "Branco Cristal",
-                condition: "novo",
-                status: "new",
-                images: [
-                    "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                ],
-                description: "Lexus RX 450h, SUV premium híbrido. Mark Levinson Premium Sound, heads-up display, sistema de segurança Lexus Safety System+."
-            },
-            {
-                id: 9,
-                make: "Tesla",
-                model: "Model Y",
-                year: 2023,
-                price: 38500000,
-                mileage: "0 KM",
-                fuel: "Elétrico",
-                transmission: "Automático",
-                engine: "Dual Motor AWD",
-                color: "Vermelho",
-                condition: "novo",
-                status: "new",
-                images: [
-                    "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                ],
-                description: "Tesla Model Y, SUV elétrico com autonomia de 533 km. Aceleração 0-100 km/h em 5 segundos, piloto automático completo."
-            },
-            {
-                id: 10,
-                make: "Jeep",
-                model: "Grand Cherokee",
-                year: 2021,
-                price: 31500000,
-                mileage: "28.000 KM",
-                fuel: "Diesel",
-                transmission: "Automático",
-                engine: "3.0L V6 Turbo Diesel",
+                engine: "5.6L V8",
                 color: "Preto",
                 condition: "usado",
                 status: "negotiable",
                 images: [
-                    "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    "https://images.unsplash.com/photo-1511919884226-fd3cad34687c"
                 ],
-                description: "Jeep Grand Cherokee, SUV premium americano. Quadra-Lift Air Suspension, sistema de som Harman Kardon, bancos em pele."
+                description: "Nissan Patrol de luxo."
+            },
+            {
+                id: 5,
+                make: "Hyundai",
+                model: "Santa Fe",
+                year: 2023,
+                price: 21500000,
+                mileage: "0 KM",
+                fuel: "Gasolina",
+                transmission: "Automático",
+                engine: "2.5L",
+                color: "Branco",
+                condition: "novo",
+                status: "new",
+                images: [
+                    "https://images.unsplash.com/photo-1503376780353-7e6692767b70"
+                ],
+                description: "Hyundai Santa Fe moderno e confortável."
+            },
+            {
+                id: 6,
+                make: "Kia",
+                model: "Sorento",
+                year: 2023,
+                price: 22500000,
+                mileage: "0 KM",
+                fuel: "Diesel",
+                transmission: "Automático",
+                engine: "2.2L",
+                color: "Cinza",
+                condition: "novo",
+                status: "new",
+                images: [
+                    "https://images.unsplash.com/photo-1549399542-7e3f8b79c341"
+                ],
+                description: "Kia Sorento SUV familiar."
+            },
+            {
+                id: 7,
+                make: "Mitsubishi",
+                model: "Pajero Sport",
+                year: 2021,
+                price: 26500000,
+                mileage: "22.000 KM",
+                fuel: "Diesel",
+                transmission: "Automático",
+                engine: "2.4L",
+                color: "Preto",
+                condition: "usado",
+                status: "negotiable",
+                images: [
+                    "https://images.unsplash.com/photo-1553440569-bcc63803a83d"
+                ],
+                description: "Mitsubishi Pajero robusto."
+            },
+            {
+                id: 8,
+                make: "Chevrolet",
+                model: "Tahoe",
+                year: 2022,
+                price: 34500000,
+                mileage: "18.000 KM",
+                fuel: "Gasolina",
+                transmission: "Automático",
+                engine: "5.3L V8",
+                color: "Branco",
+                condition: "usado",
+                status: "negotiable",
+                images: [
+                    "https://images.unsplash.com/photo-1519241047957-be31d7379a5d"
+                ],
+                description: "Chevrolet Tahoe SUV grande."
+            },
+            {
+                id: 9,
+                make: "Range Rover",
+                model: "Velar",
+                year: 2021,
+                price: 37500000,
+                mileage: "18.000 KM",
+                fuel: "Gasolina",
+                transmission: "Automático",
+                engine: "3.0L",
+                color: "Branco",
+                condition: "usado",
+                status: "negotiable",
+                images: [
+                    "https://images.unsplash.com/photo-1549399542-7e3f8b79c341"
+                ],
+                description: "Range Rover Velar premium."
+            },
+            {
+                id: 10,
+                make: "Jaguar",
+                model: "F-Pace",
+                year: 2022,
+                price: 35500000,
+                mileage: "12.000 KM",
+                fuel: "Gasolina",
+                transmission: "Automático",
+                engine: "2.0L Turbo",
+                color: "Azul",
+                condition: "usado",
+                status: "negotiable",
+                images: [
+                    "https://images.unsplash.com/photo-1555212697-194d092e3b8f"
+                ],
+                description: "Jaguar F-Pace esportivo."
             }
         ];
+
 
         // Dados de Imóveis
         const imoveisData = [
@@ -1684,7 +1695,7 @@
                 area: "800 m²",
                 quartos: 5,
                 banheiros: 6,
-                tipo: "venda",
+                tipo: "arrendamento",
                 status: "new",
                 images: [
                     "https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
@@ -1756,6 +1767,7 @@
         let termoPesquisa = '';
         let precoSelecionados = [];
         let combustivelSelecionados = [];
+        let tipoNegocioAtivo = 'todos'; // valores: 'todos', 'venda', 'arrendamento', 'terreno'
 
         // Variável para controlar o vídeo atual no modal
         let videoAtual = null;
@@ -1804,17 +1816,40 @@
 
         // ===== ÍCONES DAS MARCAS =====
         const icons = {
-            'Mercedes-Benz': '<i class="fas fa-star"></i>',
-            'BMW': '<i class="fas fa-cog"></i>',
-            'Audi': '<i class="fas fa-ring"></i>',
-            'Toyota': '<i class="fas fa-leaf"></i>',
+            'Kia': '<i class="fab fa-kia"></i>',
+            'Hyundai': '<i class="fab fa-hyundai"></i>',
+            'Mitsubishi': '<i class="fab fa-mitsubishi"></i>',
+            'Nissan': '<i class="fab fa-nissan"></i>',
+            'Renault': '<i class="fab fa-renault"></i>',
+            'Chevrolet': '<i class="fab fa-chevrolet"></i>',
+
+            // não existem ícones oficiais no Font Awesome
+            'Isuzu': '<i class="fas fa-truck"></i>',
+            'Jetour': '<i class="fas fa-road"></i>',
+            'Geely': '<i class="fas fa-globe"></i>',
             'Range Rover': '<i class="fas fa-mountain"></i>',
-            'Porsche': '<i class="fas fa-tachometer-alt"></i>',
-            'Volvo': '<i class="fas fa-shield-alt"></i>',
-            'Lexus': '<i class="fas fa-gem"></i>',
-            'Tesla': '<i class="fas fa-bolt"></i>',
-            'Jeep': '<i class="fas fa-car"></i>'
+
+            // existem
+            'Mercedes': '<i class="fab fa-mercedes-benz"></i>',
+            'BMW': '<i class="fab fa-bmw"></i>',
+            'Toyota': '<i class="fab fa-toyota"></i>',
+            'Suzuki': '<i class="fab fa-suzuki"></i>',
+            'Jaguar': '<i class="fab fa-jaguar"></i>'
         };
+
+
+        // const icons = {
+        //     'Mercedes-Benz': '<i class="fas fa-star"></i>',
+        //     'BMW': '<i class="fas fa-cog"></i>',
+        //     'Audi': '<i class="fas fa-ring"></i>',
+        //     'Toyota': '<i class="fas fa-leaf"></i>',
+        //     'Range Rover': '<i class="fas fa-mountain"></i>',
+        //     'Porsche': '<i class="fas fa-tachometer-alt"></i>',
+        //     'Volvo': '<i class="fas fa-shield-alt"></i>',
+        //     'Lexus': '<i class="fas fa-gem"></i>',
+        //     'Tesla': '<i class="fas fa-bolt"></i>',
+        //     'Jeep': '<i class="fas fa-car"></i>'
+        // };
 
         // ===== FUNÇÕES AUXILIARES =====
         function getMarcaIcon(marca) {
@@ -1912,9 +1947,12 @@
             } else {
                 // Filtrar por localização para imóveis
                 if (localizacaoAtiva !== 'todas') {
-                    resultados = resultados.filter(item => 
+                    resultados = resultados.filter(item =>
                         item.localizacao && item.localizacao.includes(localizacaoAtiva)
                     );
+                }
+                if (tipoNegocioAtivo !== 'todos') {
+                    resultados = resultados.filter(item => item.tipo === tipoNegocioAtivo);
                 }
             }
 
@@ -2095,7 +2133,7 @@
                 videoAtual.currentTime = 0;
                 videoAtual = null;
             }
-            
+
             // Remover botão de play se existir
             const playBtn = document.querySelector('.video-play-btn');
             if (playBtn) {
@@ -2205,7 +2243,7 @@
                 // Adicionar evento ao botão de play do vídeo
                 const playBtn = document.getElementById('videoPlayBtn');
                 if (playBtn) {
-                    playBtn.addEventListener('click', function() {
+                    playBtn.addEventListener('click', function () {
                         const video = document.getElementById('modalVideo');
                         if (video) {
                             video.play();
@@ -2240,16 +2278,16 @@
                         </div>
                         <div class="thumbnails">
                             ${mediaArray.map((media, index) => {
-                                const isVideo = media.toLowerCase().includes('.mp4');
-                                return isVideo
-                                    ? `<div class="thumbnail-wrapper" data-index="${index}">
+                    const isVideo = media.toLowerCase().includes('.mp4');
+                    return isVideo
+                        ? `<div class="thumbnail-wrapper" data-index="${index}">
                                             <video class="thumbnail" muted preload="metadata">
                                                 <source src="${media}" type="video/mp4">
                                             </video>
                                             <div class="thumbnail-play-icon"><i class="fas fa-play"></i></div>
                                        </div>`
-                                    : `<img src="${media}" class="thumbnail ${index === 0 ? 'active' : ''}" data-index="${index}">`;
-                            }).join('')}
+                        : `<img src="${media}" class="thumbnail ${index === 0 ? 'active' : ''}" data-index="${index}">`;
+                }).join('')}
                         </div>
                     </div>
                     <div class="modal-details">
@@ -2342,16 +2380,16 @@
                         </div>
                         <div class="thumbnails">
                             ${mediaArray.map((media, index) => {
-                                const isVideo = media.toLowerCase().includes('.mp4');
-                                return isVideo
-                                    ? `<div class="thumbnail-wrapper" data-index="${index}">
+                    const isVideo = media.toLowerCase().includes('.mp4');
+                    return isVideo
+                        ? `<div class="thumbnail-wrapper" data-index="${index}">
                                             <video class="thumbnail" muted preload="metadata">
                                                 <source src="${media}" type="video/mp4">
                                             </video>
                                             <div class="thumbnail-play-icon"><i class="fas fa-play"></i></div>
                                        </div>`
-                                    : `<img src="${media}" class="thumbnail ${index === 0 ? 'active' : ''}" data-index="${index}">`;
-                            }).join('')}
+                        : `<img src="${media}" class="thumbnail ${index === 0 ? 'active' : ''}" data-index="${index}">`;
+                }).join('')}
                         </div>
                     </div>
                     <div class="modal-details">
@@ -2452,7 +2490,7 @@
             // Adicionar evento ao botão de play do vídeo
             const playBtn = document.getElementById('videoPlayBtn');
             if (playBtn) {
-                playBtn.addEventListener('click', function() {
+                playBtn.addEventListener('click', function () {
                     const video = document.getElementById('modalVideo');
                     if (video) {
                         video.play();
@@ -2480,7 +2518,7 @@
         function fecharModal() {
             // Parar todos os vídeos
             pararTodosVideos();
-            
+
             modal.classList.remove('active');
             setTimeout(() => {
                 modalOverlay.classList.remove('active');
@@ -2548,7 +2586,13 @@
             if (pesquisaInput) {
                 pesquisaInput.value = '';
             }
-
+            tipoNegocioAtivo = 'todos';
+            // Resetar UI dos botões de tipo negócio
+            const botoesTipo = document.querySelectorAll('#filtroTipoNegocio .filtro-btn');
+            botoesTipo.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.tipoNegocio === 'todos') btn.classList.add('active');
+            });
             filtrarItens();
         };
 
@@ -2568,6 +2612,7 @@
                 menuOverlay.classList.remove('active');
             }
         });
+
 
         // Troca de serviço
         servicoBtns.forEach(btn => {
@@ -2695,6 +2740,25 @@
                 fecharModal();
             }
         });
+
+        // Filtro por tipo de negócio (imóveis)
+        const filtroTipoNegocio = document.getElementById('filtroTipoNegocio');
+        if (filtroTipoNegocio) {
+            filtroTipoNegocio.addEventListener('click', function (e) {
+                const btn = e.target.closest('.filtro-btn');
+                if (!btn) return;
+
+                // Remove active de todos os botões
+                filtroTipoNegocio.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('active'));
+
+                // Ativa o botão clicado
+                btn.classList.add('active');
+
+                // Atualiza a variável global e refaz a filtragem
+                tipoNegocioAtivo = btn.dataset.tipoNegocio;
+                filtrarItens();
+            });
+        }
 
         // ===== INICIALIZAR =====
         inicializarMarcas();
