@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre Nós | Eduardo Automóveis</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
     <style>
         * {
             margin: 0;
@@ -186,7 +191,7 @@
             background: var(--white);
             z-index: 999;
             padding: 80px 30px 40px;
-            box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
             transition: right 0.3s ease;
         }
 
@@ -222,7 +227,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0, 0, 0, 0.5);
             z-index: 998;
             opacity: 0;
             visibility: hidden;
@@ -236,7 +241,7 @@
 
         /* Hero da página Sobre */
         .about-hero {
-            background: linear-gradient(135deg, rgba(15,107,58,0.95) 0%, rgba(63,166,106,0.9) 100%);
+            background: linear-gradient(135deg, rgba(15, 107, 58, 0.95) 0%, rgba(63, 166, 106, 0.9) 100%);
             padding: 150px 20px 100px;
             margin-top: 80px;
             position: relative;
@@ -283,7 +288,7 @@
             left: 0;
             width: 100%;
             height: 14px;
-            background: rgba(255,255,255,0.3);
+            background: rgba(255, 255, 255, 0.3);
             z-index: -1;
         }
 
@@ -315,7 +320,7 @@
 
         .section-tag {
             display: inline-block;
-            background: rgba(15,107,58,0.1);
+            background: rgba(15, 107, 58, 0.1);
             color: var(--primary-green);
             padding: 8px 20px;
             border-radius: 30px;
@@ -345,7 +350,7 @@
             left: 0;
             width: 100%;
             height: 12px;
-            background: rgba(63,166,106,0.2);
+            background: rgba(63, 166, 106, 0.2);
             z-index: -1;
         }
 
@@ -516,7 +521,7 @@
 
         .stat-label {
             font-size: 1rem;
-            color: rgba(255,255,255,0.9);
+            color: rgba(255, 255, 255, 0.9);
             font-weight: 500;
         }
 
@@ -847,7 +852,7 @@
         .cta-btn-primary:hover {
             background: var(--gray-light);
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
         }
 
         .cta-btn-secondary {
@@ -857,7 +862,7 @@
         }
 
         .cta-btn-secondary:hover {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             transform: translateY(-3px);
         }
 
@@ -951,49 +956,57 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Header -->
-    <header class="main-header" id="mainHeader">
-        <div class="header-container">
+    <header class="page-header">
+        <div class="header-left">
+            <!-- Botão do menu hambúrguer -->
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Logo -->
             <a href="index.html" class="logo">
                 <div class="logo-icon">EA</div>
                 <div class="logo-text">
-                    <span class="logo-main">Eduardo Automóveis</span>
+                    <span class="logo-main">Eduardo <span class="highlight">Automóveis</span></span>
                     <span class="logo-sub">B.Eduardo Investimento</span>
                 </div>
             </a>
-
-            <nav class="nav-desktop">
-                <ul class="nav-menu">
-                    <li class="nav-item"><a href="index.html" class="nav-link">Início</a></li>
-                    <li class="nav-item"><a href="viaturas.html" class="nav-link">Viaturas</a></li>
-                    <li class="nav-item"><a href="sobre.html" class="nav-link active">Sobre</a></li>
-                    <li class="nav-item"><a href="contacto.html" class="nav-link">Contacto</a></li>
-                </ul>
-                <button class="cta-button" id="headerCta">
-                    <i class="fab fa-whatsapp"></i> WhatsApp
-                </button>
-            </nav>
-
-            <button class="menu-toggle" id="menuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
         </div>
 
-        <nav class="nav-mobile" id="navMobile">
-            <ul class="mobile-menu">
-                <li class="mobile-item"><a href="index.html" class="mobile-link">Início</a></li>
-                <li class="mobile-item"><a href="viaturas.html" class="mobile-link">Viaturas</a></li>
-                <li class="mobile-item"><a href="sobre.html" class="mobile-link active">Sobre</a></li>
-                <li class="mobile-item"><a href="contacto.html" class="mobile-link">Contacto</a></li>
+        <!-- Navegação Desktop -->
+        <nav class="nav-desktop">
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link"><i class="fas fa-home"></i>
+                        Início</a></li>
+                <li class="nav-item"><a href="viaturas.html" class="nav-link"><i class="fas fa-car"></i> Viaturas</a>
+                </li>
+                <li class="nav-item"><a href="sobre.html" class="nav-link"><i class="fas fa-info-circle"></i> Sobre</a>
+                </li>
+                <li class="nav-item"><a href="contacto.html" class="nav-link"><i class="fas fa-phone-alt"></i>
+                        Contacto</a></li>
             </ul>
-            <button class="cta-button mobile-cta" id="mobileCta">
-                <i class="fab fa-whatsapp"></i> Solicitar visita
-            </button>
         </nav>
-        <div class="overlay" id="overlay"></div>
+
+        <!-- Botão WhatsApp -->
+        <button class="header-cta" id="headerCta">
+            <i class="fab fa-whatsapp"></i> WhatsApp
+        </button>
+
+        <!-- Menu Overlay (Mobile) -->
+        <div class="menu-overlay" id="menuOverlay">
+            <div class="menu-panel">
+                <button class="menu-close" id="menuClose"><i class="fas fa-times"></i></button>
+                <ul class="menu-links">
+                    <li class=""><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
+                    <li><a href="viaturas.html"><i class="fas fa-car"></i> Viaturas</a></li>
+                    <li><a href="sobre.html"><i class="fas fa-info-circle"></i> Sobre</a></li>
+                    <li><a href="contacto.html"><i class="fas fa-phone-alt"></i> Contacto</a></li>
+                </ul>
+            </div>
+        </div>
     </header>
 
     <!-- Hero Section -->
@@ -1010,10 +1023,13 @@
             <div class="grid-2">
                 <div>
                     <span class="section-tag">QUEM SOMOS</span>
-                    <h2 class="section-title">A sua <span class="highlight">parceira de confiança</span> no mercado automóvel angolano</h2>
+                    <h2 class="section-title">A sua <span class="highlight">parceira de confiança</span> no mercado
+                        automóvel angolano</h2>
                     <p class="section-subtitle" style="text-align: left; margin-bottom: 30px;">
-                        A Eduardo Automóveis é um stand independente com atuação em Luanda, especializado na compra e venda de viaturas usadas e semi-novas. 
-                        Atuamos como concessionária independente, oferecendo viaturas selecionadas com transparência e qualidade.
+                        A Eduardo Automóveis é um stand independente com atuação em Luanda, especializado na compra e
+                        venda de viaturas usadas e semi-novas.
+                        Atuamos como concessionária independente, oferecendo viaturas selecionadas com transparência e
+                        qualidade.
                     </p>
                     <div style="display: flex; gap: 20px; flex-wrap: wrap;">
                         <div style="display: flex; align-items: center; gap: 10px;">
@@ -1031,9 +1047,9 @@
                     </div>
                 </div>
                 <div>
-                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                         alt="Showroom Eduardo Automóveis" 
-                         style="width: 100%; border-radius: 20px; box-shadow: var(--shadow-hover);">
+                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Showroom Eduardo Automóveis"
+                        style="width: 100%; border-radius: 20px; box-shadow: var(--shadow-hover);">
                 </div>
             </div>
         </div>
@@ -1069,7 +1085,8 @@
             <div class="section-header">
                 <span class="section-tag">NOSSO STOCK</span>
                 <h2 class="section-title">Viaturas para <span class="highlight">todos os gostos</span></h2>
-                <p class="section-subtitle">Trabalhamos com as melhores marcas do mercado, sempre com viaturas selecionadas</p>
+                <p class="section-subtitle">Trabalhamos com as melhores marcas do mercado, sempre com viaturas
+                    selecionadas</p>
             </div>
 
             <div class="brands-grid">
@@ -1180,12 +1197,15 @@
             <div class="section-header">
                 <span class="section-tag">ONDE ESTAMOS</span>
                 <h2 class="section-title">Visite o nosso <span class="highlight">stand</span> em Luanda</h2>
-                <p class="section-subtitle">Estamos localizados numa das principais zonas de stands automóveis da cidade</p>
+                <p class="section-subtitle">Estamos localizados numa das principais zonas de stands automóveis da cidade
+                </p>
             </div>
 
             <div class="location-card">
                 <div class="location-map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7883.160082874843!2d13.233615878231834!3d-8.918575836338686!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1a51f244df5492a5%3A0x36956f17f84067e3!2sAv.%204%20de%20Fevereiro%2C%20Luanda!5e0!3m2!1spt-PT!2sao!4v1770401309047!5m2!1spt-PT!2sao" allowfullscreen="" loading="lazy"></iframe>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7883.160082874843!2d13.233615878231834!3d-8.918575836338686!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1a51f244df5492a5%3A0x36956f17f84067e3!2sAv.%204%20de%20Fevereiro%2C%20Luanda!5e0!3m2!1spt-PT!2sao!4v1770401309047!5m2!1spt-PT!2sao"
+                        allowfullscreen="" loading="lazy"></iframe>
                 </div>
                 <div class="location-info">
                     <h3>Eduardo Automóveis</h3>
@@ -1226,7 +1246,8 @@
 
             <div class="team-grid">
                 <div class="team-card">
-                    <div class="team-image" style="background: linear-gradient(135deg, var(--primary-green), var(--secondary-green)); display: flex; align-items: center; justify-content: center;">
+                    <div class="team-image"
+                        style="background: linear-gradient(135deg, var(--primary-green), var(--secondary-green)); display: flex; align-items: center; justify-content: center;">
                         <i class="fas fa-user-tie" style="font-size: 5rem; color: rgba(255,255,255,0.5);"></i>
                     </div>
                     <div class="team-info">
@@ -1239,8 +1260,10 @@
                     </div>
                 </div>
                 <div class="team-card">
-                    <div class="team-image" style="background: linear-gradient(135deg, var(--secondary-green), var(--primary-green)); display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-user" style="font-size: 5rem; color: rgba(255,255,255,0.5);"></i>
+                    <div class="team-image"
+                        style="background: linear-gradient(135deg, var(--secondary-green), var(--primary-green)); display: flex; align-items: center; justify-content: center;">
+                        <!-- <i class="fas fa-user" style="font-size: 5rem; color: rgba(255,255,255,0.5);"></i> -->
+                         <img src="img/fundo_3_arros.png" alt="imagem carro">
                     </div>
                     <div class="team-info">
                         <h4>Consultores</h4>
@@ -1252,7 +1275,8 @@
                     </div>
                 </div>
                 <div class="team-card">
-                    <div class="team-image" style="background: linear-gradient(135deg, var(--primary-green), var(--secondary-green)); display: flex; align-items: center; justify-content: center;">
+                    <div class="team-image"
+                        style="background: linear-gradient(135deg, var(--primary-green), var(--secondary-green)); display: flex; align-items: center; justify-content: center;">
                         <i class="fas fa-user-cog" style="font-size: 5rem; color: rgba(255,255,255,0.5);"></i>
                     </div>
                     <div class="team-info">
@@ -1264,7 +1288,8 @@
                     </div>
                 </div>
                 <div class="team-card">
-                    <div class="team-image" style="background: linear-gradient(135deg, var(--secondary-green), var(--primary-green)); display: flex; align-items: center; justify-content: center;">
+                    <div class="team-image"
+                        style="background: linear-gradient(135deg, var(--secondary-green), var(--primary-green)); display: flex; align-items: center; justify-content: center;">
                         <i class="fas fa-headset" style="font-size: 5rem; color: rgba(255,255,255,0.5);"></i>
                     </div>
                     <div class="team-info">
@@ -1331,30 +1356,37 @@
     <!-- Footer -->
     <footer class="main-footer" id="contacto">
         <div class="footer-wave"></div>
+
         <div class="footer-container">
+            <!-- Grid -->
             <div class="footer-grid">
+                <!-- Empresa -->
                 <div class="footer-company">
-                    <a href="#hero" class="footer-logo">
+                    <a href="index.html" class="footer-logo">
                         <div class="logo-circle">EA</div>
                         <div class="logo-text">
                             <div class="logo-primary">Eduardo Automóveis</div>
-                            <div class="logo-secondary">Beduardo Investimento</div>
+                            <div class="logo-secondary">B.Eduardo Investimento</div>
                         </div>
                     </a>
+
                     <p class="company-description">
-                        Venda de viaturas selecionadas premium, com transparência, 
-                        confiança e entrega imediata. Sua parceira de confiança em 
-                        investimentos automóveis.
+                        Venda de viaturas selecionadas premium, com transparência,
+                        confiança e entrega imediata em Luanda, Angola.
                     </p>
+
                     <div class="footer-social">
-                        <div class="social-title">Siga-nos</div>
+                        <h4>Redes Sociais</h4>
                         <div class="social-icons">
-                            <a href="https://facebook.com/eduardoautomoveis" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                            <a href="https://instagram.com/eduardoautomoveis" class="social-icon"><i class="fab fa-instagram"></i></a>
-                            <a href="https://wa.me/244937582133" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                            <a href="https://www.facebook.com/p/Eduardo-Automoveis-61557580449394/"
+                                class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                            <a href="https://wa.me/244947135687" class="social-icon"><i class="fab fa-whatsapp"></i></a>
                         </div>
                     </div>
                 </div>
+
+                <!-- Contactos -->
                 <div class="footer-contact">
                     <h3>Contactos</h3>
                     <ul class="contact-list">
@@ -1362,54 +1394,93 @@
                             <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
                             <div class="contact-details">
                                 <div class="contact-label">Telefone / WhatsApp</div>
-                                <a href="tel:+244937582133" class="contact-value">+244 937 582 133</a>
+                                <a href="tel:+244947135687" class="contact-value">+244 947 135 687</a>
                             </div>
                         </li>
                         <li class="contact-item">
                             <div class="contact-icon"><i class="fas fa-envelope"></i></div>
                             <div class="contact-details">
                                 <div class="contact-label">Email</div>
-                                <a href="mailto:contacto@eduardoautomoveis.co.ao" class="contact-value">contacto@eduardoautomoveis.co.ao</a>
+                                <a href="mailto:contacto@eduardoautomoveis.co.ao" class="contact-value">
+                                    contacto@eduardoautomoveis.co.ao
+                                </a>
                             </div>
                         </li>
                         <li class="contact-item">
                             <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
                             <div class="contact-details">
                                 <div class="contact-label">Localização</div>
-                                <div class="contact-value">Condomínio BPC – Camama, Luanda</div>
+                                <div class="contact-value">Av. 4 de Fevereiro, Luanda</div>
                             </div>
                         </li>
                     </ul>
                 </div>
+
+                <!-- Links Rápidos -->
                 <div class="footer-links">
                     <h3>Links Rápidos</h3>
                     <ul class="links-list">
-                        <li><a href="index.html" class="footer-link">Início</a></li>
-                        <li><a href="viaturas.html" class="footer-link">Viaturas</a></li>
-                        <li><a href="sobre.html" class="footer-link">Sobre Nós</a></li>
-                        <li><a href="contacto.html" class="footer-link">Contacto</a></li>
+                        <li><a href="index.html" class="footer-link"><i class="fas fa-home"></i> Início</a></li>
+                        <li><a href="viaturas.html" class="footer-link"><i class="fas fa-car"></i> Viaturas</a></li>
+                        <li><a href="sobre.html" class="footer-link"><i class="fas fa-info-circle"></i> Sobre</a></li>
+                        <li><a href="contacto.html" class="footer-link"><i class="fas fa-phone-alt"></i> Contacto</a>
+                        </li>
                     </ul>
                 </div>
+
+                <!-- Horário -->
                 <div class="footer-hours">
                     <h3>Horário</h3>
                     <ul class="hours-list">
-                        <li class="hour-item"><span class="hour-day">Segunda a Sexta</span><span class="hour-time">08h-18h</span></li>
-                        <li class="hour-item"><span class="hour-day">Sábado</span><span class="hour-time">08h-13h</span></li>
-                        <li class="hour-item"><span class="hour-day">Domingo</span><span class="hour-time hour-closed">Encerrado</span></li>
+                        <li class="hour-item">
+                            <span class="hour-day">Segunda a Sexta</span>
+                            <span class="hour-time">08h00 – 18h00</span>
+                        </li>
+                        <li class="hour-item">
+                            <span class="hour-day">Sábado</span>
+                            <span class="hour-time">09h00 – 13h00</span>
+                        </li>
+                        <li class="hour-item">
+                            <span class="hour-day">Domingo</span>
+                            <span class="hour-time hour-closed">Encerrado</span>
+                        </li>
                     </ul>
                 </div>
             </div>
+
+            <!-- CTA Footer -->
+            <div class="footer-cta">
+                <h3 class="cta-title">Procura um carro confiável?</h3>
+                <p class="cta-subtitle">
+                    Fale connosco hoje mesmo e descubra as melhores oportunidades
+                    do mercado automóvel angolano.
+                </p>
+                <button class="btn btn-primary" id="footerCtaBtn">
+                    <i class="fab fa-whatsapp"></i>
+                    Solicitar Visita
+                </button>
+            </div>
+
+            <!-- Bottom Bar -->
             <div class="footer-bottom">
-                <div class="copyright">© 2026 Eduardo Automóveis. Todos os direitos reservados.</div>
+                <div class="copyright">
+                    © 2026 Eduardo Automóveis. Todos os direitos reservados.
+                </div>
                 <div class="legal-links">
                     <a href="#" class="legal-link">Política de Privacidade</a>
                     <a href="#" class="legal-link">Termos e Condições</a>
                 </div>
             </div>
         </div>
-        <button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
+
+        <!-- Botão Voltar ao Topo -->
+        <button class="back-to-top" id="backToTop">
+            <i class="fas fa-chevron-up"></i>
+        </button>
     </footer>
 
+    <script src="js/componentes/header.js"></script>
+    <script src="js/componentes/footer.js"></script>
     <script>
         // Header scroll effect
         const header = document.getElementById('mainHeader');
@@ -1486,4 +1557,5 @@
         observer.observe(document.querySelector('.stats-container'));
     </script>
 </body>
+
 </html>

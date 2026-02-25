@@ -1,0 +1,305 @@
+/* ===== CARDS DE CARROS (COMPARTILHADO) ===== */
+.car-card {
+    background: var(--branco);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.car-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(15, 107, 58, 0.15);
+}
+
+.car-image-container {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+.car-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.car-card:hover .car-image {
+    transform: scale(1.1);
+}
+
+.car-hover-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* display: none; */
+}
+
+.car-card:hover .car-hover-video {
+    transform: scale(1.1);
+}
+
+.car-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 2;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.badge-new {
+    background: var(--verde-primario);
+    color: var(--branco);
+}
+
+.badge-negotiable {
+    background: #f39c12;
+    color: var(--branco);
+}
+
+.badge-sold {
+    background: #e74c3c;
+    color: var(--branco);
+}
+
+.car-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.car-make-model {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--preto);
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 1.3;
+}
+
+.car-make-model span:first-child {
+    flex: 1;
+    padding-right: 10px;
+}
+
+.car-year {
+    font-size: 0.95rem;
+    color: var(--cinza);
+    font-weight: 500;
+    background: #f5f5f5;
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+.car-price {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--verde-primario);
+    margin: 12px 0;
+    display: flex;
+    align-items: flex-start;
+    line-height: 1;
+}
+
+.price-currency {
+    font-size: 1rem;
+    margin-right: 5px;
+    margin-top: 5px;
+    color: var(--verde-secundario);
+}
+
+.car-details-list {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+    padding: 15px 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.car-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+}
+
+.detail-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(15, 107, 58, 0.08);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--verde-primario);
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    transition: all 0.3s ease;
+}
+
+.car-card:hover .detail-icon {
+    background: var(--verde-primario);
+    color: var(--branco);
+}
+
+.detail-value {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--preto);
+    margin-bottom: 2px;
+}
+
+.detail-label {
+    font-size: 0.7rem;
+    color: var(--cinza);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.car-tipo-badge {
+    display: inline-block;
+    padding: 6px 15px;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    width: fit-content;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Loading e No Results */
+.loading {
+    text-align: center;
+    padding: 60px;
+    background: var(--branco);
+    border-radius: 16px;
+    grid-column: 1 / -1;
+}
+
+.loading i {
+    font-size: 3rem;
+    color: var(--verde-primario);
+    margin-bottom: 15px;
+}
+
+.loading p {
+    font-size: 1.1rem;
+    color: var(--cinza);
+}
+
+.no-results {
+    text-align: center;
+    padding: 60px;
+    background: var(--branco);
+    border-radius: 16px;
+    grid-column: 1 / -1;
+}
+
+.no-results i {
+    font-size: 4rem;
+    color: #ddd;
+    margin-bottom: 20px;
+}
+
+.no-results h3 {
+    font-size: 1.5rem;
+    color: var(--preto);
+    margin-bottom: 10px;
+}
+
+.no-results p {
+    color: var(--cinza);
+    margin-bottom: 25px;
+}
+
+.no-results button {
+    padding: 12px 30px;
+    background: var(--verde-primario);
+    color: var(--branco);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.no-results button:hover {
+    background: var(--verde-secundario);
+    transform: translateY(-3px);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .car-image-container {
+        height: 200px;
+    }
+    
+    .car-make-model {
+        font-size: 1.1rem;
+    }
+    
+    .car-price {
+        font-size: 1.4rem;
+    }
+    
+    .car-details-list {
+        gap: 5px;
+    }
+    
+    .detail-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .detail-value {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .car-image-container {
+        height: 180px;
+    }
+    
+    .car-content {
+        padding: 15px;
+    }
+    
+    .car-make-model {
+        font-size: 1rem;
+    }
+    
+    .car-year {
+        font-size: 0.8rem;
+        padding: 3px 8px;
+    }
+    
+    .car-price {
+        font-size: 1.3rem;
+    }
+}

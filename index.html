@@ -4,95 +4,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eduardo Automóveis/ | B.Eduardo Investimento</title>
+    <title>Eduardo Automóveis - Carros Premium em Angola</title>
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/hero.css">
-    <link rel="stylesheet" href="css/troca-servico.css">
-    <link rel="stylesheet" href="css/viaturas.css">
-    <link rel="stylesheet" href="css/sobre-section.css">
     <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/utility.css">
+    <link rel="stylesheet" href="css/home.css">
+    <!-- CSS Compartilhados -->
+    <link rel="stylesheet" href="css/components/carCard.css">
+    <link rel="stylesheet" href="css/components/modal.css">
 </head>
 
 <body>
-    <!-- Header Principal -->
-    <header class="main-header" id="mainHeader">
-        <div class="header-container">
+    <!-- ===== HEADER ===== -->
+    <header class="page-header">
+        <div class="header-left">
+            <!-- Botão do menu hambúrguer -->
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+
             <!-- Logo -->
-            <a href="#" class="logo">
+            <a href="index.html" class="logo">
                 <div class="logo-icon">EA</div>
                 <div class="logo-text">
-                    <span class="logo-main">Eduardo <span class="automoveis">Automóveis</span><span class="imoveis none">Imóveis</span></span>
-                    <span class="logo-sub"><span class="hightlight">B</span>.Eduardo Investimento</span>
+                    <span class="logo-main">Eduardo <span class="highlight">Automóveis</span></span>
+                    <span class="logo-sub">B.Eduardo Investimento</span>
                 </div>
             </a>
-
-            <div id="troca-servico" class="header-troca-servico">
-                <div id="troca-servico-btn">
-                    <a href="#" class="selected" id="automoveis-btn">
-                        <i class="fas fa-car"></i>
-                        <span class="text">Automóveis</span>
-                    </a>
-                    <a href="imoveis.html" id="imoveis-btn">
-                        <i class="fas fa-home"></i>
-                        <span class="text">Imóveis</span>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Navegação Desktop -->
-            <nav class="nav-desktop">
-                <ul class="nav-menu">
-                    <li class="nav-item"><a href="index.html" class="nav-link">Início</a></li>
-                    <li class="nav-item"><a href="viaturas.html" class="nav-link"><span class="automoveis">Viaturas</span><span class="imoveis none">Casas</span></a></li>
-                    <li class="nav-item"><a href="sobre.html" class="nav-link">Sobre</a></li>
-                    <li class="nav-item"><a href="contacto.html" class="nav-link">Contacto</a></li>
-                </ul>
-                <button class="cta-button">
-                    <i class="fab fa-whatsapp"></i> WhatsApp
-                </button>
-            </nav>
-
-            <!-- Botão Menu Mobile -->
-            <button class="menu-toggle" id="menuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
         </div>
 
-        <!-- Navegação Mobile -->
-        <nav class="nav-mobile" id="navMobile">
-            <ul class="mobile-menu">
-                <li class="mobile-item"><a href="#" class="nav-link">Início</a></li>
-                <li class="mobile-item"><a href="viaturas.html" class="nav-link"><span class="automoveis">Viaturas</span><span class="imoveis none">Casas</span></a></li>
-                <li class="mobile-item"><a href="sobre.html" class="nav-link">Sobre</a></li>
-                <li class="mobile-item"><a href="contacto.html" class="nav-link">Contacto</a></li>
+        <!-- Navegação Desktop -->
+        <nav class="nav-desktop">
+            <ul class="nav-menu">
+                <li class="nav-item selected"><a href="index.html" class="nav-link"><i class="fas fa-home"></i>
+                        Início</a></li>
+                <li class="nav-item"><a href="viaturas.html" class="nav-link"><i class="fas fa-car"></i> Viaturas</a>
+                </li>
+                <li class="nav-item"><a href="sobre.html" class="nav-link"><i class="fas fa-info-circle"></i> Sobre</a>
+                </li>
+                <li class="nav-item"><a href="contacto.html" class="nav-link"><i class="fas fa-phone-alt"></i>
+                        Contacto</a></li>
             </ul>
-            <button class="cta-button mobile-cta">
-                <i class="fab fa-whatsapp"></i> Solicitar visita
-            </button>
         </nav>
 
-        <!-- Overlay para fechar menu -->
-        <div class="overlay" id="overlay"></div>
+        <!-- Botão WhatsApp -->
+        <button class="header-cta" id="headerCta">
+            <i class="fab fa-whatsapp"></i> WhatsApp
+        </button>
+
+        <!-- Menu Overlay (Mobile) -->
+        <div class="menu-overlay" id="menuOverlay">
+            <div class="menu-panel">
+                <button class="menu-close" id="menuClose"><i class="fas fa-times"></i></button>
+                <ul class="menu-links">
+                    <li class="selected"><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
+                    <li><a href="viaturas.html"><i class="fas fa-car"></i> Viaturas</a></li>
+                    <li><a href="sobre.html"><i class="fas fa-info-circle"></i> Sobre</a></li>
+                    <li><a href="contacto.html"><i class="fas fa-phone-alt"></i> Contacto</a></li>
+                </ul>
+            </div>
+        </div>
     </header>
-    <section class="hero-section parte-automoveis" id="hero">
-        <!-- Background Image Layer -->
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero-section" id="hero">
+        <!-- Background Overlay -->
         <div class="hero-bg-overlay">
-            <!-- <img src="https://images.unsplash.com/photo-1610440042657-612c34d95e9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" -->
-            <!-- <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Eduardo Automóveis - Carros e Casas Premium" class="hero-bg-image" id="heroBgImage"> -->
-            <img src="img/hero-img-imobiliaria.png" class="hero-bg-image imoveis" id="heroBgImage">
-            <!-- <img src="img/fundo_3_arros.png" class="hero-bg-image" id="heroBgImage"> -->
-            <img src="img/fundo_4_carros.png" class="hero-bg-image automoveis" id="heroBgImage">
+            <img src="img/fundo_4_carros.png" class="hero-bg-image" id="heroBgImage">
         </div>
 
-        <!-- Content Container -->
         <div class="hero-container">
             <div class="hero-content">
                 <span class="hero-badge">
@@ -101,375 +92,313 @@
                 </span>
 
                 <h1 class="hero-title">
-                    <span class="automoveis">Descubra o <span class="highlight">Carro</span><br>dos Seus Sonhos</span>
-                    <span class="imoveis none">Descubra a <span class="highlight">Casa</span><br>dos Seus Sonhos</span>
+                    Descubra o <span class="highlight">Carro </span>dos Seus Sonhos
                 </h1>
 
                 <p class="hero-subtitle">
-                    Na Eduardo <span class="automoveis">Automóveis</span> <span class="imoveis">Imóveis</span> oferecemos <span class="automoveis">os carros</span> <span class="imoveis none">propriedades</span> mais exclusivos
-                    e de alta performance do mercado. Qualidade, confiança e excelência em cada detalhe.
+                    Na Eduardo Automóveis oferecemos os carros mais exclusivos
+                    e de alta performance do mercado. Qualidade, confiança e excelência.
                 </p>
 
-                <!-- Services Grid -->
-                <div class="services-grid">
-                    <div class="service-card automoveis">
-                        <div class="service-icon">
-                            <i class="fas fa-car"></i>
-                        </div>
-                        <div class="service-content">
-                            <h4>Viaturas Premium</h4>
-                            <p>Carros selecionados, inspeccionados e com garantia total. Desde sedans executivos a
-                                SUVs de luxo.</p>
-                        </div>
-                    </div>
-
-                    <div class="service-card imoveis none">
-                        <div class="service-icon">
-                            <i class="fas fa-home"></i>
-                        </div>
-                        <div class="service-content">
-                            <h4>Propriedades Exclusivas</h4>
-                            <p>Casas e apartamentos premium, localizações privilegiadas e excelentes oportunidades
-                                de investimento.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CTA Buttons -->
                 <div class="hero-cta">
-                    <button class="cta-primary" id="heroPrimaryCTA">
-                        <i class="fab fa-whatsapp cta-icon"></i>
+                    <button class="btn btn-primary" id="heroPrimaryCTA">
+                        <i class="fab fa-whatsapp"></i>
                         Falar com Consultor
                     </button>
-                    <button class="cta-secondary" id="heroSecondaryCTA">
-                        <i class="fas fa-search cta-icon"></i>
-                        Explorar <span class="highlight">MAIS</span>
+                    <button class="btn btn-secondary" id="heroSecondaryCTA">
+                        <i class="fas fa-search"></i>
+                        Explorar Viaturas
                     </button>
                 </div>
             </div>
         </div>
 
         <!-- Scroll Indicator -->
-        <div class="scroll-indicator none">
+        <div class="scroll-indicator">
             <div class="scroll-text">DESCUBRA MAIS</div>
             <div class="scroll-arrow"></div>
         </div>
     </section>
-    <main class="demo-content">
-        <!-- Hero Section with Background Image -->
-        <section class="featured-cars" id="viaturas">
-            <div class="section-header">
-                <div class="section-tag"><span class="automoveis">CONCESSIONÁRIA</span><span class="imoveis none">IMOBILIÁRIA</span> PREMIUM</div>
-                <h2 class="section-title"><span class="automoveis">Viaturas</span><span class="imoveis none">Casas</span> em <span class="highlight">Destaque</span> </h2>
-                <p class="section-subtitle automoveis">
-                    Qualidade garantida, transparência total e preço negociável.
-                    Cada viatura passa por rigorosa inspeção antes da venda.
-                </p>
-                    <p class="section-subtitle imoveis none">
-                        Propriedades de alto padrão, localizações privilegiadas e oportunidades de investimento
-                        exclusivas. Transparência e confiança em cada transação.
-                    </p>
-            </div>
 
-            <!-- Cars Grid (Dynamically Generated) -->
-            <div class="cars-grid automoveis" id="carsGrid">
-                <!-- Cars will be loaded here via JavaScript -->
-            </div>
-            <div class="houses-grid imoveis none" id="houseGrid">
-                <!-- Houses will be loaded here via JavaScript -->
-            </div>
-            <div class="ver-mais"><a href="viaturas.html" class="cta-primary">Ver mais:</a></div>
-
-            <!-- Car Details Modal -->
-            <div class="car-modal-overlay" id="carModalOverlay">
-                <div class="car-modal" id="carModal">
-                    <button class="modal-close" id="modalClose">&times;</button>
-                    <div class="modal-content" id="modalContent">
-                        <!-- Modal content will be loaded here -->
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Us Section -->
-        <section class="about-section" id="sobre">
-            <div class="about-container">
-                <!-- Left Column - Content -->
-                <div class="about-content">
-                    <span class="section-label">SOBRE NÓS</span>
-
-                    <h2 class="about-title">
-                        Quem <span class="highlight">Somos</span><br>
-                        Nós?
-                    </h2>
-
-                    <p class="about-subtitle">
-                        A <strong>Eduardo Automóveis / Beduardo Investimento</strong> é uma empresa
-                        angolana de referência no mercado automóvel e imobiliário,
-                        especializada em veículos premium e propriedades de alto padrão.
-                    </p>
-
-                    <!-- Company Values -->
-                    <div class="values-grid">
-                        <div class="value-item">
-                            <div class="value-icon">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                            <div class="value-content">
-                                <h4>Confiança</h4>
-                                <p>Transparência total em todas as transações e processos.</p>
-                            </div>
-                        </div>
-
-                        <div class="value-item">
-                            <div class="value-icon">
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <div class="value-content">
-                                <h4>Qualidade</h4>
-                                <p>Veículos e propriedades rigorosamente selecionados e inspecionados.</p>
-                            </div>
-                        </div>
-
-                        <div class="value-item">
-                            <div class="value-icon">
-                                <i class="fas fa-handshake"></i>
-                            </div>
-                            <div class="value-content">
-                                <h4>Compromisso</h4>
-                                <p>Parceria duradoura com cada cliente, mesmo após a venda.</p>
-                            </div>
-                        </div>
-
-                        <div class="value-item">
-                            <div class="value-icon">
-                                <i class="fas fa-bolt"></i>
-                            </div>
-                            <div class="value-content">
-                                <h4>Eficiência</h4>
-                                <p>Processos ágeis e descomplicados para sua conveniência.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- CTA Buttons -->
-                    <div class="about-cta">
-                        <button class="cta-button-primary" id="scheduleVisitBtn">
-                            <i class="fas fa-calendar-check"></i>
-                            Agendar Visita
-                        </button>
-                        <button class="cta-button-secondary" id="contactTeamBtn">
-                            <i class="fas fa-phone-alt"></i>
-                            Falar com Nossa Equipa
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Right Column - Visual -->
-                <div class="about-visual">
-                    <div class="visual-container">
-                        <!-- Company Image -->
-                        <div class="company-image-container">
-                            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=773&q=80"
-                                alt="Showroom Eduardo Automóveis" class="company-image">
-                            <div class="company-overlay">
-                                <h4>Showroom Premium</h4>
-                                <p>Espaço exclusivo para apresentação das nossas viaturas</p>
-                            </div>
-                        </div>
-
-                        <!-- Map -->
-                        <div class="map-container">
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7883.160082874843!2d13.233615878231834!3d-8.918575836338686!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1a51f244df5492a5%3A0x36956f17f84067e3!2sAv.%204%20de%20Fevereiro%2C%20Luanda!5e0!3m2!1spt-PT!2sao!4v1770401309047!5m2!1spt-PT!2sao"
-                                class="map-iframe" allowfullscreen="" loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade">
-                            </iframe>
-
-                            <div class="map-overlay">
-                                <h4>Nossa Localização</h4>
-                                <p><i class="fas fa-map-marker-alt"></i> Av. 4 de Fevereiro, Luanda</p>
-                                <p><i class="fas fa-clock"></i> Seg-Sex: 8h-18h | Sáb: 9h-13h</p>
-                                <p><i class="fas fa-phone"></i> +244 123 456 789</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ver-mais"><a href="sobre.html" class="cta-primary">Saber mais sobre nós</a></div>
-                </div>
-            </div>
-
-            <!-- Stats Counter -->
-            <div class="stats-container">
-                <div class="stat-item">
-                    <span class="stat-number" id="yearsCounter">0</span>
-                    <span class="stat-label">Anos de Experiência</span>
-                </div>
-
-                <div class="stat-item">
-                    <span class="stat-number" id="carsSoldCounter">0</span>
-                    <span class="stat-label">Viaturas Vendidas</span>
-                </div>
-
-                <div class="stat-item">
-                    <span class="stat-number" id="clientsCounter">0</span>
-                    <span class="stat-label">Clientes Satisfeitos</span>
-                </div>
-            </div>
-        </section>
-    </main>
-    <!-- Footer -->
-<footer class="main-footer" id="contacto">
-    <div class="footer-wave"></div>
-    
-    <div class="footer-container">
-        <!-- Footer Grid -->
-        <div class="footer-grid">
-            <!-- Company Info -->
-            <div class="footer-company">
-                <a href="#hero" class="footer-logo">
-                    <div class="logo-circle">EA</div>
-                    <div class="logo-text">
-                        <div class="logo-primary">Eduardo Automóveis</div>
-                        <div class="logo-secondary">Beduardo Investimento</div>
-                    </div>
-                </a>
-                
-                <p class="company-description">
-                    Venda de viaturas selecionadas premium, com transparência, 
-                    confiança e entrega imediata. Sua parceira de confiança em 
-                    investimentos automóveis e imobiliários.
-                </p>
-                
-                <!-- Social Media -->
-                <div class="footer-social">
-                    <div class="social-title">Siga-nos nas redes sociais</div>
-                    <div class="social-icons">
-                        <a href="https://facebook.com/eduardoautomoveis" class="social-icon" target="_blank" rel="noopener">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="https://instagram.com/eduardoautomoveis" class="social-icon" target="_blank" rel="noopener">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://wa.me/244941940996" class="social-icon" target="_blank" rel="noopener">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Contact Info -->
-            <div class="footer-contact">
-                <h3>Contactos</h3>
-                <ul class="contact-list">
-                    <li class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone-alt"></i>
-                        </div>
-                        <div class="contact-details">
-                            <div class="contact-label">Telefone / WhatsApp</div>
-                            <a href="tel:+244941940996" class="contact-value">+244 941 940 996</a>
-                        </div>
-                    </li>
-                    
-                    <li class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <div class="contact-label">Email Institucional</div>
-                            <a href="mailto:contacto@beduardoautomoveis.co.ao" class="contact-value">
-                                contacto@beduardoautomoveis.co.ao
-                            </a>
-                        </div>
-                    </li>
-                    
-                    <li class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-details">
-                            <div class="contact-label">Localização</div>
-                            <div class="contact-value">Condomínio BPC – Camama, Luanda, Angola</div>
-                            <a href="https://maps.google.com/?q=Condomínio+BPC+Camama+Luanda+Angola" 
-                               class="map-link" 
-                               target="_blank" 
-                               rel="noopener">
-                                <i class="fas fa-external-link-alt"></i> Ver no Google Maps
-                            </a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            
-            <!-- Quick Links -->
-            <div class="footer-links">
-                <h3>Links Rápidos</h3>
-                <ul class="links-list">
-                    <li><a href="#hero" class="footer-link">Início</a></li>
-                    <li><a href="#viaturas" class="footer-link">Viaturas</a></li>
-                    <li><a href="#investimento" class="footer-link">Investimento</a></li>
-                    <li><a href="#sobre" class="footer-link">Sobre Nós</a></li>
-                    <li><a href="#contacto" class="footer-link">Contacto</a></li>
-                </ul>
-            </div>
-            
-            <!-- Business Hours -->
-            <div class="footer-hours">
-                <h3>Horário de Funcionamento</h3>
-                <ul class="hours-list">
-                    <li class="hour-item">
-                        <span class="hour-day">Segunda a Sexta</span>
-                        <span class="hour-time">08h00 – 18h00</span>
-                    </li>
-                    <li class="hour-item">
-                        <span class="hour-day">Sábado</span>
-                        <span class="hour-time">08h00 – 13h00</span>
-                    </li>
-                    <li class="hour-item">
-                        <span class="hour-day">Domingo</span>
-                        <span class="hour-time hour-closed">Encerrado</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        
-        <!-- Call to Action -->
-        <div class="footer-cta">
-            <h3 class="cta-title">Procura um carro confiável?</h3>
-            <p class="cta-subtitle">
-                Fale connosco hoje mesmo e descubra as melhores oportunidades 
-                do mercado automóvel angolano. Transparência e qualidade garantidas.
+    <!-- ===== CARROS EM DESTAQUE ===== -->
+    <section class="featured-cars" id="viaturas">
+        <div class="section-header">
+            <div class="section-tag">CONCESSIONÁRIA PREMIUM</div>
+            <h2 class="section-title">Viaturas em <span class="highlight">Destaque</span></h2>
+            <p class="section-subtitle">
+                Qualidade garantida, transparência total e preço negociável.
+                Cada viatura passa por rigorosa inspeção antes da venda.
             </p>
-            <button class="cta-button" id="footerCtaBtn">
-                <i class="fab fa-whatsapp"></i>
-                Solicitar visita
-            </button>
         </div>
-        
-        <!-- Bottom Bar -->
-        <div class="footer-bottom">
-            <div class="copyright">
-                © 2026 Eduardo Automóveis / Beduardo Investimento. Todos os direitos reservados.
+
+        <!-- Grid de Carros -->
+        <div class="cars-grid" id="carsGrid">
+            <div class="loading">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>A carregar...</p>
             </div>
-            
-            <div class="legal-links">
-                <a href="#politica-privacidade" class="legal-link">Política de Privacidade</a>
-                <a href="#termos-condicoes" class="legal-link">Termos e Condições</a>
+        </div>
+
+        <div class="ver-mais">
+            <a href="viaturas.html" class="btn btn-primary">Ver Todos os Carros</a>
+        </div>
+    </section>
+
+    <!-- ===== SOBRE NÓS ===== -->
+    <section class="about-section" id="sobre">
+        <div class="about-container">
+            <!-- Conteúdo -->
+            <div class="about-content">
+                <span class="section-label">SOBRE NÓS</span>
+
+                <h2 class="about-title">
+                    Quem <span class="highlight">Somos</span> Nós?
+                </h2>
+
+                <p class="about-subtitle">
+                    A <strong>Eduardo Automóveis</strong> é uma empresa angolana de referência
+                    no mercado automóvel, especializada em veículos premium de alto padrão.
+                </p>
+
+                <!-- Valores -->
+                <div class="values-grid">
+                    <div class="value-item">
+                        <div class="value-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div class="value-content">
+                            <h4>Confiança</h4>
+                            <p>Transparência total em todas as transações</p>
+                        </div>
+                    </div>
+
+                    <div class="value-item">
+                        <div class="value-icon"><i class="fas fa-star"></i></div>
+                        <div class="value-content">
+                            <h4>Qualidade</h4>
+                            <p>Veículos rigorosamente inspecionados</p>
+                        </div>
+                    </div>
+
+                    <div class="value-item">
+                        <div class="value-icon"><i class="fas fa-handshake"></i></div>
+                        <div class="value-content">
+                            <h4>Compromisso</h4>
+                            <p>Parceria duradoura com cada cliente</p>
+                        </div>
+                    </div>
+
+                    <div class="value-item">
+                        <div class="value-icon"><i class="fas fa-bolt"></i></div>
+                        <div class="value-content">
+                            <h4>Eficiência</h4>
+                            <p>Processos ágeis e descomplicados</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botões -->
+                <div class="about-cta">
+                    <button class="btn btn-primary" id="scheduleVisitBtn">
+                        <i class="fas fa-calendar-check"></i>
+                        Agendar Visita
+                    </button>
+                    <button class="btn btn-secondary" id="contactTeamBtn">
+                        <i class="fas fa-phone-alt"></i>
+                        Falar com Equipa
+                    </button>
+                </div>
             </div>
+
+            <!-- Visual -->
+            <div class="about-visual">
+                <div class="visual-container">
+                    <div class="company-image-container">
+                        <img src="img/fundo_3_arros.png" alt="Showroom Eduardo Automóveis" class="company-image">
+                        <div class="company-overlay">
+                            <h4>Showroom Premium</h4>
+                            <p>Espaço exclusivo em Luanda</p>
+                        </div>
+                    </div>
+
+                    <!-- colocar video aqui -->
+
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31523.398653378!2d13.224!3d-8.918!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1a51f244df5492a5%3A0x36956f17f84067e3!2sAv.%204%20de%20Fevereiro%2C%20Luanda!5e0!3m2!1spt-PT!2sao!4v1234567890"
+                            class="map-iframe" allowfullscreen="" loading="lazy"></iframe>
+                        <div class="map-overlay">
+                            <p><i class="fas fa-map-marker-alt"></i> Av. 4 de Fevereiro, Luanda</p>
+                            <p><i class="fas fa-clock"></i> Seg-Sex: 8h-18h | Sáb: 9h-13h</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ver-mais">
+            <a href="sobre.html" class="btn btn-primary">Saber mais</a>
+        </div>
+
+        <!-- Estatísticas -->
+        <div class="stats-container">
+            <div class="stat-item">
+                <span class="stat-number" id="yearsCounter">0</span>
+                <span class="stat-label">Anos de Experiência</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="carsSoldCounter">0</span>
+                <span class="stat-label">Viaturas Vendidas</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="clientsCounter">0</span>
+                <span class="stat-label">Clientes Satisfeitos</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="main-footer" id="contacto">
+        <div class="footer-wave"></div>
+
+        <div class="footer-container">
+            <!-- Grid -->
+            <div class="footer-grid">
+                <!-- Empresa -->
+                <div class="footer-company">
+                    <a href="index.html" class="footer-logo">
+                        <div class="logo-circle">EA</div>
+                        <div class="logo-text">
+                            <div class="logo-primary">Eduardo Automóveis</div>
+                            <div class="logo-secondary">B.Eduardo Investimento</div>
+                        </div>
+                    </a>
+
+                    <p class="company-description">
+                        Venda de viaturas selecionadas premium, com transparência,
+                        confiança e entrega imediata em Luanda, Angola.
+                    </p>
+
+                    <div class="footer-social">
+                        <h4>Redes Sociais</h4>
+                        <div class="social-icons">
+                            <a href="https://www.facebook.com/p/Eduardo-Automoveis-61557580449394/"
+                                class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                            <a href="https://wa.me/244947135687" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contactos -->
+                <div class="footer-contact">
+                    <h3>Contactos</h3>
+                    <ul class="contact-list">
+                        <li class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                            <div class="contact-details">
+                                <div class="contact-label">Telefone / WhatsApp</div>
+                                <a href="tel:+244947135687" class="contact-value">+244 947 135 687</a>
+                            </div>
+                        </li>
+                        <li class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="contact-details">
+                                <div class="contact-label">Email</div>
+                                <a href="mailto:contacto@eduardoautomoveis.co.ao" class="contact-value">
+                                    contacto@eduardoautomoveis.co.ao
+                                </a>
+                            </div>
+                        </li>
+                        <li class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="contact-details">
+                                <div class="contact-label">Localização</div>
+                                <div class="contact-value">Av. 4 de Fevereiro, Luanda</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Links Rápidos -->
+                <div class="footer-links">
+                    <h3>Links Rápidos</h3>
+                    <ul class="links-list">
+                        <li><a href="index.html" class="footer-link"><i class="fas fa-home"></i> Início</a></li>
+                        <li><a href="viaturas.html" class="footer-link"><i class="fas fa-car"></i> Viaturas</a></li>
+                        <li><a href="sobre.html" class="footer-link"><i class="fas fa-info-circle"></i> Sobre</a></li>
+                        <li><a href="contacto.html" class="footer-link"><i class="fas fa-phone-alt"></i> Contacto</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Horário -->
+                <div class="footer-hours">
+                    <h3>Horário</h3>
+                    <ul class="hours-list">
+                        <li class="hour-item">
+                            <span class="hour-day">Segunda a Sexta</span>
+                            <span class="hour-time">08h00 – 18h00</span>
+                        </li>
+                        <li class="hour-item">
+                            <span class="hour-day">Sábado</span>
+                            <span class="hour-time">09h00 – 13h00</span>
+                        </li>
+                        <li class="hour-item">
+                            <span class="hour-day">Domingo</span>
+                            <span class="hour-time hour-closed">Encerrado</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- CTA Footer -->
+            <div class="footer-cta">
+                <h3 class="cta-title">Procura um carro confiável?</h3>
+                <p class="cta-subtitle">
+                    Fale connosco hoje mesmo e descubra as melhores oportunidades
+                    do mercado automóvel angolano.
+                </p>
+                <button class="btn btn-primary" id="footerCtaBtn">
+                    <i class="fab fa-whatsapp"></i>
+                    Solicitar Visita
+                </button>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="footer-bottom">
+                <div class="copyright">
+                    © 2026 Eduardo Automóveis. Todos os direitos reservados.
+                </div>
+                <div class="legal-links">
+                    <a href="#" class="legal-link">Política de Privacidade</a>
+                    <a href="#" class="legal-link">Termos e Condições</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botão Voltar ao Topo -->
+        <button class="back-to-top" id="backToTop">
+            <i class="fas fa-chevron-up"></i>
+        </button>
+    </footer>
+
+    <!-- Modal de Detalhes do Carro -->
+    <div class="car-modal-overlay" id="carModalOverlay">
+        <div class="car-modal" id="carModal">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div class="modal-content" id="modalContent"></div>
         </div>
     </div>
-    
-    <!-- Back to Top Button -->
-    <button class="back-to-top" id="backToTop">
-        <i class="fas fa-chevron-up"></i>
-    </button>
-</footer>
 
-    <script src="js/ui/header.js"></script>
-    <script src="js/ui/hero.js"></script>
-    <script src="js/ui/viaturas.js"></script>
-    <script src="js/sobre-section.js"></script>
-    <script src="js/footer.js"></script>
+    <!-- ===== SCRIPTS ===== -->
+    <!-- Dados -->
+    <script src="js/dados/carros.js"></script>
+
+    <!-- Componentes -->
+    <script src="js/componentes/header.js"></script>
+    <script src="js/componentes/footer.js"></script>
+
+    <!-- Páginas (com type="module") -->
+    <script type="module" src="js/paginas/home.js"></script>
 </body>
 
 </html>

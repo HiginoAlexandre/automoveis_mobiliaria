@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contactos | Eduardo Automóveis</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
     <style>
         * {
             margin: 0;
@@ -789,36 +794,65 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <!-- Header -->
         <header class="page-header">
+        <div class="header-left">
+            <!-- Botão do menu hambúrguer -->
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Logo -->
             <a href="index.html" class="logo">
                 <div class="logo-icon">EA</div>
                 <div class="logo-text">
-                    <span class="logo-main">Eduardo Automóveis</span>
+                    <span class="logo-main">Eduardo <span class="highlight">Automóveis</span></span>
                     <span class="logo-sub">B.Eduardo Investimento</span>
                 </div>
             </a>
+        </div>
 
-            <nav>
-                <ul class="nav-menu">
-                    <li><a href="index.html" class="nav-link">Início</a></li>
-                    <li><a href="viaturas.html" class="nav-link">Viaturas</a></li>
-                    <li><a href="sobre.html" class="nav-link">Sobre</a></li>
-                    <li><a href="contacto.html" class="nav-link active">Contacto</a></li>
+        <!-- Navegação Desktop -->
+        <nav class="nav-desktop">
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link"><i class="fas fa-home"></i>
+                        Início</a></li>
+                <li class="nav-item"><a href="viaturas.html" class="nav-link"><i class="fas fa-car"></i> Viaturas</a>
+                </li>
+                <li class="nav-item"><a href="sobre.html" class="nav-link"><i class="fas fa-info-circle"></i> Sobre</a>
+                </li>
+                <li class="nav-item"><a href="contacto.html" class="nav-link"><i class="fas fa-phone-alt"></i>
+                        Contacto</a></li>
+            </ul>
+        </nav>
+
+        <!-- Botão WhatsApp -->
+        <button class="header-cta" id="headerCta">
+            <i class="fab fa-whatsapp"></i> WhatsApp
+        </button>
+
+        <!-- Menu Overlay (Mobile) -->
+        <div class="menu-overlay" id="menuOverlay">
+            <div class="menu-panel">
+                <button class="menu-close" id="menuClose"><i class="fas fa-times"></i></button>
+                <ul class="menu-links">
+                    <li class=""><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
+                    <li><a href="viaturas.html"><i class="fas fa-car"></i> Viaturas</a></li>
+                    <li><a href="sobre.html"><i class="fas fa-info-circle"></i> Sobre</a></li>
+                    <li><a href="contacto.html"><i class="fas fa-phone-alt"></i> Contacto</a></li>
                 </ul>
-            </nav>
-
-            <button class="header-cta" id="headerCta">
-                <i class="fab fa-whatsapp"></i> WhatsApp
-            </button>
-        </header>
+            </div>
+        </div>
+    </header>
 
         <!-- Hero Section -->
         <section class="contact-hero">
             <h1>Fale Connosco</h1>
-            <p>Estamos aqui para ajudar. Entre em contacto connosco para qualquer questão, marcação de visitas ou informações sobre os nossos serviços.</p>
+            <p>Estamos aqui para ajudar. Entre em contacto connosco para qualquer questão, marcação de visitas ou
+                informações sobre os nossos serviços.</p>
         </section>
 
         <!-- Botões de Ação Rápida -->
@@ -839,7 +873,7 @@
             <!-- Informações de Contacto -->
             <div class="info-card">
                 <h2><i class="fas fa-info-circle"></i> Informações de Contacto</h2>
-                
+
                 <ul class="contact-list">
                     <li class="contact-item">
                         <div class="contact-icon">
@@ -851,7 +885,7 @@
                             <div class="contact-note">Disponível 24h para emergências</div>
                         </div>
                     </li>
-                    
+
                     <li class="contact-item">
                         <div class="contact-icon">
                             <i class="fas fa-envelope"></i>
@@ -864,7 +898,7 @@
                             <div class="contact-note">Resposta em até 24h úteis</div>
                         </div>
                     </li>
-                    
+
                     <li class="contact-item">
                         <div class="contact-icon">
                             <i class="fas fa-map-marker-alt"></i>
@@ -873,7 +907,8 @@
                             <div class="contact-label">Morada</div>
                             <div class="contact-value">Condomínio BPC – Camama</div>
                             <div class="contact-value">Luanda, Angola</div>
-                            <a href="https://maps.google.com/?q=Condomínio+BPC+Camama+Luanda+Angola" target="_blank" class="contact-note" style="color: var(--primary-green);">
+                            <a href="https://maps.google.com/?q=Condomínio+BPC+Camama+Luanda+Angola" target="_blank"
+                                class="contact-note" style="color: var(--primary-green);">
                                 <i class="fas fa-external-link-alt"></i> Ver no Google Maps
                             </a>
                         </div>
@@ -884,7 +919,7 @@
             <!-- Horário de Funcionamento -->
             <div class="info-card">
                 <h2><i class="fas fa-clock"></i> Horário de Funcionamento</h2>
-                
+
                 <ul class="hours-list">
                     <li class="hours-item">
                         <span class="hours-day">Segunda a Sexta</span>
@@ -914,7 +949,8 @@
 
             <!-- Formulário de Contacto -->
             <div class="contact-form" style="grid-column: 1 / -1;">
-                <h2 style="font-size: 1.5rem; font-weight: 700; color: var(--primary-green); margin-bottom: 25px; display: flex; align-items: center; gap: 10px;">
+                <h2
+                    style="font-size: 1.5rem; font-weight: 700; color: var(--primary-green); margin-bottom: 25px; display: flex; align-items: center; gap: 10px;">
                     <i class="fas fa-paper-plane"></i> Envie-nos uma Mensagem
                 </h2>
 
@@ -935,7 +971,8 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label class="form-label">Telefone *</label>
-                            <input type="tel" class="form-control" id="telefone" placeholder="+244 XXX XXX XXX" required>
+                            <input type="tel" class="form-control" id="telefone" placeholder="+244 XXX XXX XXX"
+                                required>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Assunto</label>
@@ -958,7 +995,7 @@
                     <div class="form-checkbox">
                         <input type="checkbox" id="privacidade" required>
                         <label for="privacidade">
-                            Li e aceito a <a href="#">Política de Privacidade</a> e os 
+                            Li e aceito a <a href="#">Política de Privacidade</a> e os
                             <a href="#">Termos e Condições</a> *
                         </label>
                     </div>
@@ -974,12 +1011,9 @@
         <section class="map-section">
             <h2><i class="fas fa-map-marked-alt"></i> A Nossa Localização</h2>
             <div class="map-container">
-                <iframe 
+                <iframe
                     src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7883.160082874843!2d13.233615878231834!3d-8.918575836338686!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1a51f244df5492a5%3A0x36956f17f84067e3!2sAv.%204%20de%20Fevereiro%2C%20Luanda!5e0!3m2!1spt-PT!2sao!4v1770401309047!5m2!1spt-PT!2sao"
-                    class="map-iframe"
-                    allowfullscreen=""
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade">
+                    class="map-iframe" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
                 <div class="map-overlay">
                     <h3>Eduardo Automóveis</h3>
@@ -991,7 +1025,7 @@
         <!-- FAQ -->
         <section class="faq-section">
             <h2><i class="fas fa-question-circle"></i> Perguntas Frequentes</h2>
-            
+
             <div class="faq-grid">
                 <div class="faq-item">
                     <div class="faq-question">
@@ -999,7 +1033,8 @@
                         Como posso agendar uma visita?
                     </div>
                     <div class="faq-answer">
-                        Pode agendar uma visita através do nosso WhatsApp, telefone, ou preenchendo o formulário de contacto. Responderemos em até 2h úteis.
+                        Pode agendar uma visita através do nosso WhatsApp, telefone, ou preenchendo o formulário de
+                        contacto. Responderemos em até 2h úteis.
                     </div>
                 </div>
 
@@ -1009,7 +1044,8 @@
                         Aceitam trocas de viaturas?
                     </div>
                     <div class="faq-answer">
-                        Sim, aceitamos a sua viatura usada como parte de pagamento. Fazemos avaliação justa e transparente.
+                        Sim, aceitamos a sua viatura usada como parte de pagamento. Fazemos avaliação justa e
+                        transparente.
                     </div>
                 </div>
 
@@ -1019,7 +1055,8 @@
                         Financiamento próprio?
                     </div>
                     <div class="faq-answer">
-                        Sim, temos condições especiais de financiamento próprio e também parceiros bancários para facilitar a sua aquisição.
+                        Sim, temos condições especiais de financiamento próprio e também parceiros bancários para
+                        facilitar a sua aquisição.
                     </div>
                 </div>
 
@@ -1036,64 +1073,141 @@
         </section>
 
         <!-- Footer -->
-        <footer class="main-footer">
-            <div class="footer-grid">
-                <div>
-                    <a href="index.html" class="footer-logo">
-                        <div class="logo-circle">EA</div>
-                        <span>Eduardo Automóveis</span>
-                    </a>
-                    <p class="footer-description">
-                        Venda de viaturas selecionadas premium e imóveis de alto padrão, 
-                        com transparência, confiança e entrega imediata.
-                    </p>
-                    <div class="footer-social">
-                        <a href="https://facebook.com/eduardoautomoveis" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://instagram.com/eduardoautomoveis" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/244937582133" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <footer class="main-footer" id="contacto">
+            <div class="footer-wave"></div>
+
+            <div class="footer-container">
+                <!-- Grid -->
+                <div class="footer-grid">
+                    <!-- Empresa -->
+                    <div class="footer-company">
+                        <a href="index.html" class="footer-logo">
+                            <div class="logo-circle">EA</div>
+                            <div class="logo-text">
+                                <div class="logo-primary">Eduardo Automóveis</div>
+                                <div class="logo-secondary">B.Eduardo Investimento</div>
+                            </div>
+                        </a>
+
+                        <p class="company-description">
+                            Venda de viaturas selecionadas premium, com transparência,
+                            confiança e entrega imediata em Luanda, Angola.
+                        </p>
+
+                        <div class="footer-social">
+                            <h4>Redes Sociais</h4>
+                            <div class="social-icons">
+                                <a href="https://www.facebook.com/p/Eduardo-Automoveis-61557580449394/"
+                                    class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                                <a href="https://wa.me/244947135687" class="social-icon"><i
+                                        class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contactos -->
+                    <div class="footer-contact">
+                        <h3>Contactos</h3>
+                        <ul class="contact-list">
+                            <li class="contact-item">
+                                <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                                <div class="contact-details">
+                                    <div class="contact-label">Telefone / WhatsApp</div>
+                                    <a href="tel:+244947135687" class="contact-value">+244 947 135 687</a>
+                                </div>
+                            </li>
+                            <li class="contact-item">
+                                <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                                <div class="contact-details">
+                                    <div class="contact-label">Email</div>
+                                    <a href="mailto:contacto@eduardoautomoveis.co.ao" class="contact-value">
+                                        contacto@eduardoautomoveis.co.ao
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="contact-item">
+                                <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                                <div class="contact-details">
+                                    <div class="contact-label">Localização</div>
+                                    <div class="contact-value">Av. 4 de Fevereiro, Luanda</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Links Rápidos -->
+                    <div class="footer-links">
+                        <h3>Links Rápidos</h3>
+                        <ul class="links-list">
+                            <li><a href="index.html" class="footer-link"><i class="fas fa-home"></i> Início</a></li>
+                            <li><a href="viaturas.html" class="footer-link"><i class="fas fa-car"></i> Viaturas</a></li>
+                            <li><a href="sobre.html" class="footer-link"><i class="fas fa-info-circle"></i> Sobre</a>
+                            </li>
+                            <li><a href="contacto.html" class="footer-link"><i class="fas fa-phone-alt"></i>
+                                    Contacto</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Horário -->
+                    <div class="footer-hours">
+                        <h3>Horário</h3>
+                        <ul class="hours-list">
+                            <li class="hour-item">
+                                <span class="hour-day">Segunda a Sexta</span>
+                                <span class="hour-time">08h00 – 18h00</span>
+                            </li>
+                            <li class="hour-item">
+                                <span class="hour-day">Sábado</span>
+                                <span class="hour-time">09h00 – 13h00</span>
+                            </li>
+                            <li class="hour-item">
+                                <span class="hour-day">Domingo</span>
+                                <span class="hour-time hour-closed">Encerrado</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
 
-                <div class="footer-links">
-                    <h3>Links Rápidos</h3>
-                    <ul>
-                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Início</a></li>
-                        <li><a href="viaturas.html"><i class="fas fa-chevron-right"></i> Viaturas</a></li>
-                        <li><a href="sobre.html"><i class="fas fa-chevron-right"></i> Sobre Nós</a></li>
-                        <li><a href="contacto.html"><i class="fas fa-chevron-right"></i> Contacto</a></li>
-                    </ul>
+                <!-- CTA Footer -->
+                <div class="footer-cta">
+                    <h3 class="cta-title">Procura um carro confiável?</h3>
+                    <p class="cta-subtitle">
+                        Fale connosco hoje mesmo e descubra as melhores oportunidades
+                        do mercado automóvel angolano.
+                    </p>
+                    <button class="btn btn-primary" id="footerCtaBtn">
+                        <i class="fab fa-whatsapp"></i>
+                        Solicitar Visita
+                    </button>
                 </div>
 
-                <div class="footer-links">
-                    <h3>Serviços</h3>
-                    <ul>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Compra de Viaturas</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Venda de Imóveis</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Arrendamento</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Financiamento</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-links">
-                    <h3>Contacto</h3>
-                    <ul>
-                        <li><i class="fas fa-phone"></i> +244 937 582 133</li>
-                        <li><i class="fas fa-envelope"></i> contacto@beduardoautomoveis.co.ao</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Condomínio BPC – Camama</li>
-                    </ul>
+                <!-- Bottom Bar -->
+                <div class="footer-bottom">
+                    <div class="copyright">
+                        © 2026 Eduardo Automóveis. Todos os direitos reservados.
+                    </div>
+                    <div class="legal-links">
+                        <a href="#" class="legal-link">Política de Privacidade</a>
+                        <a href="#" class="legal-link">Termos e Condições</a>
+                    </div>
                 </div>
             </div>
 
-            <div class="footer-bottom">
-                <p>© 2026 Eduardo Automóveis / Beduardo Investimento. Todos os direitos reservados.</p>
-            </div>
+            <!-- Botão Voltar ao Topo -->
+            <button class="back-to-top" id="backToTop">
+                <i class="fas fa-chevron-up"></i>
+            </button>
         </footer>
     </div>
 
+    <script src="js/componentes/header.js"></script>
+    <script src="js/componentes/footer.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Header CTA
-            document.getElementById('headerCta').addEventListener('click', function() {
+            document.getElementById('headerCta').addEventListener('click', function () {
                 window.open('https://wa.me/244937582133?text=Olá! Gostaria de saber mais sobre os serviços da Eduardo Automóveis.', '_blank');
             });
 
@@ -1101,7 +1215,7 @@
             const contactForm = document.getElementById('contactForm');
             const formAlert = document.getElementById('formAlert');
 
-            contactForm.addEventListener('submit', function(e) {
+            contactForm.addEventListener('submit', function (e) {
                 e.preventDefault();
 
                 // Validação básica
@@ -1145,7 +1259,7 @@
 
             // Formatar telefone enquanto digita
             const telefoneInput = document.getElementById('telefone');
-            telefoneInput.addEventListener('input', function(e) {
+            telefoneInput.addEventListener('input', function (e) {
                 let value = e.target.value.replace(/\D/g, '');
                 if (value.length > 0) {
                     if (value.length <= 3) {
@@ -1179,4 +1293,5 @@
         });
     </script>
 </body>
+
 </html>
