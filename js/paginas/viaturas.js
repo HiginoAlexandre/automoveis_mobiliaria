@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const pesquisaInput = document.getElementById('pesquisaInput');
     const pesquisaBtn = document.getElementById('pesquisaBtn');
     const resetBtn = document.getElementById('resetFiltros');
+    const itemsGrid = document.getElementById('itemsGrid');
 
     // Contadores e navegação
     const mostrandoInicio = document.getElementById('mostrandoInicio');
@@ -39,62 +40,31 @@ document.addEventListener('DOMContentLoaded', function () {
     const precoCheckboxes = document.querySelectorAll('#precoCheckboxes input[type="checkbox"]');
     const combustivelCheckboxes = document.querySelectorAll('#combustivelCheckboxes input[type="checkbox"]');
 
-    // ===== TOGGLE FILTROS ========================================================
-    // ===== TOGGLE FILTROS ========================================================
+    // ===== TOGGLE FILTROS - SOMENTE QUANDO CLICA =====
     const toggleFiltrosBtn = document.getElementById('toggleFiltrosBtn');
     const filtrosSection = document.querySelector('.filtros-section');
 
     if (toggleFiltrosBtn && filtrosSection) {
-        // Função para verificar se há filtros ativos (excluindo pesquisa)
-        function temFiltrosAtivos() {
-            // Verifica apenas filtros, NÃO a pesquisa
-            return filtroCondicao !== 'todos' ||
-                filtroMarca !== 'todas' ||
-                filtroPreco.length > 0 ||
-                filtroCombustivel.length > 0;
-        }
+        // Remover a classe 'collapsed' inicialmente para garantir que os filtros comecem abertos
+        filtrosSection.classList.remove('collapsed');
 
-        // Estado inicial: recolhido se não houver filtros ativos
-        // A pesquisa NÃO afeta o estado inicial
-        if (!temFiltrosAtivos()) {
-            filtrosSection.classList.add('collapsed');
-        }
-
+        // Adicionar evento de clique para toggle manual
         toggleFiltrosBtn.addEventListener('click', function () {
             filtrosSection.classList.toggle('collapsed');
+
+            // Opcional: mudar o ícone quando recolhido/expandido
+            const icon = this.querySelector('i');
+            if (icon) {
+                if (filtrosSection.classList.contains('collapsed')) {
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                } else {
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                }
+            }
         });
-
-        // NÃO expandir automaticamente com a pesquisa
-        // Apenas expandir quando filtros reais forem aplicados
-
-        // Guardar referência à função original
-        const originalFiltrarCarros = filtrarCarros;
-
-        // Sobrescrever filtrarCarros
-        filtrarCarros = function () {
-            originalFiltrarCarros();
-
-            // Após filtrar, verificar se há filtros ativos (excluindo pesquisa)
-            if (temFiltrosAtivos() && filtrosSection.classList.contains('collapsed')) {
-                // Só expande se houver filtros ativos E estiver recolhido
-                filtrosSection.classList.remove('collapsed');
-            }
-        };
-
-        // Resetar filtros também deve verificar o estado
-        const originalReset = window.resetarFiltros;
-        window.resetarFiltros = function () {
-            originalReset();
-
-            // Se não houver filtros ativos após reset, recolher
-            if (!temFiltrosAtivos() && !filtrosSection.classList.contains('collapsed')) {
-                filtrosSection.classList.add('collapsed');
-            }
-        };
     }
-    // ===================================================================
-    // ===================================================================
-
 
     // ===== INICIALIZAR MODAL =====
     initModal(carrosData);
@@ -345,6 +315,14 @@ document.addEventListener('DOMContentLoaded', function () {
         pesquisaBtn.addEventListener('click', function () {
             termoPesquisa = pesquisaInput ? pesquisaInput.value : '';
             filtrarCarros();
+
+            const itemsGrid = document.getElementById('navTop');
+            if (itemsGrid) {
+                itemsGrid.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
         });
     }
 
