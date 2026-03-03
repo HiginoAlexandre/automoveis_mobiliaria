@@ -54,7 +54,7 @@ export function initVideoHover(carrosData) {
                     videoElement = null;
                     if (imgElement) imgElement.style.display = 'block';
                 });
-            }, 1500); // delay de 1500ms
+            }, 300); // delay de 1500ms
         });
 
         card.addEventListener('mouseleave', function () {
